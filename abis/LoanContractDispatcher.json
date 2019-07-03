@@ -1,0 +1,55 @@
+[
+  {
+    "constant": true,
+    "inputs": [{ "name": "", "type": "address" }],
+    "name": "isLoanContract",
+    "outputs": [{ "name": "", "type": "bool" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xe728b86c"
+  },
+  {
+    "inputs": [
+      { "name": "authAddress", "type": "address" },
+      { "name": "_DAITokenAddress", "type": "address" },
+      { "name": "_DAIProxyAddress", "type": "address" }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor",
+    "signature": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": false, "name": "contractAddress", "type": "address" },
+      { "indexed": true, "name": "originator", "type": "address" },
+      { "indexed": false, "name": "auctionBlockLength", "type": "uint256" },
+      { "indexed": false, "name": "minAmount", "type": "uint256" },
+      { "indexed": false, "name": "maxAmount", "type": "uint256" },
+      { "indexed": false, "name": "bpMaxInterestRate", "type": "uint256" },
+      { "indexed": false, "name": "termEndTimestamp", "type": "uint256" }
+    ],
+    "name": "LoanContractCreated",
+    "type": "event",
+    "signature": "0x14480e74c0ab4c128ee350b37713f4d316ee57b9d593f65b8bc4c20195106567",
+    "_alias": "LoanContractCreated"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      { "name": "auctionBlockLength", "type": "uint256" },
+      { "name": "minAmount", "type": "uint256" },
+      { "name": "maxAmount", "type": "uint256" },
+      { "name": "bpMaxInterestRate", "type": "uint256" },
+      { "name": "termEndTimestamp", "type": "uint256" }
+    ],
+    "name": "deploy",
+    "outputs": [{ "name": "", "type": "address" }],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x727e8e78"
+  }
+]

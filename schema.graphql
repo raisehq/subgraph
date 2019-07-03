@@ -1,0 +1,73 @@
+type LoanDispatcher @entity {
+  id: ID!
+  loans: [Loan!]
+  loansCount: Int!
+}
+
+type Loan @entity {
+  id: ID!
+  # initial values set at loan created
+  address: Bytes! # address
+  dispatcherId: String!
+  originator: Bytes! # address
+  minAmount: BigInt! # uint256
+  maxAmount: BigInt! # uint256
+  
+  auctionStartBlock: BigInt! # uint256
+  auctionEndBlock: BigInt! # uint256
+  auctionBlockLength: BigInt!
+
+  termEndTimestamp: BigInt!
+
+  bpMaxInterestRate: BigInt! # uint256
+
+  # values that are modified through the loan's life
+  termStartTimestamp: BigInt
+  auctionFundedBlock: BigInt #block where loan is fully funded
+
+  auctionBalance: BigInt
+  borrowerDebt: BigInt
+  
+  interestRate: BigInt
+
+  minimumReached: Boolean!
+  auctionEnded: Boolean! 
+  
+  loanWithdrawn: Boolean!
+  loanRepaid: Boolean!
+  loanRepaidTimestamp: BigInt
+
+  state: Int! #enum
+}
+
+type User @entity {
+  id: ID!
+  address: Bytes!
+  fundings: [Funding!]!
+  requests: [Loan!]!
+  deposited: Boolean!
+  kyced: Boolean!
+  referrals: [Referral!]!
+  referralBountyCount: Int!
+}
+
+type Referral @entity {
+  id: ID!
+  referrer: User!
+  referree: User!
+}
+
+type Funding @entity {
+  id: ID!
+  loan: Loan!
+  amount: BigInt!
+}
+
+enum LoanState {
+  CREATED # accepts bids until timelimit initial state
+  FAILED_TO_FUND # not fully funded in timelimit
+  ACTIVE # fully funded, inside timelimit
+  DEFAULTED # not repaid in time loanRepaymentLength
+  REPAID # the borrower repaid in full, lenders have yet to reclaim funds
+  CLOSED # funds have been reclaimed
+}
