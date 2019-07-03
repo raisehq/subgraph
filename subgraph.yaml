@@ -1,0 +1,133 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: KYCRegistry
+    network: kovan
+    source:
+      address: "0xAA2F53d31a6fB9a67c406343154eA3BC138bD218"
+      abi: KYCRegistry
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      entities:
+        - User
+      abis:
+        - name: KYCRegistry
+          file: ./abis/KYCRegistry.json
+      eventHandlers:
+        - event: RemoveFromKYC(indexed address) 
+          handler: handleRemoveFromKYC
+        - event: AddToKYC(indexed address)
+          handler: handleAddToKYC
+      file: ./src/mappings/kycregistry.ts
+  - kind: ethereum/contract
+    name: DepositRegistry
+    network: kovan
+    source:
+      address: "0xce31743e1E80F71E82c8f95FFa4AA1E4f79ACf31"
+      abi: DepositRegistry
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      entities:
+        - User
+      abis:
+        - name: DepositRegistry
+          file: ./abis/DepositRegistry.json
+      eventHandlers:
+        - event: UserDepositCompleted(indexed address)
+          handler: handleUserDepositCompleted
+        - event: UserWithdrawnCompleted(indexed address)
+          handler: handleUserWithdrawnCompleted
+      file: ./src/mappings/depositregistry.ts
+  - kind: ethereum/contract
+    name: ReferralTracker
+    network: kovan
+    source:
+      address: "0x19EEf28f901C739f8B1c6D24Cbe42aEde3Fd5415"
+      abi: ReferralTracker
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      entities:
+        - User
+      abis:
+        - name: ReferralTracker
+          file: ./abis/ReferralTracker.json
+      eventHandlers:
+        - event: ReferralRegistered(address,address)
+          handler: handleReferralRegistered
+        - event: ReferralBonusWithdrawn(address,uint256)
+          handler: handleReferralBonusWithdrawn
+      file: ./src/mappings/referraltracker.ts
+  - kind: ethereum/contract
+    name: LoanContractDispatcher
+    network: kovan
+    source:
+      address: "0x92069967Dc265A3186B9e2B778cfb841F808E42b"
+      abi: LoanContractDispatcher
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      entities:
+        - LoanDispatcher
+        - Loan
+        - User
+      abis:
+        - name: LoanContractDispatcher
+          file: ./abis/LoanContractDispatcher.json
+      eventHandlers:
+        - event: LoanContractCreated(address,indexed address,uint256,uint256,uint256,uint256,uint256)
+          handler: handleLoanContractCreated
+      file: ./src/mappings/loandispatcher.ts
+    templates:
+    - kind: ethereum/contract
+      name: LoanContract
+      network: kovan
+      source:
+        abi: LoanContract
+      mapping:
+        kind: ethereum/events
+        apiVersion: 0.0.3
+        language: wasm/assemblyscript
+        file: ./src/mappings/loan.ts
+        entities:
+          - Loan
+          - User
+          - Funding
+        abis:
+          - name: LoanContract
+            file: ./abis/LoanContract.json
+        eventHandlers:
+          - event: LoanCreated(indexed address,indexed address,uint256,uint256,uint256,uint256,uint256)
+            handler: handleLoanCreated
+          - event: MinimumFundingReached(address,uint256)
+            handler: handleMinimumFundingReached
+          - event: FullyFunded(address,uint256,uint256,indexed uint256)
+            handler: handleFullyFunded
+          - event: Funded(address,indexed address,uint256)
+            handler: handleFunded
+          - event: FailedToFund(address,indexed address,uint256)
+            handler: handleFailedToFund
+          - event: LoanRepaid(address,indexed uint256)
+            handler: handleLoanRepaid
+          - event: RepaymentWithdrawn(address,indexed address,uint256)
+            handler: handleRepaymentWithdrawn
+          - event: RefundWithdrawn(address,indexed address,uint256)
+            handler: handleRefundWithdrawn
+          - event: FullyRefunded(address)
+            handler: handleFullyRefunded
+          - event: LoanFundsWithdrawn(address,indexed address,uint256)
+            handler: handleLoanFundsWithdrawn
+          - event: LoanDefaulted(address)
+            handler: handleLoanDefaulted
+          #- event: FullyRepaid(address)
+          #  handler: handleFullyRepaid
+          #- event: RefundmaxAmount(address,uint256)
+          #  handler: handleRefundmaxAmount
