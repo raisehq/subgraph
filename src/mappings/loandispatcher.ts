@@ -50,14 +50,7 @@ export function handleLoanContractCreated(event: LoanContractCreatedEvent): void
         // create user
         let userId = event.params.originator.toHex();
         let user = User.load(userId)
-        if (user == null) {
-            user = new User(userId);
-            user.address = event.params.originator;
-            user.requests = [];
-            user.fundings = [];
-            user.deposited = false;
-            user.kyced = false;
-        }
+        
         let requests = user.requests;
         requests.push(loan.id);
         user.requests = requests;

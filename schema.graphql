@@ -48,7 +48,9 @@ type User @entity {
   deposited: Boolean!
   kyced: Boolean!
   referrals: [Referral!]!
-  referralBountyCount: Int!
+  totalBountyWithdrawn: Int!
+  totalBountyToWithdraw: Int!
+  totalReferralsCount: Int!
 }
 
 type Referral @entity {

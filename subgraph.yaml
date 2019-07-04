@@ -60,9 +60,9 @@ dataSources:
         - name: ReferralTracker
           file: ./abis/ReferralTracker.json
       eventHandlers:
-        - event: ReferralRegistered(address,address)
+        - event: ReferralRegistered(address,indexed address,indexed address)
           handler: handleReferralRegistered
-        - event: ReferralBonusWithdrawn(address,uint256)
+        - event: ReferralBonusWithdrawn(address,indexed address,uint256,uint256)
           handler: handleReferralBonusWithdrawn
       file: ./src/mappings/referraltracker.ts
   - kind: ethereum/contract
