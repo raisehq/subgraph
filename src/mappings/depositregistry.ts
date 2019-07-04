@@ -14,8 +14,10 @@ export function handleUserDepositCompleted(event: UserDepositCompletedEvent): vo
         user.requests = [];
         user.fundings = [];
         user.referrals = [];
-        user.referralBountyCount = 0;
         user.kyced = false;
+        user.totalBountyWithdrawn = 0;
+        user.totalBountyToWithdraw = 0;
+        user.totalReferralsCount = 0;
     }
 
     user.deposited = true;
@@ -32,8 +34,10 @@ export function handleUserWithdrawnCompleted(event: UserWithdrawnCompletedEvent)
         user.requests = [];
         user.fundings = [];
         user.referrals = [];
-        user.referralBountyCount = 0;
         user.kyced = false;
+        user.totalBountyWithdrawn = 0;
+        user.totalBountyToWithdraw = 0;
+        user.totalReferralsCount = 0;
     }
 
     user.deposited = false;

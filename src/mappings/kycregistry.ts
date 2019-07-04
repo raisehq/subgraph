@@ -13,8 +13,10 @@ export function handleRemoveFromKYC(event: RemoveFromKYCEvent): void {
         user.requests = [];
         user.fundings = [];
         user.referrals = [];
-        user.referralBountyCount = 0;
         user.deposited = false;
+        user.totalBountyWithdrawn = 0;
+        user.totalBountyToWithdraw = 0;
+        user.totalReferralsCount = 0;
     }
 
     user.kyced = false;
@@ -31,8 +33,10 @@ export function handleAddToKYC(event: AddToKYCEvent): void {
         user.requests = [];
         user.fundings = [];
         user.referrals = [];
-        user.referralBountyCount = 0;
         user.deposited = false;
+        user.totalBountyWithdrawn = 0;
+        user.totalBountyToWithdraw = 0;
+        user.totalReferralsCount = 0;
     }
 
     user.kyced = true;

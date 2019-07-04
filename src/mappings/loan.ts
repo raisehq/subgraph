@@ -114,16 +114,6 @@ export function handleFunded(event: FundedEvent): void {
     // Update User
     let userAddress = event.params.lender;
     let user = User.load(userAddress.toHex())
-    if (user == null) {
-        user = new User(userAddress.toHex());
-        user.address = userAddress;
-        user.fundings = [];
-        user.requests = [];
-        user.referrals = [];
-        user.deposited = false;
-        user.kyced = false;
-        user.referralBountyCount = 0;
-    }
 
     // creating funding transaction
     let funding = new Funding(
