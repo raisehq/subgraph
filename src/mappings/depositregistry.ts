@@ -11,8 +11,6 @@ export function handleUserDepositCompleted(event: UserDepositCompletedEvent): vo
     if (user == null) {
         user = new User(userAddress.toHex());
         user.address = userAddress;
-        user.requests = [];
-        user.fundings = [];
         user.referrals = [];
         user.kyced = false;
         user.totalBountyWithdrawn = 0;
@@ -31,8 +29,6 @@ export function handleUserWithdrawnCompleted(event: UserWithdrawnCompletedEvent)
     if (user == null) {
         user = new User(userAddress.toHex());
         user.address = userAddress;
-        user.requests = [];
-        user.fundings = [];
         user.referrals = [];
         user.kyced = false;
         user.totalBountyWithdrawn = 0;

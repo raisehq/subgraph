@@ -4,10 +4,10 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ pol-hero/Loandispatcher",
-    "create-local": "graph create --node http://localhost:8020/ pol-hero/loandispatcher",
-    "remove-local": "graph remove --node http://localhost:8020/ pol-hero/loandispatcher",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 pol-hero/loandispatcher"
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ raisehq/Raise",
+    "create-local": "graph create --node http://localhost:8020/ raisehq/raise",
+    "remove-local": "graph remove --node http://localhost:8020/ raisehq/raise",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 raisehq/raise"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.13.3",

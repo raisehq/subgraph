@@ -10,8 +10,6 @@ export function handleRemoveFromKYC(event: RemoveFromKYCEvent): void {
     if (user == null) {
         user = new User(userAddress.toHex());
         user.address = userAddress;
-        user.requests = [];
-        user.fundings = [];
         user.referrals = [];
         user.deposited = false;
         user.totalBountyWithdrawn = 0;
@@ -30,8 +28,6 @@ export function handleAddToKYC(event: AddToKYCEvent): void {
     if (user == null) {
         user = new User(userAddress.toHex());
         user.address = userAddress;
-        user.requests = [];
-        user.fundings = [];
         user.referrals = [];
         user.deposited = false;
         user.totalBountyWithdrawn = 0;
