@@ -6,7 +6,7 @@ dataSources:
     name: KYCRegistry
     network: kovan
     source:
-      address: "0x95577A8C7b82091d88149ed7999A802A4d9CBcdC"
+      address: "0x5647ae29265aB48b9fe89bc6666F141F4cA24c9B"
       abi: KYCRegistry
     mapping:
       kind: ethereum/events
@@ -18,16 +18,16 @@ dataSources:
         - name: KYCRegistry
           file: ./abis/KYCRegistry.json
       eventHandlers:
-        - event: RemoveFromKYC(indexed address) 
-          handler: handleRemoveFromKYC
-        - event: AddToKYC(indexed address)
-          handler: handleAddToKYC
+        - event: RemovedFromKYC(indexed address) 
+          handler: handleRemovedFromKYC
+        - event: AddedToKYC(indexed address)
+          handler: handleAddedToKYC
       file: ./src/mappings/kycregistry.ts
   - kind: ethereum/contract
     name: DepositRegistry
     network: kovan
     source:
-      address: "0x6Fb1F2cc54535F0603327AadB6283D43498B9a78"
+      address: "0xc28Df849Fd1850017f9591Ba31963Df2E1cDc39e"
       abi: DepositRegistry
     mapping:
       kind: ethereum/events
@@ -39,16 +39,18 @@ dataSources:
         - name: DepositRegistry
           file: ./abis/DepositRegistry.json
       eventHandlers:
-        - event: UserDepositCompleted(indexed address)
+        - event: UserDepositCompleted(address,indexed address)
           handler: handleUserDepositCompleted
-        - event: UserWithdrawnCompleted(indexed address)
+        - event: UserWithdrawnCompleted(address,indexed address)
           handler: handleUserWithdrawnCompleted
+        - event: AddressUnlockedForWithdrawal(address,indexed address)
+          handler: handleAddressUnlockedForWithdrawal
       file: ./src/mappings/depositregistry.ts
   - kind: ethereum/contract
     name: ReferralTracker
     network: kovan
     source:
-      address: "0x0F23a936B0542072435b4aABA66A2005Bc94AB11"
+      address: "0xa9F36BE6BD05Ccf91470B7fe29CdDe57D939445A"
       abi: ReferralTracker
     mapping:
       kind: ethereum/events
@@ -64,4 +66,12 @@ dataSources:
           handler: handleReferralRegistered
         - event: ReferralBonusWithdrawn(address,indexed address,uint256,uint256)
           handler: handleReferralBonusWithdrawn
+        - event: FundsAdded(address,address,uint256)
+          handler: handleFundsAdded
+        - event: FundsRemoved(address,address,uint256)
+          handler: handleFundsRemoved
+        - event: Paused(address)
+          handler: handlePaused
+        - event: Unpaused(address)
+          handler: handleUnpaused
       file: ./src/mappings/referraltracker.ts

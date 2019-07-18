@@ -7,10 +7,20 @@ type User @entity {
   totalBountyWithdrawn: BigInt!
   totalBountyToWithdraw: BigInt!
   totalReferralsCount: Int!
+  withdrawalUnlocked: Boolean!
 }
 
 type Referral @entity {
   id: ID!
   referrer: User!
   referred: User!
+}
+
+type ReferralTracker @entity {
+  id: ID!
+  referrals: [Referral!]
+  referralsCount: Int!
+  totalFundsWithdrawn: BigInt!
+  currentFunds: BigInt!
+  paused: Boolean!
 }

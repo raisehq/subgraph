@@ -1,5 +1,20 @@
 [
   {
+    "constant": true,
+    "inputs": [],
+    "name": "ref",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x21a78f68"
+  },
+  {
     "constant": false,
     "inputs": [],
     "name": "renounceOwnership",
@@ -55,6 +70,21 @@
     "signature": "0xf2fde38b"
   },
   {
+    "constant": true,
+    "inputs": [],
+    "name": "admin",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xf851a440"
+  },
+  {
     "inputs": [
       {
         "name": "tokenAddress",
@@ -74,18 +104,10 @@
     "anonymous": false,
     "inputs": [
       {
-        "indexed": true,
-        "name": "user",
+        "indexed": false,
+        "name": "depositRegistry",
         "type": "address"
-      }
-    ],
-    "name": "ProxyDepositCompleted",
-    "type": "event",
-    "signature": "0x63e5c7ae9af0b11c632d77db6b2e8dc55c9b3b0ef3690ae785ba1d5def8b291a"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
+      },
       {
         "indexed": true,
         "name": "user",
@@ -94,11 +116,16 @@
     ],
     "name": "UserDepositCompleted",
     "type": "event",
-    "signature": "0xb0e34d2e14abfc1d0aaab1f1c030a55fbd31fec983a981c97684dd96b70a7685"
+    "signature": "0x8e3a4b41b9e3f3c2607bf719067910bebb395cb4e233001944cb4f8ea8fa5883"
   },
   {
     "anonymous": false,
     "inputs": [
+      {
+        "indexed": false,
+        "name": "depositRegistry",
+        "type": "address"
+      },
       {
         "indexed": true,
         "name": "user",
@@ -107,7 +134,25 @@
     ],
     "name": "UserWithdrawnCompleted",
     "type": "event",
-    "signature": "0xadf2715100a71fcf86bf1b019ece24f59c74cf60113b2b3bfe39325d2dd3b3f9"
+    "signature": "0xa1da4683f621dd62dd1da0e7fca547c24eacee224b7ba75dcabe5f059d3018cf"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "depositRegistry",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "AddressUnlockedForWithdrawal",
+    "type": "event",
+    "signature": "0xada4e63b8869161c10364426d966014d0465e14d4de622f8a3854f3f31d410b0"
   },
   {
     "anonymous": false,
@@ -141,6 +186,21 @@
     "stateMutability": "nonpayable",
     "type": "function",
     "signature": "0xce84f57b"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_admin",
+        "type": "address"
+      }
+    ],
+    "name": "setAdministrator",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xdf8089ef"
   },
   {
     "constant": false,
@@ -192,6 +252,21 @@
     "signature": "0x51cff8d9"
   },
   {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "unlockAddressForWithdrawal",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x5a5c9b23"
+  },
+  {
     "constant": true,
     "inputs": [
       {
@@ -210,5 +285,25 @@
     "stateMutability": "view",
     "type": "function",
     "signature": "0xf2c16e6f"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "isUnlocked",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x2bbf532a"
   }
 ]

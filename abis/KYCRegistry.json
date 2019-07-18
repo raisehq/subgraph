@@ -40,6 +40,26 @@
     "signature": "0x8f32d59b"
   },
   {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "KYCConfirmed",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xdd001179"
+  },
+  {
     "constant": false,
     "inputs": [
       {
@@ -55,17 +75,19 @@
     "signature": "0xf2fde38b"
   },
   {
-    "anonymous": false,
-    "inputs": [
+    "constant": true,
+    "inputs": [],
+    "name": "admin",
+    "outputs": [
       {
-        "indexed": true,
-        "name": "user",
+        "name": "",
         "type": "address"
       }
     ],
-    "name": "RemoveFromKYC",
-    "type": "event",
-    "signature": "0x0d138fdd27020888b82562dad0c88322387f9307477a54e9cf73b7503198c65b"
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xf851a440"
   },
   {
     "anonymous": false,
@@ -76,9 +98,22 @@
         "type": "address"
       }
     ],
-    "name": "AddToKYC",
+    "name": "RemovedFromKYC",
     "type": "event",
-    "signature": "0x374bded9c59305537e117cfbc6c9c8be3dfefc1101fc6d903a5906f9581dbea4"
+    "signature": "0x93669a910fa0966f516302942791bd3f0b2eeeb8560e470ff43986d462002f6c"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "AddedToKYC",
+    "type": "event",
+    "signature": "0x14df1e3f0b021f69b31387aa4290408bbf6e67901768d633fde302e6877eea44"
   },
   {
     "anonymous": false,
@@ -99,36 +134,6 @@
     "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
   },
   {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "addr",
-        "type": "address"
-      }
-    ],
-    "name": "remove",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x29092d0e"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "addr",
-        "type": "address"
-      }
-    ],
-    "name": "add",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x0a3b0a4f"
-  },
-  {
     "constant": true,
     "inputs": [
       {
@@ -147,5 +152,50 @@
     "stateMutability": "view",
     "type": "function",
     "signature": "0x18e4ac35"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_admin",
+        "type": "address"
+      }
+    ],
+    "name": "setAdministrator",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xdf8089ef"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "addr",
+        "type": "address"
+      }
+    ],
+    "name": "removeAddressFromKYC",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x57f21ba5"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "addr",
+        "type": "address"
+      }
+    ],
+    "name": "addAddressToKYC",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x84a568d4"
   }
 ]
