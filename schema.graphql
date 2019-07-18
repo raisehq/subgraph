@@ -12,5 +12,5 @@ type User @entity {
 type Referral @entity {
   id: ID!
   referrer: User!
-  referred: User
+  referred: User!
 }

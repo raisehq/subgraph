@@ -6,7 +6,8 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x715018a6"
   },
   {
     "constant": true,
@@ -20,7 +21,8 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x8da5cb5b"
   },
   {
     "constant": true,
@@ -34,7 +36,8 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x8f32d59b"
   },
   {
     "constant": false,
@@ -48,7 +51,8 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0xf2fde38b"
   },
   {
     "anonymous": false,
@@ -60,7 +64,8 @@
       }
     ],
     "name": "RemoveFromKYC",
-    "type": "event"
+    "type": "event",
+    "signature": "0x0d138fdd27020888b82562dad0c88322387f9307477a54e9cf73b7503198c65b"
   },
   {
     "anonymous": false,
@@ -72,7 +77,8 @@
       }
     ],
     "name": "AddToKYC",
-    "type": "event"
+    "type": "event",
+    "signature": "0x374bded9c59305537e117cfbc6c9c8be3dfefc1101fc6d903a5906f9581dbea4"
   },
   {
     "anonymous": false,
@@ -89,7 +95,8 @@
       }
     ],
     "name": "OwnershipTransferred",
-    "type": "event"
+    "type": "event",
+    "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
   },
   {
     "constant": false,
@@ -103,7 +110,8 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x29092d0e"
   },
   {
     "constant": false,
@@ -117,7 +125,8 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x0a3b0a4f"
   },
   {
     "constant": true,
@@ -136,6 +145,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0x18e4ac35"
   }
 ]
