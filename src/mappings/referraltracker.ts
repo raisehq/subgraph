@@ -15,8 +15,8 @@ export function handleReferralRegistered(event: ReferralRegisteredEvent): void {
         user.referrals = [];
         user.kyced = false;
         user.deposited = false;
-        user.totalBountyWithdrawn = 0;
-        user.totalBountyToWithdraw = 0;
+        user.totalBountyWithdrawn = BigInt.fromI32(0);
+        user.totalBountyToWithdraw = BigInt.fromI32(0);
         user.totalReferralsCount = 0;
     }
 
@@ -25,11 +25,11 @@ export function handleReferralRegistered(event: ReferralRegisteredEvent): void {
     let referral = new Referral(referralId);
 
     let referralContract = ReferralTracker.bind(event.params.referralAddress);
-    // TODO: find how to transform REFERRAL_BONUS to i32
-    // let referralBonus = referralContract.REFERRAL_BONUS();
+    let referralBonus = referralContract.REFERRAL_BONUS();
     // log.log(4, 'referral bonus is =====> ' + referralBonus.toString());
     let unclaimedReferrals = referralContract.unclaimedReferrals(event.params.referrer);
-    log.log(4, 'unclaimed referrals =====> ' + unclaimedReferrals.toString());
+    // log.log(4, '||||||||====> totalBounty =====> ' + unclaimedReferrals.toString());
+    // log.log(4, '||||||| =================== user =====> ' + event.params.user.toHexString());
 
     referral.referred = event.params.user.toHex();
     referral.referrer = user.id;
@@ -41,11 +41,11 @@ export function handleReferralRegistered(event: ReferralRegisteredEvent): void {
     if (referralIndex == -1 && referral.referred != null) {
         referrals.push(referralId);
         user.referrals = referrals;
-        
-        user.totalBountyToWithdraw = 100 * unclaimedReferrals.toI32();
-        log.log(4, '||||||||====> totalBounty =====> ' + unclaimedReferrals.toString());
+
+        user.totalBountyToWithdraw = unclaimedReferrals.times(referralBonus);
+        // log.log(4, '||||||||====> totalBountyToWithdraw =====> ' + user.totalBountyToWithdraw.toString());
         user.totalReferralsCount = user.totalReferralsCount + 1;
-        
+
         user.save();
     }
 }
@@ -55,10 +55,11 @@ export function handleReferralBonusWithdrawn(event: ReferralBonusWithdrawnEvent)
     let userAddress = event.params.referrer;
     let user = User.load(userAddress.toHex());
 
-    let amountWithdrawn = event.params.amount.toI32();
-
-    user.totalBountyWithdrawn = user.totalBountyWithdrawn + amountWithdrawn;
-    user.totalBountyToWithdraw = user.totalBountyToWithdraw - amountWithdrawn;
-
+    let amountWithdrawn = event.params.amount;
+    // log.log(4, 'amountWithdrawn :::::::::::> ' + amountWithdrawn.toString());
+    user.totalBountyWithdrawn = user.totalBountyWithdrawn.plus(amountWithdrawn);
+    // log.log(4, 'total bounty withdrawn :::::::::::> ' + user.totalBountyWithdrawn.toString());
+    user.totalBountyToWithdraw = user.totalBountyToWithdraw.minus(amountWithdrawn);
+    // log.log(4, 'total bounty to withdrawn :::::::::::> ' + user.totalBountyToWithdraw.toString());
     user.save();
 }

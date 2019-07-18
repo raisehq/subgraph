@@ -3,6 +3,7 @@ import {
     UserWithdrawnCompleted as UserWithdrawnCompletedEvent
 } from "../../generated/DepositRegistry/DepositRegistry"
 import { User } from "../../generated/schema"
+import { log, BigInt } from '@graphprotocol/graph-ts'
 
 
 export function handleUserDepositCompleted(event: UserDepositCompletedEvent): void {
@@ -13,8 +14,8 @@ export function handleUserDepositCompleted(event: UserDepositCompletedEvent): vo
         user.address = userAddress;
         user.referrals = [];
         user.kyced = false;
-        user.totalBountyWithdrawn = 0;
-        user.totalBountyToWithdraw = 0;
+        user.totalBountyWithdrawn = BigInt.fromI32(0);
+        user.totalBountyToWithdraw = BigInt.fromI32(0);
         user.totalReferralsCount = 0;
     }
 
@@ -31,8 +32,8 @@ export function handleUserWithdrawnCompleted(event: UserWithdrawnCompletedEvent)
         user.address = userAddress;
         user.referrals = [];
         user.kyced = false;
-        user.totalBountyWithdrawn = 0;
-        user.totalBountyToWithdraw = 0;
+        user.totalBountyWithdrawn = BigInt.fromI32(0);
+        user.totalBountyToWithdraw = BigInt.fromI32(0);
         user.totalReferralsCount = 0;
     }
 
