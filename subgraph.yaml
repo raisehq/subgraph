@@ -6,7 +6,7 @@ dataSources:
     name: KYCRegistry
     network: kovan
     source:
-      address: "0x5647ae29265aB48b9fe89bc6666F141F4cA24c9B"
+      address: "0xE937DaCF6c98148b956bEc00Fcdf8b0C84b92003"
       abi: KYCRegistry
     mapping:
       kind: ethereum/events
@@ -27,7 +27,7 @@ dataSources:
     name: DepositRegistry
     network: kovan
     source:
-      address: "0xc28Df849Fd1850017f9591Ba31963Df2E1cDc39e"
+      address: "0x5c3AB0a3BBdB9616405D136812161c7889d75a3D"
       abi: DepositRegistry
     mapping:
       kind: ethereum/events
@@ -50,7 +50,7 @@ dataSources:
     name: ReferralTracker
     network: kovan
     source:
-      address: "0xa9F36BE6BD05Ccf91470B7fe29CdDe57D939445A"
+      address: "0xfD4B68Df54a12B7A0ee68988eaA25B509bd550Cb"
       abi: ReferralTracker
     mapping:
       kind: ethereum/events

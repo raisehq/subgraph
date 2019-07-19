@@ -22,6 +22,7 @@ export function handleReferralRegistered(event: ReferralRegisteredEvent): void {
     let referralContract = ReferralTrackerContract.bind(event.params.referralAddress);
     let referralBonus = referralContract.REFERRAL_BONUS();
     let unclaimedReferrals = referralContract.unclaimedReferrals(event.params.referrer);
+    let currentBalance = referralContract.getTrackerBalance();
 
     referral.referred = event.params.user.toHex();
     referral.referrer = user.id;
@@ -48,7 +49,7 @@ export function handleReferralRegistered(event: ReferralRegisteredEvent): void {
     if (tracker == null) {
         new ReferralTracker(trackerAddress.toHex());
         tracker.referrals = [];
-        tracker.referrralsCount = 0;
+        tracker.referralsCount = 0;
         tracker.totalFundsWithdrawn = BigInt.fromI32(0);
         tracker.currentFunds = BigInt.fromI32(0);
         tracker.paused = false;
@@ -62,11 +63,10 @@ export function handleReferralRegistered(event: ReferralRegisteredEvent): void {
         referrals.push(referralId);
         tracker.referrals = referrals;
         tracker.referralsCount = tracker.referralsCount + 1;
-        // tracker.currentFunds = get from herobalance
+        tracker.currentFunds = currentBalance;
 
         tracker.save();
     }
-    
 }
 
 export function handleReferralBonusWithdrawn(event: ReferralBonusWithdrawnEvent): void {
@@ -78,39 +78,47 @@ export function handleReferralBonusWithdrawn(event: ReferralBonusWithdrawnEvent)
     user.totalBountyToWithdraw = user.totalBountyToWithdraw.minus(amountWithdrawn);
     user.save();
 
-    let trackerAddress = event.address;
+    let trackerAddress = event.params.referralAddress;
     let tracker = new ReferralTracker(trackerAddress.toHex());
 
-    tracker.totalFundsWithdrawn = tracker.totalFundsWithdrawn.plus(amountWithdrawn);
+    let referralContract = ReferralTrackerContract.bind(trackerAddress);
+    let currentBalance = referralContract.getTrackerBalance();
 
-    //get funds from heroToken???
-    // tracker.currentFunds
+    tracker.totalFundsWithdrawn = tracker.totalFundsWithdrawn.plus(amountWithdrawn);
+    tracker.currentFunds = currentBalance;
 }
 
 export function handleFundsAdded(event: FundsAddedEvent): void {
-    let trackerAddress = event.address;
+    let trackerAddress = event.params.referralAddress;
     let tracker = ReferralTracker.load(trackerAddress.toHex());
+
+    let referralContract = ReferralTrackerContract.bind(trackerAddress);
+    let currentBalance = referralContract.getTrackerBalance();
+
     if (tracker == null) {
         new ReferralTracker(trackerAddress.toHex());
         tracker.referrals = [];
-        tracker.referrralsCount = 0;
+        tracker.referralsCount = 0;
         tracker.totalFundsWithdrawn = BigInt.fromI32(0);
         tracker.currentFunds = BigInt.fromI32(0);
         tracker.paused = false;
         
     }
     
-    //get funds from heroToken???
+    tracker.currentFunds = currentBalance;
 
     tracker.save();
 }
 
 export function handleFundsRemoved(event: FundsRemovedEvent): void {
-    let trackerAddress = event.address;
-    let tracker = new ReferralTracker(trackerAddress.toHex());
+    let trackerAddress = event.params.referralAddress;
+    let tracker = ReferralTracker.load(trackerAddress.toHex());
 
-    //get funds from heroToken???
+    let referralContract = ReferralTrackerContract.bind(trackerAddress);
+    let currentBalance = referralContract.getTrackerBalance();
 
+    tracker.currentFunds = currentBalance;
+    tracker.save();
 }
 
 export function handlePaused(event: PausedEvent): void {
