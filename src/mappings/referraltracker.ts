@@ -47,7 +47,7 @@ export function handleReferralRegistered(event: ReferralRegisteredEvent): void {
     let trackerAddress = event.address;
     let tracker = ReferralTracker.load(trackerAddress.toHex());
     if (tracker == null) {
-        new ReferralTracker(trackerAddress.toHex());
+        tracker = new ReferralTracker(trackerAddress.toHex());
         tracker.referrals = [];
         tracker.referralsCount = 0;
         tracker.totalFundsWithdrawn = BigInt.fromI32(0);
@@ -96,7 +96,7 @@ export function handleFundsAdded(event: FundsAddedEvent): void {
     let currentBalance = referralContract.getTrackerBalance();
 
     if (tracker == null) {
-        new ReferralTracker(trackerAddress.toHex());
+        tracker = new ReferralTracker(trackerAddress.toHex());
         tracker.referrals = [];
         tracker.referralsCount = 0;
         tracker.totalFundsWithdrawn = BigInt.fromI32(0);
@@ -112,7 +112,7 @@ export function handleFundsAdded(event: FundsAddedEvent): void {
 
 export function handleFundsRemoved(event: FundsRemovedEvent): void {
     let trackerAddress = event.params.referralAddress;
-    let tracker = ReferralTracker.load(trackerAddress.toHex());
+    let tracker = new ReferralTracker(trackerAddress.toHex());
 
     let referralContract = ReferralTrackerContract.bind(trackerAddress);
     let currentBalance = referralContract.getTrackerBalance();
