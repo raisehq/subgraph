@@ -20,7 +20,9 @@ type ReferralTracker @entity {
   id: ID!
   referrals: [Referral!]
   referralsCount: Int!
-  totalFundsWithdrawn: BigInt!
+  referralsPendingToWithdraw: Int!
+  referralsWithdrawn: Int!
   currentFunds: BigInt!
+  totalFundsWithdrawn: BigInt!
   paused: Boolean!
 }

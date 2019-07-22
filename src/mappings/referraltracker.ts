@@ -51,6 +51,8 @@ export function handleReferralRegistered(event: ReferralRegisteredEvent): void {
         tracker.referrals = [];
         tracker.referralsCount = 0;
         tracker.totalFundsWithdrawn = BigInt.fromI32(0);
+        tracker.referralsPendingToWithdraw = 0;
+        tracker.referralsWithdrawn = 0;
         tracker.currentFunds = BigInt.fromI32(0);
         tracker.paused = false;
         
@@ -63,6 +65,7 @@ export function handleReferralRegistered(event: ReferralRegisteredEvent): void {
         referrals.push(referralId);
         tracker.referrals = referrals;
         tracker.referralsCount = tracker.referralsCount + 1;
+        tracker.referralsPendingToWithdraw = tracker.referralsPendingToWithdraw + 1;
         tracker.currentFunds = currentBalance;
 
         tracker.save();
@@ -79,13 +82,27 @@ export function handleReferralBonusWithdrawn(event: ReferralBonusWithdrawnEvent)
     user.save();
 
     let trackerAddress = event.params.referralAddress;
-    let tracker = new ReferralTracker(trackerAddress.toHex());
+    let tracker = ReferralTracker.load(trackerAddress.toHex());
+    if (tracker == null) {
+        tracker = new ReferralTracker(trackerAddress.toHex());
+        tracker.referrals = [];
+        tracker.referralsCount = 0;
+        tracker.totalFundsWithdrawn = BigInt.fromI32(0);
+        tracker.referralsPendingToWithdraw = 0;
+        tracker.referralsWithdrawn = 0;
+        tracker.currentFunds = BigInt.fromI32(0);
+        tracker.paused = false;
+    }
 
-    let referralContract = ReferralTrackerContract.bind(trackerAddress);
-    let currentBalance = referralContract.getTrackerBalance();
+    let currentBalance = event.params.currentTrackerBalance;
+    tracker.referralsPendingToWithdraw = tracker.referralsPendingToWithdraw - 1;
+    tracker.referralsWithdrawn = tracker.referralsWithdrawn + 1;
 
     tracker.totalFundsWithdrawn = tracker.totalFundsWithdrawn.plus(amountWithdrawn);
+
     tracker.currentFunds = currentBalance;
+
+    tracker.save();
 }
 
 export function handleFundsAdded(event: FundsAddedEvent): void {
@@ -100,6 +117,8 @@ export function handleFundsAdded(event: FundsAddedEvent): void {
         tracker.referrals = [];
         tracker.referralsCount = 0;
         tracker.totalFundsWithdrawn = BigInt.fromI32(0);
+        tracker.referralsPendingToWithdraw = 0;
+        tracker.referralsWithdrawn = 0;
         tracker.currentFunds = BigInt.fromI32(0);
         tracker.paused = false;
         
