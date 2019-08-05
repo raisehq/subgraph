@@ -1,0 +1,39 @@
+image: node:11
+
+stages:
+  - prepare
+  - code
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+    - generated/
+
+Prepare:
+  stage: prepare
+  script:
+    - npm i
+  artifacts:
+    paths: 
+      - node_modules/
+  only:
+    - integration
+
+Config:
+  stage: code
+  script:
+    - npm run codegen
+  artifacts:
+    paths: 
+      - generated/ 
+  only:
+    - integration      
+Deploy:
+  stage: deploy
+  before_script:
+    - apt-get update && apt install libsecret-1-dev -y
+  script:
+    - npm run deploy
+  only:
+    - integration

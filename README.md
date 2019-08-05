@@ -39,3 +39,12 @@
    2. add ethereum: 'dev:http://172.20.0.1:8545' to graph-node docker-compose
    3. start ganache as: ganache-cli -h 0.0.0.0
    4. follow instructions from docs
+
+## Create your .env file
+
+```
+THEGRAPH_NAME=xxx/Xxxx
+THEGRAPH_MANIFEST=subgraph.(kovan|mainet).yaml
+THEGRAPH_KEY=XXXXXXXX
+
+```
