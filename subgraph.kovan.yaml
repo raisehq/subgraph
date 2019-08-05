@@ -50,7 +50,7 @@ dataSources:
     name: ReferralTracker
     network: kovan
     source:
-      address: "0xc008B8e8917Bc50aBf7cD008f4eB47E6239047c9"
+      address: "0x6514404f3701401fAb3Dac95c49c01d9Bbc62369"
       abi: ReferralTracker
     mapping:
       kind: ethereum/events

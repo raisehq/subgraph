@@ -4,9 +4,9 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: KYCRegistry
-    network: kovan
+    network: mainnet
     source:
-      address: "0xAA2F53d31a6fB9a67c406343154eA3BC138bD218"
+      address: "0x18adbd9651643a91a520cee597ef361ae18ac329"
       abi: KYCRegistry
     mapping:
       kind: ethereum/events
@@ -18,16 +18,16 @@ dataSources:
         - name: KYCRegistry
           file: ./abis/KYCRegistry.json
       eventHandlers:
-        - event: RemoveFromKYC(indexed address) 
-          handler: handleRemoveFromKYC
-        - event: AddToKYC(indexed address)
-          handler: handleAddToKYC
+        - event: RemovedFromKYC(indexed address) 
+          handler: handleRemovedFromKYC
+        - event: AddedToKYC(indexed address)
+          handler: handleAddedToKYC
       file: ./src/mappings/kycregistry.ts
   - kind: ethereum/contract
     name: DepositRegistry
-    network: kovan
+    network: mainnet
     source:
-      address: "0xce31743e1E80F71E82c8f95FFa4AA1E4f79ACf31"
+      address: "0x7f8b86b112cf0389b1ba125c4011d096b86fbaab"
       abi: DepositRegistry
     mapping:
       kind: ethereum/events
@@ -39,16 +39,18 @@ dataSources:
         - name: DepositRegistry
           file: ./abis/DepositRegistry.json
       eventHandlers:
-        - event: UserDepositCompleted(indexed address)
+        - event: UserDepositCompleted(address,indexed address)
           handler: handleUserDepositCompleted
-        - event: UserWithdrawnCompleted(indexed address)
+        - event: UserWithdrawnCompleted(address,indexed address)
           handler: handleUserWithdrawnCompleted
+        - event: AddressUnlockedForWithdrawal(address,indexed address)
+          handler: handleAddressUnlockedForWithdrawal
       file: ./src/mappings/depositregistry.ts
   - kind: ethereum/contract
     name: ReferralTracker
-    network: kovan
+    network: mainnet
     source:
-      address: "0x0F23a936B0542072435b4aABA66A2005Bc94AB11"
+      address: "0xc2e89d82258811832a392ca1ef66b9f0c0ccd55e"
       abi: ReferralTracker
     mapping:
       kind: ethereum/events
@@ -64,4 +66,12 @@ dataSources:
           handler: handleReferralRegistered
         - event: ReferralBonusWithdrawn(address,indexed address,uint256,uint256)
           handler: handleReferralBonusWithdrawn
+        - event: FundsAdded(address,address,uint256)
+          handler: handleFundsAdded
+        - event: FundsRemoved(address,address,uint256)
+          handler: handleFundsRemoved
+        - event: Paused(address)
+          handler: handlePaused
+        - event: Unpaused(address)
+          handler: handleUnpaused
       file: ./src/mappings/referraltracker.ts
