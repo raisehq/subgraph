@@ -3,6 +3,8 @@ type User @entity {
   address: Bytes!
   deposited: Boolean!
   kyced: Boolean!
+  loanFundings: [Funding!]!
+  loanRequests: [Loan!]!
   referrals: [Referral!]
   totalBountyWithdrawn: BigInt!
   totalBountyToWithdraw: BigInt!
@@ -25,4 +27,57 @@ type ReferralTracker @entity {
   currentFunds: BigInt!
   totalFundsWithdrawn: BigInt!
   paused: Boolean!
+}
+
+type LoanDispatcher @entity {
+  id: ID!
+  loans: [Loan!]
+  loansCount: Int!
+  minAmount: BigInt!
+  maxAmount: BigInt!
+  minInterestRate: BigInt!
+  maxInterestRate: BigInt!
+}
+
+type Loan @entity {
+  id: ID!
+  # initial values set at loan created
+  address: Bytes! # address
+  dispatcherId: String!
+  originator: Bytes! # address
+  minAmount: BigInt! # uint256
+  maxAmount: BigInt! # uint256
+  
+  auctionStartBlock: BigInt! # uint256
+  auctionEndBlock: BigInt! # uint256
+  auctionBlockLength: BigInt!
+
+  termEndTimestamp: BigInt!
+
+  maxInterestRate: BigInt! # uint256
+
+  # values that are modified through the loan's life
+  termStartTimestamp: BigInt
+  auctionFundedBlock: BigInt #block where loan is fully funded
+
+  auctionBalance: BigInt
+  borrowerDebt: BigInt
+  
+  interestRate: BigInt
+
+  minimumReached: Boolean!
+  auctionEnded: Boolean! 
+  
+  loanWithdrawn: Boolean!
+  loanRepaid: Boolean!
+  loanRepaidTimestamp: BigInt
+
+  state: Int! #enum
+}
+
+type Funding @entity {
+  id: ID!
+  loan: Loan!
+  amount: BigInt!
+  withdrawn: Boolean!
 }

@@ -95,6 +95,14 @@ dataSources:
       eventHandlers:
         - event: LoanContractCreated(address,address,indexed address,uint256,uint256,uint256,uint256,uint256,indexed address)
           handler: handleLoanContractCreated
+        - event: MinAmountUpdated(uint256,address)
+          handler: handleMinAmountUpdated
+        - event: MaxAmountUpdated(uint256,address)
+          handler: handleMaxAmountUpdated
+        - event: MinInterestRateUpdated(uint256,address)
+          handler: handleMinInterestRateUpdated
+        - event: MaxInterestRateUpdated(uint256,address)
+          handler: handleMaxInterestRateUpdated
       file: ./src/mappings/loandispatcher.ts
     templates:
     - kind: ethereum/contract
