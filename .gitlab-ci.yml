@@ -22,7 +22,7 @@ Prepare:
     - goerli
     - master
 
-Config:
+Codegen-Kovan:
   stage: code
   script:
     - npm run codegen:kovan
@@ -31,7 +31,7 @@ Config:
       - generated/ 
   only:
     - integration  
-Config:
+Codegen-Goerli:
   stage: code
   script:
     - npm run codegen:goerli
@@ -40,7 +40,7 @@ Config:
       - generated/ 
   only:
     - goerli
-Config:
+Codegen-Mainnet:
   stage: code
   script:
     - npm run codegen:mainnet
@@ -50,7 +50,7 @@ Config:
   only:
     - master
 
-Deploy:
+Deploy-Kovan:
   stage: deploy
   before_script:
     - apt-get update && apt install libsecret-1-dev -y
@@ -58,7 +58,7 @@ Deploy:
     - npm run deploy:kovan
   only:
     - integration
-Deploy:
+Deploy-Goerli:
   stage: deploy
   before_script:
     - apt-get update && apt install libsecret-1-dev -y
@@ -66,7 +66,7 @@ Deploy:
     - npm run deploy:goerli
   only:
     - goerli
-Deploy:
+Deploy-Mainnet:
   stage: deploy
   before_script:
     - apt-get update && apt install libsecret-1-dev -y
