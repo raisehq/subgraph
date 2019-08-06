@@ -19,21 +19,58 @@ Prepare:
       - node_modules/
   only:
     - integration
+    - goerli
+    - master
 
 Config:
   stage: code
   script:
-    - npm run codegen
+    - npm run codegen:kovan
   artifacts:
     paths: 
       - generated/ 
   only:
-    - integration      
+    - integration  
+Config:
+  stage: code
+  script:
+    - npm run codegen:goerli
+  artifacts:
+    paths: 
+      - generated/ 
+  only:
+    - goerli
+Config:
+  stage: code
+  script:
+    - npm run codegen:mainnet
+  artifacts:
+    paths: 
+      - generated/ 
+  only:
+    - master
+
 Deploy:
   stage: deploy
   before_script:
     - apt-get update && apt install libsecret-1-dev -y
   script:
-    - npm run deploy
+    - npm run deploy:kovan
   only:
     - integration
+Deploy:
+  stage: deploy
+  before_script:
+    - apt-get update && apt install libsecret-1-dev -y
+  script:
+    - npm run deploy:goerli
+  only:
+    - goerli
+Deploy:
+  stage: deploy
+  before_script:
+    - apt-get update && apt install libsecret-1-dev -y
+  script:
+    - npm run deploy:mainnet
+  only:
+    - master
