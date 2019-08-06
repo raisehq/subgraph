@@ -75,3 +75,73 @@ dataSources:
         - event: Unpaused(address)
           handler: handleUnpaused
       file: ./src/mappings/referraltracker.ts
+  - kind: ethereum/contract
+    name: LoanContractDispatcher
+    network: kovan
+    source:
+      address: "0xc26CB64a67C8cbFaC6a30f28dcd2eE1Adf20476f"
+      abi: LoanContractDispatcher
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      entities:
+        - LoanDispatcher
+        - Loan
+        - User
+      abis:
+        - name: LoanContractDispatcher
+          file: ./abis/LoanContractDispatcher.json
+      eventHandlers:
+        - event: LoanContractCreated(address,indexed address,uint256,uint256,uint256,uint256,uint256)
+          handler: handleLoanContractCreated
+      file: ./src/mappings/loandispatcher.ts
+    templates:
+    - kind: ethereum/contract
+      name: LoanContract
+      network: kovan
+      source:
+        abi: LoanContract
+      mapping:
+        kind: ethereum/events
+        apiVersion: 0.0.3
+        language: wasm/assemblyscript
+        file: ./src/mappings/loan.ts
+        entities:
+          - Loan
+          - User
+          - Funding
+        abis:
+          - name: LoanContract
+            file: ./abis/LoanContract.json
+        eventHandlers:
+          - event: LoanCreated(indexed address,indexed address,uint256,uint256,uint256,uint256,uint256,indexed address)
+            handler: handleLoanCreated
+          - event: MinimumFundingReached(address,uint256,uint256)
+            handler: handleMinimumFundingReached
+          - event: FullyFunded(address,uint256,uint256,indexed uint256)
+            handler: handleFullyFunded
+          - event: Funded(address,indexed address,uint256,uint256,uint256)
+            handler: handleFunded
+          - event: LoanRepaid(address,indexed uint256)
+            handler: handleLoanRepaid
+          - event: FailedToFund(address,indexed address,uint256)
+            handler: handleFailedToFund
+          - event: RepaymentWithdrawn(address,indexed address,uint256)
+            handler: handleRepaymentWithdrawn
+          - event: RefundWithdrawn(address,indexed address,uint256)
+            handler: handleRefundWithdrawn
+          - event: FullyRefunded(address)
+            handler: handleFullyRefunded
+          - event: LoanFundsWithdrawn(address,indexed address,uint256)
+            handler: handleLoanFundsWithdrawn
+          - event: LoanDefaulted(address)
+            handler: handleLoanDefaulted
+          - event: AuctionSuccessful(address,uint256,uint256,uint256,uint256)
+            handler: handleAuctionSuccessful
+          - event: FundsUnlockedWithdrawn(address,indexed address,uint256)
+            handler: handleFundsUnlockedWithdrawn
+          - event: FullyFundsUnlockedWithdrawn(address)
+            handler: handleFullyFundsUnlockedWithdrawn
+          - event: LoanFundsUnlocked(uint256)
+            handler: handleLoanFundsUnlocked
