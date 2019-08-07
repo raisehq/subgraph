@@ -77,9 +77,9 @@ dataSources:
       file: ./src/mappings/referraltracker.ts
   - kind: ethereum/contract
     name: LoanContractDispatcher
-    network: kovan
+    network: goerli
     source:
-      address: "0xc26CB64a67C8cbFaC6a30f28dcd2eE1Adf20476f"
+      address: "0x453a16550F87f089BD2905d977192AF70742E83e"
       abi: LoanContractDispatcher
     mapping:
       kind: ethereum/events
@@ -93,8 +93,16 @@ dataSources:
         - name: LoanContractDispatcher
           file: ./abis/LoanContractDispatcher.json
       eventHandlers:
-        - event: LoanContractCreated(address,indexed address,uint256,uint256,uint256,uint256,uint256)
+        - event: LoanContractCreated(address,address,indexed address,uint256,uint256,uint256,uint256,uint256,indexed address)
           handler: handleLoanContractCreated
+        - event: MinAmountUpdated(uint256,address)
+          handler: handleMinAmountUpdated
+        - event: MaxAmountUpdated(uint256,address)
+          handler: handleMaxAmountUpdated
+        - event: MinInterestRateUpdated(uint256,address)
+          handler: handleMinInterestRateUpdated
+        - event: MaxInterestRateUpdated(uint256,address)
+          handler: handleMaxInterestRateUpdated
       file: ./src/mappings/loandispatcher.ts
     templates:
     - kind: ethereum/contract
@@ -119,7 +127,7 @@ dataSources:
             handler: handleLoanCreated
           - event: MinimumFundingReached(address,uint256,uint256)
             handler: handleMinimumFundingReached
-          - event: FullyFunded(address,uint256,uint256,indexed uint256)
+          - event: FullyFunded(address,uint256,uint256,uint256,uint256)
             handler: handleFullyFunded
           - event: Funded(address,indexed address,uint256,uint256,uint256)
             handler: handleFunded

@@ -31,6 +31,7 @@ type ReferralTracker @entity {
 
 type LoanDispatcher @entity {
   id: ID!
+  address: Bytes!
   loans: [Loan!]
   loansCount: Int!
   minAmount: BigInt!
@@ -41,6 +42,8 @@ type LoanDispatcher @entity {
 
 type Loan @entity {
   id: ID!
+  investors: [User!]!
+  investorCount: Int!
   # initial values set at loan created
   address: Bytes! # address
   dispatcherId: String!
@@ -51,18 +54,20 @@ type Loan @entity {
   auctionStartBlock: BigInt! # uint256
   auctionEndBlock: BigInt! # uint256
   auctionBlockLength: BigInt!
-
   termEndTimestamp: BigInt!
 
-  maxInterestRate: BigInt! # uint256
-
   # values that are modified through the loan's life
-  termStartTimestamp: BigInt
+  lastFundedBlock: BigInt
+  lastFundedDate: String
+  #termStartTimestamp: BigInt
   auctionFundedBlock: BigInt #block where loan is fully funded
+  fullyFundedDate: String
 
-  auctionBalance: BigInt
+  auctionBalance: BigInt!
+  loanWithdrawnAmount: BigInt
   borrowerDebt: BigInt
   
+  maxInterestRate: BigInt! # uint256
   interestRate: BigInt
 
   minimumReached: Boolean!
