@@ -38,6 +38,7 @@ type LoanDispatcher @entity {
   maxAmount: BigInt!
   minInterestRate: BigInt!
   maxInterestRate: BigInt!
+  operatorFee: BigInt!
 }
 
 type Loan @entity {
@@ -50,7 +51,12 @@ type Loan @entity {
   originator: Bytes! # address
   minAmount: BigInt! # uint256
   maxAmount: BigInt! # uint256
-  
+
+  operatorFee: BigInt!
+  operatorBalance: BigInt!
+  operatorFeeWithdrawn: Boolean!
+  operatorFeeAmount: BigInt
+
   auctionStartBlock: BigInt! # uint256
   auctionEndBlock: BigInt! # uint256
   auctionBlockLength: BigInt!
@@ -59,20 +65,21 @@ type Loan @entity {
   # values that are modified through the loan's life
   lastFundedBlock: BigInt
   lastFundedDate: String
-  #termStartTimestamp: BigInt
-  auctionFundedBlock: BigInt #block where loan is fully funded
-  fullyFundedDate: String
+  auctionLastFundedBlock: BigInt #block where loan is fully funded
 
   auctionBalance: BigInt!
   loanWithdrawnAmount: BigInt
   borrowerDebt: BigInt
-  
+
   maxInterestRate: BigInt! # uint256
   interestRate: BigInt
 
   minimumReached: Boolean!
-  auctionEnded: Boolean! 
-  
+  auctionFullyFunded: Boolean!
+  auctionEnded: Boolean!
+
+  auctionFailed: Boolean!
+
   loanWithdrawn: Boolean!
   loanRepaid: Boolean!
   loanRepaidTimestamp: BigInt
@@ -85,4 +92,11 @@ type Funding @entity {
   loan: Loan!
   amount: BigInt!
   withdrawn: Boolean!
+  successful: Boolean!
+}
+
+type Rise @entity {
+  id: ID!
+  feesToWithdraw: BigInt!
+  feesWithdrawn: BigInt!
 }

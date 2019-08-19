@@ -11,8 +11,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x5f48f393"
+    "type": "function"
   },
   {
     "constant": false,
@@ -21,8 +20,21 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x715018a6"
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "operatorFee",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
   },
   {
     "constant": true,
@@ -36,8 +48,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x8da5cb5b"
+    "type": "function"
   },
   {
     "constant": true,
@@ -51,8 +62,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x8f32d59b"
+    "type": "function"
   },
   {
     "constant": true,
@@ -66,8 +76,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x9b2cb5d8"
+    "type": "function"
   },
   {
     "constant": true,
@@ -81,8 +90,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0xa9583d5f"
+    "type": "function"
   },
   {
     "constant": true,
@@ -101,8 +109,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0xe728b86c"
+    "type": "function"
   },
   {
     "constant": true,
@@ -116,8 +123,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0xeb994db1"
+    "type": "function"
   },
   {
     "constant": false,
@@ -131,8 +137,7 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xf2fde38b"
+    "type": "function"
   },
   {
     "constant": true,
@@ -146,8 +151,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0xf53d0a8e"
+    "type": "function"
   },
   {
     "inputs": [
@@ -166,8 +170,7 @@
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "constructor",
-    "signature": "constructor"
+    "type": "constructor"
   },
   {
     "anonymous": false,
@@ -219,8 +222,7 @@
       }
     ],
     "name": "LoanContractCreated",
-    "type": "event",
-    "signature": "0x840b9b272f25b1f8b39d1268fb4fe73f95e8285265955e9fdaffdcb0aa047b65"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -237,16 +239,15 @@
       }
     ],
     "name": "MinAmountUpdated",
-    "type": "event",
-    "signature": "0x6a73ad5fc763a8c0bcc28b00ed3e08dff5a3f8a63eea93d9eaae237124259894"
+    "type": "event"
   },
   {
-    "constant": false,
+    "anonymous": false,
     "inputs": [
       {
+        "indexed": false,
         "name": "maxAmount",
-        "type": "uint256",
-        "indexed": false
+        "type": "uint256"
       },
       {
         "indexed": false,
@@ -255,20 +256,15 @@
       }
     ],
     "name": "MaxAmountUpdated",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "event",
-    "signature": "0x91beaf63a7a8596b4bdb5f8ac94494639fe81c50a892206952bc74972e0c3375",
-    "anonymous": false
+    "type": "event"
   },
   {
-    "constant": false,
+    "anonymous": false,
     "inputs": [
       {
+        "indexed": false,
         "name": "minInterestRate",
-        "type": "uint256",
-        "indexed": false
+        "type": "uint256"
       },
       {
         "indexed": false,
@@ -277,20 +273,15 @@
       }
     ],
     "name": "MinInterestRateUpdated",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "event",
-    "signature": "0xd2ee5beab74926025e55d9ca98e85bef0ef7c2b31a8d198a555c512973e9f8f6",
-    "anonymous": false
+    "type": "event"
   },
   {
-    "constant": false,
+    "anonymous": false,
     "inputs": [
       {
+        "indexed": false,
         "name": "maxInterestRate",
-        "type": "uint256",
-        "indexed": false
+        "type": "uint256"
       },
       {
         "indexed": false,
@@ -299,20 +290,37 @@
       }
     ],
     "name": "MaxInterestRateUpdated",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "event",
-    "signature": "0x231c0f19fcc27c4a82dcc4ddf6f5c7a9e543a9857ca7286bbfe9b306fa83ad27",
-    "anonymous": false
+    "type": "event"
   },
   {
-    "constant": false,
+    "anonymous": false,
     "inputs": [
       {
+        "indexed": false,
+        "name": "operatorFee",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "loanDispatcher",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "administrator",
+        "type": "address"
+      }
+    ],
+    "name": "OperatorFeeUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
         "name": "previousOwner",
-        "type": "address",
-        "indexed": true
+        "type": "address"
       },
       {
         "indexed": true,
@@ -321,12 +329,7 @@
       }
     ],
     "name": "OwnershipTransferred",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "event",
-    "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
-    "anonymous": false
+    "type": "event"
   },
   {
     "constant": false,
@@ -340,8 +343,21 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xdf8089ef"
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "newFee",
+        "type": "uint256"
+      }
+    ],
+    "name": "setOperatorFee",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
     "constant": false,
@@ -349,35 +365,13 @@
       {
         "name": "requestedMinAmount",
         "type": "uint256"
-      },
-      {
-        "name": "loanMinAmount",
-        "type": "uint256"
-      },
-      {
-        "name": "loanMaxAmount",
-        "type": "uint256"
-      },
-      {
-        "name": "loanMaxInterestRate",
-        "type": "uint256"
-      },
-      {
-        "name": "termEndTimestamp",
-        "type": "uint256"
       }
     ],
     "name": "setMinAmount",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x897b0637"
+    "type": "function"
   },
   {
     "constant": false,
@@ -391,8 +385,7 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x4fe47f70"
+    "type": "function"
   },
   {
     "constant": false,
@@ -406,8 +399,7 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xc286eebe"
+    "type": "function"
   },
   {
     "constant": false,
@@ -421,8 +413,7 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xc2599054"
+    "type": "function"
   },
   {
     "constant": false,
@@ -457,7 +448,6 @@
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x727e8e78"
+    "type": "function"
   }
 ]

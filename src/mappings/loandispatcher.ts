@@ -4,6 +4,7 @@ import {
     MaxAmountUpdated as MaxAmountUpdatedEvent,
     MinInterestRateUpdated as MinInterestRateUpdatedEvent,
     MaxInterestRateUpdated as MaxInterestRateUpdatedEvent,
+    OperatorFeeUpdated as OperatorFeeUpdatedEvent,
 } from "../../generated/LoanContractDispatcher/LoanContractDispatcher";
 import { LoanDispatcher, Loan, User } from "../../generated/schema";
 import { LoanContract as NewLoan } from '../../generated/LoanContractDispatcher/templates';
@@ -28,6 +29,7 @@ export function handleLoanContractCreated(event: LoanContractCreatedEvent): void
     loanDispatcher.maxAmount = event.params.maxAmount;
     loanDispatcher.minInterestRate = dispatcherMinInterestRate;
     loanDispatcher.maxInterestRate = event.params.maxInterestRate;
+    loanDispatcher.operatorFee = event.params.operatorFee;
 
     let loanAddress = event.params.contractAddress.toHex();
 
@@ -50,6 +52,7 @@ export function handleLoanContractCreated(event: LoanContractCreatedEvent): void
         loan.originator = event.params.originator;
         loan.minAmount = event.params.minAmount;
         loan.maxAmount = event.params.maxAmount;
+        loan.operatorFee = event.params.operatorFee;
         loan.maxInterestRate = event.params.maxInterestRate;
         loan.state = 0; //'CREATED'
     
@@ -68,6 +71,8 @@ export function handleLoanContractCreated(event: LoanContractCreatedEvent): void
         loan.auctionEnded = false;
         loan.loanWithdrawn = false;
         loan.loanRepaid = false;
+        loan.operatorFeeWithdrawn = false;
+        loan.auctionFailed = false;
 
         loan.save();
 
@@ -112,5 +117,12 @@ export function handleMaxInterestRateUpdated(event: MaxInterestRateUpdatedEvent)
     let dispatcherAddress = event.params.loanDispatcher;
     let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
     loanDispatcher.maxInterestRate = event.params.maxInterestRate;
+    loanDispatcher.save();
+}
+
+export function handleOperatorFeeUpdated(event: OperatorFeeUpdatedEvent): void {
+    let dispatcherAddress = event.params.loanDispatcher;
+    let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
+    loanDispatcher.operatorFee = event.params.operatorFee;
     loanDispatcher.save();
 }

@@ -103,6 +103,8 @@ dataSources:
           handler: handleMinInterestRateUpdated
         - event: MaxInterestRateUpdated(uint256,address)
           handler: handleMaxInterestRateUpdated
+        - event: OperatorFeeUpdated(uint256,address,address)
+          handler: handleOperatorFeeUpdated
       file: ./src/mappings/loandispatcher.ts
     templates:
     - kind: ethereum/contract
@@ -145,7 +147,7 @@ dataSources:
             handler: handleLoanFundsWithdrawn
           - event: LoanDefaulted(address)
             handler: handleLoanDefaulted
-          - event: AuctionSuccessful(address,uint256,uint256,uint256,uint256)
+          - event: AuctionSuccessful(address,uint256,uint256,uint256,uint256,uint256)
             handler: handleAuctionSuccessful
           - event: FundsUnlockedWithdrawn(address,indexed address,uint256)
             handler: handleFundsUnlockedWithdrawn
@@ -153,3 +155,5 @@ dataSources:
             handler: handleFullyFundsUnlockedWithdrawn
           - event: LoanFundsUnlocked(uint256)
             handler: handleLoanFundsUnlocked
+          - event: OperatorWithdrawn(uint256,address)
+            handler: handleOperatorWithdrawn
