@@ -3,6 +3,7 @@ image: node:11
 stages:
   - prepare
   - code
+  - build
   - deploy
 
 cache:
@@ -51,7 +52,7 @@ Codegen-Mainnet:
     - master
 
 Build-Kovan:
-  stage: code
+  stage: build
   script:
     - npm run build:kovan
   artifacts:
@@ -60,7 +61,7 @@ Build-Kovan:
   only:
     - integration  
 Codegen-Goerli:
-  stage: code
+  stage: build
   script:
     - npm run build:goerli
   artifacts:
@@ -69,7 +70,7 @@ Codegen-Goerli:
   only:
     - goerli
 Codegen-Mainnet:
-  stage: code
+  stage: build
   script:
     - npm run build:mainnet
   artifacts:
