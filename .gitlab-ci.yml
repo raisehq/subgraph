@@ -50,6 +50,34 @@ Codegen-Mainnet:
   only:
     - master
 
+Build-Kovan:
+  stage: code
+  script:
+    - npm run build:kovan
+  artifacts:
+    paths: 
+      - generated/ 
+  only:
+    - integration  
+Codegen-Goerli:
+  stage: code
+  script:
+    - npm run build:goerli
+  artifacts:
+    paths: 
+      - generated/ 
+  only:
+    - goerli
+Codegen-Mainnet:
+  stage: code
+  script:
+    - npm run build:mainnet
+  artifacts:
+    paths: 
+      - generated/ 
+  only:
+    - master
+
 Deploy-Kovan:
   stage: deploy
   before_script:
