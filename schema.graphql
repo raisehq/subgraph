@@ -43,48 +43,49 @@ type LoanDispatcher @entity {
 
 type Loan @entity {
   id: ID!
+  
+  # loan status
   investors: [User!]!
   investorCount: Int!
-  # initial values set at loan created
   address: Bytes! # address
   dispatcherId: String!
   originator: Bytes! # address
   minAmount: BigInt! # uint256
   maxAmount: BigInt! # uint256
-
+  maxInterestRate: BigInt! # uint256
+  state: Int! #enum
+  borrowerDebt: BigInt!
+  loanFundsUnlocked: Boolean!
   operatorFee: BigInt!
-  operatorBalance: BigInt!
-  operatorFeeWithdrawn: Boolean!
-  operatorFeeAmount: BigInt
 
+  #Funding/Auction fase
   auctionStartBlock: BigInt! # uint256
   auctionEndBlock: BigInt! # uint256
   auctionBlockLength: BigInt!
   termEndTimestamp: BigInt!
-
-  # values that are modified through the loan's life
   lastFundedBlock: BigInt
-  lastFundedDate: String
   auctionLastFundedBlock: BigInt #block where loan is fully funded
-
-  auctionBalance: BigInt!
-  loanWithdrawnAmount: BigInt
-  borrowerDebt: BigInt
-
-  maxInterestRate: BigInt! # uint256
-  interestRate: BigInt
-
+  principal: BigInt!
   minimumReached: Boolean!
   auctionFullyFunded: Boolean!
   auctionEnded: Boolean!
-
   auctionFailed: Boolean!
+  interestRate: BigInt
+  netBalance: BigInt
 
+  #borrower withdraw
+  operatorBalance: BigInt!
+  operatorFeeWithdrawn: Boolean!
+  operatorFeeAmount: BigInt
   loanWithdrawn: Boolean!
   loanRepaid: Boolean!
   loanRepaidTimestamp: BigInt
+  loanWithdrawnAmount: BigInt!
 
-  state: Int! #enum
+  #Lender Withdraw fase
+  refundsWithdrawnAmount: BigInt!
+  loanFullyRefunded: Boolean!
+  refundStarted: Boolean!
 }
 
 type Funding @entity {
@@ -92,10 +93,10 @@ type Funding @entity {
   loan: Loan!
   amount: BigInt!
   withdrawn: Boolean!
-  successful: Boolean!
+  amountWithdrawn: BigInt!
 }
 
-type Rise @entity {
+type Raise @entity {
   id: ID!
   feesToWithdraw: BigInt!
   feesWithdrawn: BigInt!

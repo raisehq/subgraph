@@ -123,20 +123,6 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "auctionEnded",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
     "name": "operatorFee",
     "outputs": [
       {
@@ -377,6 +363,11 @@
         "indexed": true,
         "name": "administrator",
         "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "operatorFee",
+        "type": "uint256"
       }
     ],
     "name": "LoanCreated",

@@ -219,6 +219,11 @@
         "indexed": true,
         "name": "administrator",
         "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "operatorFee",
+        "type": "uint256"
       }
     ],
     "name": "LoanContractCreated",

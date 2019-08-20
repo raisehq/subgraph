@@ -19,6 +19,8 @@ export function handleUserDepositCompleted(event: UserDepositCompletedEvent): vo
         user.totalBountyToWithdraw = BigInt.fromI32(0);
         user.totalReferralsCount = 0;
         user.withdrawalUnlocked = false;
+        user.loanFundings = [];
+        user.loanRequests = [];
     }
 
     user.deposited = true;

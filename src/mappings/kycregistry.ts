@@ -25,6 +25,8 @@ export function handleAddedToKYC(event: AddedToKYCEvent): void {
         user.totalBountyWithdrawn = BigInt.fromI32(0);
         user.totalBountyToWithdraw = BigInt.fromI32(0);
         user.totalReferralsCount = 0;
+        user.loanFundings = [];
+        user.loanRequests = [];
     }
 
     user.kyced = true;

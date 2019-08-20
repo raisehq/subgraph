@@ -93,7 +93,7 @@ dataSources:
         - name: LoanContractDispatcher
           file: ./abis/LoanContractDispatcher.json
       eventHandlers:
-        - event: LoanContractCreated(address,address,indexed address,uint256,uint256,uint256,uint256,uint256,indexed address)
+        - event: LoanContractCreated(address,address,indexed address,uint256,uint256,uint256,uint256,uint256,indexed address,uint256)
           handler: handleLoanContractCreated
         - event: MinAmountUpdated(uint256,address)
           handler: handleMinAmountUpdated
@@ -125,7 +125,7 @@ dataSources:
           - name: LoanContract
             file: ./abis/LoanContract.json
         eventHandlers:
-          - event: LoanCreated(indexed address,indexed address,uint256,uint256,uint256,uint256,uint256,indexed address)
+          - event: LoanCreated(indexed address,indexed address,uint256,uint256,uint256,uint256,uint256,indexed address,uint256)
             handler: handleLoanCreated
           - event: MinimumFundingReached(address,uint256,uint256)
             handler: handleMinimumFundingReached

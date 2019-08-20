@@ -43,37 +43,7 @@ export function handleLoanContractCreated(event: LoanContractCreatedEvent): void
 
         // create loan
         let loan = new Loan(loanAddress);
-        let loanContract = LoanContract.bind(event.params.contractAddress);
-
-        loan.investors = [];
-        loan.investorCount = 0;
         loan.dispatcherId = dispatcherAddress.toHex();
-        loan.address = event.params.contractAddress;
-        loan.originator = event.params.originator;
-        loan.minAmount = event.params.minAmount;
-        loan.maxAmount = event.params.maxAmount;
-        loan.operatorFee = event.params.operatorFee;
-        loan.maxInterestRate = event.params.maxInterestRate;
-        loan.state = 0; //'CREATED'
-    
-        let auctionStartBlock = loanContract.auctionStartBlock();
-        let auctionEndBlock = loanContract.auctionEndBlock();
-        let auctionBlockLength = loanContract.auctionBlockLength();
-        let termEndTimestamp = loanContract.termEndTimestamp();
-
-        loan.auctionStartBlock = auctionStartBlock;
-        loan.auctionEndBlock = auctionEndBlock;
-        loan.auctionBlockLength = auctionBlockLength;
-        loan.termEndTimestamp = termEndTimestamp;
-
-        loan.auctionBalance = BigInt.fromI32(0);
-        loan.minimumReached = false;
-        loan.auctionEnded = false;
-        loan.loanWithdrawn = false;
-        loan.loanRepaid = false;
-        loan.operatorFeeWithdrawn = false;
-        loan.auctionFailed = false;
-
         loan.save();
 
         NewLoan.create(event.params.contractAddress);
