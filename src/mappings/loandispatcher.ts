@@ -15,7 +15,7 @@ import { BigInt, log } from '@graphprotocol/graph-ts';
 export function handleLoanContractCreated(event: LoanContractCreatedEvent): void {
     let dispatcherAddress = event.params.loanDispatcher;
     let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
-    log.log(2, 'THIS IS THE LOAN DISPATCHER')
+    
     if (loanDispatcher == null) {
         loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
         loanDispatcher.address = dispatcherAddress;
