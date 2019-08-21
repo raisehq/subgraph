@@ -10,11 +10,12 @@ import { LoanDispatcher, Loan, User } from "../../generated/schema";
 import { LoanContract as NewLoan } from '../../generated/LoanContractDispatcher/templates';
 import { LoanContract } from '../../generated/LoanContractDispatcher/templates/LoanContract/LoanContract';
 import { LoanContractDispatcher } from '../../generated/LoanContractDispatcher/LoanContractDispatcher';
-import { BigInt } from '@graphprotocol/graph-ts';
+import { BigInt, log } from '@graphprotocol/graph-ts';
 
 export function handleLoanContractCreated(event: LoanContractCreatedEvent): void {
     let dispatcherAddress = event.params.loanDispatcher;
     let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
+    log.log(2, 'THIS IS THE LOAN DISPATCHER')
     if (loanDispatcher == null) {
         loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
         loanDispatcher.address = dispatcherAddress;
@@ -23,13 +24,14 @@ export function handleLoanContractCreated(event: LoanContractCreatedEvent): void
     }
 
     let loanContractDispatcher = LoanContractDispatcher.bind(dispatcherAddress);
-    let dispatcherMinInterestRate = loanContractDispatcher.minInterestRate();
+    // let dispatcherMinInterestRate = loanContractDispatcher.minInterestRate();
+    let operatorFee = loanContractDispatcher.operatorFee();
 
     loanDispatcher.minAmount = event.params.minAmount;
     loanDispatcher.maxAmount = event.params.maxAmount;
-    loanDispatcher.minInterestRate = dispatcherMinInterestRate;
+    loanDispatcher.minInterestRate = BigInt.fromI32(0);
     loanDispatcher.maxInterestRate = event.params.maxInterestRate;
-    loanDispatcher.operatorFee = event.params.operatorFee;
+    loanDispatcher.operatorFee = operatorFee;
 
     let loanAddress = event.params.contractAddress.toHex();
 
