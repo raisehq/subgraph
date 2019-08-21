@@ -21,7 +21,6 @@ import { Loan, User, Funding, Raise } from "../../generated/schema"
 import { log, BigInt } from '@graphprotocol/graph-ts';
 
 export function handleLoanCreated(event: LoanCreatedEvent): void {
-    log.log(2, `******************* ENTER HANDLE LOAN CREATED **************** `);
     let loanAddress = event.params.contractAddr.toHex();
 
     // create loan

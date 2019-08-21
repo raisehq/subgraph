@@ -8,9 +8,8 @@ import {
 } from "../../generated/LoanContractDispatcher/LoanContractDispatcher";
 import { LoanDispatcher, Loan, User } from "../../generated/schema";
 import { LoanContract as NewLoan } from '../../generated/LoanContractDispatcher/templates';
-import { LoanContract } from '../../generated/LoanContractDispatcher/templates/LoanContract/LoanContract';
 import { LoanContractDispatcher } from '../../generated/LoanContractDispatcher/LoanContractDispatcher';
-import { BigInt, log } from '@graphprotocol/graph-ts';
+import { BigInt } from '@graphprotocol/graph-ts';
 
 export function handleLoanContractCreated(event: LoanContractCreatedEvent): void {
     let dispatcherAddress = event.params.loanDispatcher;
@@ -24,14 +23,12 @@ export function handleLoanContractCreated(event: LoanContractCreatedEvent): void
     }
 
     let loanContractDispatcher = LoanContractDispatcher.bind(dispatcherAddress);
-    // let dispatcherMinInterestRate = loanContractDispatcher.minInterestRate();
-    let operatorFee = loanContractDispatcher.operatorFee();
 
     loanDispatcher.minAmount = event.params.minAmount;
     loanDispatcher.maxAmount = event.params.maxAmount;
     loanDispatcher.minInterestRate = BigInt.fromI32(0);
     loanDispatcher.maxInterestRate = event.params.maxInterestRate;
-    loanDispatcher.operatorFee = operatorFee;
+    loanDispatcher.operatorFee = event.params.operatorFee;
 
     let loanAddress = event.params.contractAddress.toHex();
 
