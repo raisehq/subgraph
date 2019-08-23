@@ -117,7 +117,7 @@ export function handleFullyFunded(event: FullyFundedEvent): void {
 
 export function handleFunded(event: FundedEvent): void {
     let loanAddressHex = event.params.loanAddress.toHex();
-    let loan = new Loan(loanAddressHex);
+    let loan = Loan.load(loanAddressHex);
     
     let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -135,6 +135,7 @@ export function handleFunded(event: FundedEvent): void {
     let user = User.load(userAddress.toHex());
 
     let investors = loan.investors;
+
     if (investors.indexOf(userAddress.toHex()) == -1) {
         investors.push(userAddress.toHex());
         loan.investorCount = loan.investorCount + 1;
@@ -157,7 +158,6 @@ export function handleFunded(event: FundedEvent): void {
     funding.save();
 
     funding.save();
-
     let fundings = user.loanFundings;
     fundings.push(funding.id);
     user.loanFundings = fundings;
