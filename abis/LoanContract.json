@@ -2,7 +2,21 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "auctionEndBlock",
+    "name": "currentState",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "lastFundedTimestamp",
     "outputs": [
       {
         "name": "",
@@ -16,11 +30,25 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "currentState",
+    "name": "auctionLength",
     "outputs": [
       {
         "name": "",
-        "type": "uint8"
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "auctionEndTimestamp",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
       }
     ],
     "payable": false,
@@ -67,20 +95,6 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "lastFundedBlock",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
     "name": "maxAmount",
     "outputs": [
       {
@@ -109,7 +123,7 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "auctionBlockLength",
+    "name": "termLength",
     "outputs": [
       {
         "name": "",
@@ -207,6 +221,20 @@
   {
     "constant": true,
     "inputs": [],
+    "name": "auctionStartTimestamp",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
     "name": "minimumReached",
     "outputs": [
       {
@@ -222,20 +250,6 @@
     "constant": true,
     "inputs": [],
     "name": "borrowerDebt",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "auctionStartBlock",
     "outputs": [
       {
         "name": "",
@@ -277,11 +291,7 @@
   {
     "inputs": [
       {
-        "name": "_auctionBlockLength",
-        "type": "uint256"
-      },
-      {
-        "name": "_termEndTimestamp",
+        "name": "_termLength",
         "type": "uint256"
       },
       {
@@ -314,6 +324,10 @@
       },
       {
         "name": "_operatorFee",
+        "type": "uint256"
+      },
+      {
+        "name": "_auctionLength",
         "type": "uint256"
       }
     ],
@@ -351,12 +365,12 @@
       },
       {
         "indexed": false,
-        "name": "auctionStartBlock",
+        "name": "auctionStartTimestamp",
         "type": "uint256"
       },
       {
         "indexed": false,
-        "name": "auctionEndBlock",
+        "name": "auctionEndTimestamp",
         "type": "uint256"
       },
       {
@@ -420,7 +434,7 @@
       },
       {
         "indexed": false,
-        "name": "fundedBlock",
+        "name": "fundedTimestamp",
         "type": "uint256"
       }
     ],
@@ -452,7 +466,7 @@
       },
       {
         "indexed": false,
-        "name": "fundedBlock",
+        "name": "fundedTimestamp",
         "type": "uint256"
       }
     ],
@@ -618,7 +632,7 @@
       },
       {
         "indexed": false,
-        "name": "fundedBlock",
+        "name": "fundedTimestamp",
         "type": "uint256"
       }
     ],

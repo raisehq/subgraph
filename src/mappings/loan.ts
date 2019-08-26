@@ -27,10 +27,11 @@ export function handleLoanCreated(event: LoanCreatedEvent): void {
     let loan = new Loan(loanAddress);
     let loanContract = LoanContract.bind(event.params.contractAddr);
 
-    let auctionStartBlock = loanContract.auctionStartBlock();
-    let auctionEndBlock = loanContract.auctionEndBlock();
-    let auctionBlockLength = loanContract.auctionBlockLength();
+    let auctionStartTimestamp = loanContract.auctionStartTimestamp();
+    let auctionEndTimestamp = loanContract.auctionEndTimestamp();
+    let auctionLength = loanContract.auctionLength();
     let termEndTimestamp = loanContract.termEndTimestamp();
+    let termLength = loanContract.termLength();
     let operatorFee = loanContract.operatorFee();
 
     // loan status
@@ -47,10 +48,11 @@ export function handleLoanCreated(event: LoanCreatedEvent): void {
     loan.operatorFee = operatorFee;
 
     // loan Funding/Auction fase
-    loan.auctionStartBlock = auctionStartBlock;
-    loan.auctionEndBlock = auctionEndBlock;
-    loan.auctionBlockLength = auctionBlockLength;
+    loan.auctionStartTimestamp = auctionStartTimestamp;
+    loan.auctionEndTimestamp = auctionEndTimestamp;
+    loan.auctionLength = auctionLength;
     loan.termEndTimestamp = termEndTimestamp;
+    loan.termLength = termLength;
     loan.principal = BigInt.fromI32(0);
     loan.minimumReached = false;
     loan.auctionFullyFunded = false;
@@ -81,10 +83,10 @@ export function handleMinimumFundingReached(event: MinimumFundingReachedEvent): 
     let minimumReached = loanContract.minimumReached();
 
     if (loanState == 2) {
-        let auctionLastFundedBlock = loanContract.lastFundedBlock();
+        let auctionLastFundedTimestamp = loanContract.lastFundedTimestamp();
         let borrowerDebt = loanContract.borrowerDebt();
     
-        loan.auctionLastFundedBlock = auctionLastFundedBlock;
+        loan.auctionLastFundedTimestamp = auctionLastFundedTimestamp;
         loan.borrowerDebt = borrowerDebt;
         loan.interestRate = event.params.interest;
     }
@@ -104,7 +106,7 @@ export function handleFullyFunded(event: FullyFundedEvent): void {
     let loanState = loanContract.currentState()
 
     loan.auctionEnded = true;
-    loan.auctionLastFundedBlock = event.params.fundedBlock;
+    loan.auctionLastFundedTimestamp = event.params.fundedTimestamp;
     loan.borrowerDebt = event.params.balanceToRepay;
     loan.interestRate = event.params.interest;
 
@@ -126,7 +128,7 @@ export function handleFunded(event: FundedEvent): void {
 
     loan.interestRate = event.params.interest;
 
-    loan.lastFundedBlock = event.params.fundedBlock;
+    loan.lastFundedTimestamp = event.params.fundedTimestamp;
 
     loan.principal = principal;
     loan.state = loanState
@@ -213,16 +215,18 @@ export function handleAuctionSuccessful(event: AuctionSuccessfulEvent): void {
     let loanAddressHex = event.params.loanAddress.toHex()
     let loan = new Loan(loanAddressHex);
 
+    let loanContract = LoanContract.bind(event.params.loanAddress)
+    let loanState = loanContract.currentState();
+    let termEndTimestamp = loanContract.termEndTimestamp();
+
     loan.auctionEnded = true;
     loan.netBalance = event.params.auctionBalance;
     loan.borrowerDebt = event.params.balanceToRepay;
     loan.operatorBalance = event.params.operatorBalance;
     loan.interestRate = event.params.interest;
-    loan.lastFundedBlock = event.params.fundedBlock;
-
-    let loanContract = LoanContract.bind(event.params.loanAddress)
-    let loanState = loanContract.currentState();
-
+    loan.lastFundedTimestamp = event.params.fundedTimestamp;
+    
+    loan.termEndTimestamp = termEndTimestamp;
     loan.state = loanState;
     
     loan.save();

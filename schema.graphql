@@ -59,12 +59,13 @@ type Loan @entity {
   operatorFee: BigInt!
 
   #Funding/Auction fase
-  auctionStartBlock: BigInt! # uint256
-  auctionEndBlock: BigInt! # uint256
-  auctionBlockLength: BigInt!
-  termEndTimestamp: BigInt!
-  lastFundedBlock: BigInt
-  auctionLastFundedBlock: BigInt #block where loan is fully funded
+  auctionStartTimestamp: BigInt! # uint256
+  auctionEndTimestamp: BigInt! # uint256
+  auctionLength: BigInt!
+  termEndTimestamp: BigInt
+  termLength: BigInt!
+  lastFundedTimestamp: BigInt
+  auctionLastFundedTimestamp: BigInt #block where loan is fully funded
   principal: BigInt!
   minimumReached: Boolean!
   auctionFullyFunded: Boolean!
