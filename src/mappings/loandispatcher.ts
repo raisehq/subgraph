@@ -23,7 +23,11 @@ export function handleLoanContractCreated(event: LoanContractCreatedEvent): void
     }
 
     let loanContractDispatcher = LoanContractDispatcher.bind(dispatcherAddress);
+    let minAuctionLength = loanContractDispatcher.minAuctionLength();
+    let minTermLength = loanContractDispatcher.minTermLength();
 
+    loanDispatcher.minAuctionLength = minAuctionLength;
+    loanDispatcher.minTermLength = minTermLength;
     loanDispatcher.minAmount = event.params.minAmount;
     loanDispatcher.maxAmount = event.params.maxAmount;
     loanDispatcher.minInterestRate = BigInt.fromI32(0);

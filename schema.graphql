@@ -39,6 +39,8 @@ type LoanDispatcher @entity {
   minInterestRate: BigInt!
   maxInterestRate: BigInt!
   operatorFee: BigInt!
+  minTermLength: BigInt!
+  minAuctionLength: BigInt!
 }
 
 type Loan @entity {
