@@ -174,12 +174,10 @@ export function handleFailedToFund(event: FailedToFundEvent): void {
     let loanContract = LoanContract.bind(event.params.loanAddress)
 
     let loanState = loanContract.currentState()
-    let principal = loanContract.auctionBalance();
     let interestRate = loanContract.getInterestRate();
 
     loan.interestRate = interestRate;
-    
-    loan.principal = principal;
+
     loan.state = loanState
 
     if (loanState == 1) {
