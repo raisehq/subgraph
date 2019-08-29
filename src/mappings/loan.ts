@@ -91,7 +91,6 @@ export function handleMinimumFundingReached(event: MinimumFundingReachedEvent): 
         loan.interestRate = event.params.interest;
     }
 
-    loan.principal = event.params.currentBalance;
     loan.state = loanState;
     loan.minimumReached = minimumReached;
 
@@ -110,7 +109,6 @@ export function handleFullyFunded(event: FullyFundedEvent): void {
     loan.borrowerDebt = event.params.balanceToRepay;
     loan.interestRate = event.params.interest;
 
-    loan.principal = event.params.auctionBalance;
     loan.auctionFullyFunded = true;
     loan.state = loanState
 
