@@ -124,13 +124,12 @@ export function handleFunded(event: FundedEvent): void {
     let loanContract = LoanContract.bind(event.params.loanAddress);
 
     let loanState = loanContract.currentState();
-    let principal = loanContract.auctionBalance();
 
     loan.interestRate = event.params.interest;
 
     loan.lastFundedTimestamp = event.params.fundedTimestamp;
 
-    loan.principal = principal;
+    loan.principal = loan.principal.plus(event.params.amount);
     loan.state = loanState
 
     let userAddress = event.params.lender;
