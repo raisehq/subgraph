@@ -371,6 +371,73 @@
     "anonymous": false,
     "inputs": [
       {
+        "indexed": false,
+        "name": "newAuthAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "administrator",
+        "type": "address"
+      }
+    ],
+    "name": "AuthAddressUpdated",
+    "type": "event",
+    "signature": "0xc0bb63ce3c5b13e4918a521d34215bc08febb956464efb22eb2ef6d13374bde7"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "newDaiTokenAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "administrator",
+        "type": "address"
+      }
+    ],
+    "name": "DaiTokenAddressUpdated",
+    "type": "event",
+    "signature": "0x18119779ca1bfe36811ae2fc8f1701f1c581c8516f3417c6d51618b4fe1a15ea"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "newDaiProxyAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "administrator",
+        "type": "address"
+      }
+    ],
+    "name": "DaiProxyAddressUpdated",
+    "type": "event",
+    "signature": "0x8bb5c4da6a28c0a775ad478dc8e43822c3ba46081e01f058e121e645711e4cf0"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "newAdminAddress",
+        "type": "address"
+      }
+    ],
+    "name": "AdministratorUpdated",
+    "type": "event",
+    "signature": "0x8a99bb12510d87c60fe05e5000ed6cd7dd6e1ccc3c11ab703562b101807f3d7c"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
         "indexed": true,
         "name": "previousOwner",
         "type": "address"
@@ -384,6 +451,51 @@
     "name": "OwnershipTransferred",
     "type": "event",
     "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "daiAddress",
+        "type": "address"
+      }
+    ],
+    "name": "setDaiTokenAddress",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xf1326b15"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "authAddress",
+        "type": "address"
+      }
+    ],
+    "name": "setAuthAddress",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x10265693"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "daiProxyAddress",
+        "type": "address"
+      }
+    ],
+    "name": "setDaiProxyAddress",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xa3927a04"
   },
   {
     "constant": false,
