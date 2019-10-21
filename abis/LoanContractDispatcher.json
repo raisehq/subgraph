@@ -1,656 +1,656 @@
 [
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "minTermLength",
-    "outputs": [
       {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0x0d6dd8a8"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "maxAmount",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0x5f48f393"
-  },
-  {
-    "constant": false,
-    "inputs": [],
-    "name": "renounceOwnership",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x715018a6"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "operatorFee",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0x89afc0f1"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "owner",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0x8da5cb5b"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "isOwner",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0x8f32d59b"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "minAmount",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0x9b2cb5d8"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "minAuctionLength",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0xa0b335e3"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "maxInterestRate",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0xa9583d5f"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "isLoanContract",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0xe728b86c"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "minInterestRate",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0xeb994db1"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "newOwner",
-        "type": "address"
-      }
-    ],
-    "name": "transferOwnership",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xf2fde38b"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "administrator",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0xf53d0a8e"
-  },
-  {
-    "inputs": [
-      {
-        "name": "authAddress",
-        "type": "address"
+        "constant": true,
+        "inputs": [],
+        "name": "minTermLength",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function",
+        "signature": "0x0d6dd8a8"
       },
       {
-        "name": "_DAITokenAddress",
-        "type": "address"
-      },
-      {
-        "name": "_DAIProxyAddress",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "constructor",
-    "signature": "constructor"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "loanDispatcher",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "contractAddress",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "name": "originator",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "minAmount",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
+        "constant": true,
+        "inputs": [],
         "name": "maxAmount",
-        "type": "uint256"
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function",
+        "signature": "0x5f48f393"
       },
       {
-        "indexed": false,
-        "name": "maxInterestRate",
-        "type": "uint256"
+        "constant": false,
+        "inputs": [],
+        "name": "renounceOwnership",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "signature": "0x715018a6"
       },
       {
-        "indexed": false,
-        "name": "termEndTimestamp",
-        "type": "uint256"
-      },
-      {
-        "indexed": true,
-        "name": "administrator",
-        "type": "address"
-      },
-      {
-        "indexed": false,
+        "constant": true,
+        "inputs": [],
         "name": "operatorFee",
-        "type": "uint256"
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function",
+        "signature": "0x89afc0f1"
       },
       {
-        "indexed": false,
-        "name": "auctionLength",
-        "type": "uint256"
-      }
-    ],
-    "name": "LoanContractCreated",
-    "type": "event",
-    "signature": "0x80d290cafe57232a8cd63e47a28c46f2ab5edb11a2c91cc58505e10ee2077ff4"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
+        "constant": true,
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function",
+        "signature": "0x8da5cb5b"
+      },
       {
-        "indexed": false,
+        "constant": true,
+        "inputs": [],
+        "name": "isOwner",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function",
+        "signature": "0x8f32d59b"
+      },
+      {
+        "constant": true,
+        "inputs": [],
         "name": "minAmount",
-        "type": "uint256"
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function",
+        "signature": "0x9b2cb5d8"
       },
       {
-        "indexed": false,
-        "name": "loanDispatcher",
-        "type": "address"
-      }
-    ],
-    "name": "MinAmountUpdated",
-    "type": "event",
-    "signature": "0x6a73ad5fc763a8c0bcc28b00ed3e08dff5a3f8a63eea93d9eaae237124259894"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "maxAmount",
-        "type": "uint256"
+        "constant": true,
+        "inputs": [],
+        "name": "minAuctionLength",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function",
+        "signature": "0xa0b335e3"
       },
       {
-        "indexed": false,
-        "name": "loanDispatcher",
-        "type": "address"
-      }
-    ],
-    "name": "MaxAmountUpdated",
-    "type": "event",
-    "signature": "0x91beaf63a7a8596b4bdb5f8ac94494639fe81c50a892206952bc74972e0c3375"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
+        "constant": true,
+        "inputs": [],
+        "name": "maxInterestRate",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function",
+        "signature": "0xa9583d5f"
+      },
       {
-        "indexed": false,
+        "constant": true,
+        "inputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "name": "isLoanContract",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function",
+        "signature": "0xe728b86c"
+      },
+      {
+        "constant": true,
+        "inputs": [],
         "name": "minInterestRate",
-        "type": "uint256"
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function",
+        "signature": "0xeb994db1"
       },
       {
-        "indexed": false,
-        "name": "loanDispatcher",
-        "type": "address"
-      }
-    ],
-    "name": "MinInterestRateUpdated",
-    "type": "event",
-    "signature": "0xd2ee5beab74926025e55d9ca98e85bef0ef7c2b31a8d198a555c512973e9f8f6"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "maxInterestRate",
-        "type": "uint256"
+        "constant": false,
+        "inputs": [
+          {
+            "name": "newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "signature": "0xf2fde38b"
       },
       {
-        "indexed": false,
-        "name": "loanDispatcher",
-        "type": "address"
-      }
-    ],
-    "name": "MaxInterestRateUpdated",
-    "type": "event",
-    "signature": "0x231c0f19fcc27c4a82dcc4ddf6f5c7a9e543a9857ca7286bbfe9b306fa83ad27"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "operatorFee",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "loanDispatcher",
-        "type": "address"
-      },
-      {
-        "indexed": false,
+        "constant": true,
+        "inputs": [],
         "name": "administrator",
-        "type": "address"
-      }
-    ],
-    "name": "OperatorFeeUpdated",
-    "type": "event",
-    "signature": "0x7dd5f7f2a6271519e65bd190731bf6e0e2907a49634f7def0efa0bfeb2b126be"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "newAuthAddress",
-        "type": "address"
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function",
+        "signature": "0xf53d0a8e"
       },
       {
-        "indexed": false,
-        "name": "administrator",
-        "type": "address"
-      }
-    ],
-    "name": "AuthAddressUpdated",
-    "type": "event",
-    "signature": "0xc0bb63ce3c5b13e4918a521d34215bc08febb956464efb22eb2ef6d13374bde7"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "newDaiTokenAddress",
-        "type": "address"
+        "inputs": [
+          {
+            "name": "authAddress",
+            "type": "address"
+          },
+          {
+            "name": "_DAITokenAddress",
+            "type": "address"
+          },
+          {
+            "name": "_DAIProxyAddress",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor",
+        "signature": "constructor"
       },
       {
-        "indexed": false,
-        "name": "administrator",
-        "type": "address"
-      }
-    ],
-    "name": "DaiTokenAddressUpdated",
-    "type": "event",
-    "signature": "0x18119779ca1bfe36811ae2fc8f1701f1c581c8516f3417c6d51618b4fe1a15ea"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "newDaiProxyAddress",
-        "type": "address"
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "name": "loanDispatcher",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "contractAddress",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "name": "originator",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "minAmount",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "name": "maxAmount",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "name": "maxInterestRate",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "name": "termEndTimestamp",
+            "type": "uint256"
+          },
+          {
+            "indexed": true,
+            "name": "administrator",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "operatorFee",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "name": "auctionLength",
+            "type": "uint256"
+          }
+        ],
+        "name": "LoanContractCreated",
+        "type": "event",
+        "signature": "0x80d290cafe57232a8cd63e47a28c46f2ab5edb11a2c91cc58505e10ee2077ff4"
       },
       {
-        "indexed": false,
-        "name": "administrator",
-        "type": "address"
-      }
-    ],
-    "name": "DaiProxyAddressUpdated",
-    "type": "event",
-    "signature": "0x8bb5c4da6a28c0a775ad478dc8e43822c3ba46081e01f058e121e645711e4cf0"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "newAdminAddress",
-        "type": "address"
-      }
-    ],
-    "name": "AdministratorUpdated",
-    "type": "event",
-    "signature": "0x8a99bb12510d87c60fe05e5000ed6cd7dd6e1ccc3c11ab703562b101807f3d7c"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "previousOwner",
-        "type": "address"
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "name": "minAmount",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "name": "loanDispatcher",
+            "type": "address"
+          }
+        ],
+        "name": "MinAmountUpdated",
+        "type": "event",
+        "signature": "0x6a73ad5fc763a8c0bcc28b00ed3e08dff5a3f8a63eea93d9eaae237124259894"
       },
       {
-        "indexed": true,
-        "name": "newOwner",
-        "type": "address"
-      }
-    ],
-    "name": "OwnershipTransferred",
-    "type": "event",
-    "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "daiAddress",
-        "type": "address"
-      }
-    ],
-    "name": "setDaiTokenAddress",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xf1326b15"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "authAddress",
-        "type": "address"
-      }
-    ],
-    "name": "setAuthAddress",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x10265693"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "daiProxyAddress",
-        "type": "address"
-      }
-    ],
-    "name": "setDaiProxyAddress",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xa3927a04"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "admin",
-        "type": "address"
-      }
-    ],
-    "name": "setAdministrator",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xdf8089ef"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "newFee",
-        "type": "uint256"
-      }
-    ],
-    "name": "setOperatorFee",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x1d095805"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "requestedMinAmount",
-        "type": "uint256"
-      }
-    ],
-    "name": "setMinAmount",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x897b0637"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "requestedMaxAmount",
-        "type": "uint256"
-      }
-    ],
-    "name": "setMaxAmount",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x4fe47f70"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "requestedMinInterestRate",
-        "type": "uint256"
-      }
-    ],
-    "name": "setMinInterestRate",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xc286eebe"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "requestedMaxInterestRate",
-        "type": "uint256"
-      }
-    ],
-    "name": "setMaxInterestRate",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xc2599054"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "requestedMinTermLength",
-        "type": "uint256"
-      }
-    ],
-    "name": "setMinTermLength",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xa2097307"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "requestedMinAuctionLength",
-        "type": "uint256"
-      }
-    ],
-    "name": "setMinAuctionLength",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x6fc83db3"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "loanMinAmount",
-        "type": "uint256"
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "name": "maxAmount",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "name": "loanDispatcher",
+            "type": "address"
+          }
+        ],
+        "name": "MaxAmountUpdated",
+        "type": "event",
+        "signature": "0x91beaf63a7a8596b4bdb5f8ac94494639fe81c50a892206952bc74972e0c3375"
       },
       {
-        "name": "loanMaxAmount",
-        "type": "uint256"
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "name": "minInterestRate",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "name": "loanDispatcher",
+            "type": "address"
+          }
+        ],
+        "name": "MinInterestRateUpdated",
+        "type": "event",
+        "signature": "0xd2ee5beab74926025e55d9ca98e85bef0ef7c2b31a8d198a555c512973e9f8f6"
       },
       {
-        "name": "loanMaxInterestRate",
-        "type": "uint256"
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "name": "maxInterestRate",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "name": "loanDispatcher",
+            "type": "address"
+          }
+        ],
+        "name": "MaxInterestRateUpdated",
+        "type": "event",
+        "signature": "0x231c0f19fcc27c4a82dcc4ddf6f5c7a9e543a9857ca7286bbfe9b306fa83ad27"
       },
       {
-        "name": "termLength",
-        "type": "uint256"
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "name": "operatorFee",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "name": "loanDispatcher",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "administrator",
+            "type": "address"
+          }
+        ],
+        "name": "OperatorFeeUpdated",
+        "type": "event",
+        "signature": "0x7dd5f7f2a6271519e65bd190731bf6e0e2907a49634f7def0efa0bfeb2b126be"
       },
       {
-        "name": "auctionLength",
-        "type": "uint256"
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "name": "newAuthAddress",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "administrator",
+            "type": "address"
+          }
+        ],
+        "name": "AuthAddressUpdated",
+        "type": "event",
+        "signature": "0xc0bb63ce3c5b13e4918a521d34215bc08febb956464efb22eb2ef6d13374bde7"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "name": "newDaiTokenAddress",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "administrator",
+            "type": "address"
+          }
+        ],
+        "name": "DaiTokenAddressUpdated",
+        "type": "event",
+        "signature": "0x18119779ca1bfe36811ae2fc8f1701f1c581c8516f3417c6d51618b4fe1a15ea"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "name": "newDaiProxyAddress",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "administrator",
+            "type": "address"
+          }
+        ],
+        "name": "DaiProxyAddressUpdated",
+        "type": "event",
+        "signature": "0x8bb5c4da6a28c0a775ad478dc8e43822c3ba46081e01f058e121e645711e4cf0"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "name": "newAdminAddress",
+            "type": "address"
+          }
+        ],
+        "name": "AdministratorUpdated",
+        "type": "event",
+        "signature": "0x8a99bb12510d87c60fe05e5000ed6cd7dd6e1ccc3c11ab703562b101807f3d7c"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "previousOwner",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "name": "newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event",
+        "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "daiAddress",
+            "type": "address"
+          }
+        ],
+        "name": "setDaiTokenAddress",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "signature": "0xf1326b15"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "authAddress",
+            "type": "address"
+          }
+        ],
+        "name": "setAuthAddress",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "signature": "0x10265693"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "daiProxyAddress",
+            "type": "address"
+          }
+        ],
+        "name": "setDaiProxyAddress",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "signature": "0xa3927a04"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "admin",
+            "type": "address"
+          }
+        ],
+        "name": "setAdministrator",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "signature": "0xdf8089ef"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "newFee",
+            "type": "uint256"
+          }
+        ],
+        "name": "setOperatorFee",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "signature": "0x1d095805"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "requestedMinAmount",
+            "type": "uint256"
+          }
+        ],
+        "name": "setMinAmount",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "signature": "0x897b0637"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "requestedMaxAmount",
+            "type": "uint256"
+          }
+        ],
+        "name": "setMaxAmount",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "signature": "0x4fe47f70"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "requestedMinInterestRate",
+            "type": "uint256"
+          }
+        ],
+        "name": "setMinInterestRate",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "signature": "0xc286eebe"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "requestedMaxInterestRate",
+            "type": "uint256"
+          }
+        ],
+        "name": "setMaxInterestRate",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "signature": "0xc2599054"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "requestedMinTermLength",
+            "type": "uint256"
+          }
+        ],
+        "name": "setMinTermLength",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "signature": "0xa2097307"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "requestedMinAuctionLength",
+            "type": "uint256"
+          }
+        ],
+        "name": "setMinAuctionLength",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "signature": "0x6fc83db3"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "loanMinAmount",
+            "type": "uint256"
+          },
+          {
+            "name": "loanMaxAmount",
+            "type": "uint256"
+          },
+          {
+            "name": "loanMaxInterestRate",
+            "type": "uint256"
+          },
+          {
+            "name": "termLength",
+            "type": "uint256"
+          },
+          {
+            "name": "auctionLength",
+            "type": "uint256"
+          }
+        ],
+        "name": "deploy",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "signature": "0x727e8e78"
       }
-    ],
-    "name": "deploy",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x727e8e78"
-  }
-]
+    ]
