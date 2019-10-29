@@ -10,6 +10,14 @@ type User @entity {
   totalBountyToWithdraw: BigInt!
   totalReferralsCount: Int!
   withdrawalUnlocked: Boolean!
+
+  # metadata
+  depositBlockNumber: BigInt
+  depositTimestamp: BigInt
+  addKycBlockNumber: BigInt
+  addKycTimestamp: BigInt
+  createdBlockNumber: BigInt!
+  createdTimestamp: BigInt!
 }
 
 type Referral @entity {
@@ -45,7 +53,7 @@ type LoanDispatcher @entity {
 
 type Loan @entity {
   id: ID!
-  
+
   # loan status
   investors: [User!]!
   investorCount: Int!
@@ -89,6 +97,10 @@ type Loan @entity {
   refundsWithdrawnAmount: BigInt!
   loanFullyRefunded: Boolean!
   refundStarted: Boolean!
+
+  #metadata
+  createdBlockNumber: BigInt!
+  createdTimestamp: BigInt!
 }
 
 type Funding @entity {
@@ -97,6 +109,13 @@ type Funding @entity {
   amount: BigInt!
   withdrawn: Boolean!
   amountWithdrawn: BigInt!
+
+  # metadata
+  createdBlockNumber: BigInt!
+  createdTimestamp: BigInt!
+
+  updatedBlockNumber: BigInt!
+  updatedTimestamp: BigInt!
 }
 
 type Raise @entity {
