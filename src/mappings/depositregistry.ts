@@ -27,7 +27,7 @@ export function handleUserDepositCompleted(
   }
 
   user.depositBlockNumber = event.block.number;
-  user.depositTimestamp = event.block.number;
+  user.depositTimestamp = event.block.timestamp;
   user.deposited = true;
 
   user.save();
