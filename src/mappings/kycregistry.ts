@@ -29,6 +29,7 @@ export function handleAddedToKYC(event: AddedToKYCEvent): void {
     user.loanRequests = [];
     user.createdBlockNumber = event.block.number;
     user.createdTimestamp = event.block.timestamp;
+    user.withdrawalUnlocked = false;
   }
 
   user.addKycBlockNumber = event.block.number;

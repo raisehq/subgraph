@@ -48,7 +48,49 @@ export function handleLoanContractCreated(
 
     // create loan
     let loan = new Loan(loanAddress);
-    loan.dispatcherId = dispatcherAddress.toHex();
+
+    // loan status
+    loan.investors = [];
+    loan.investorCount = 0;
+    loan.dispatcherId = loanDispatcher.id;
+    loan.address = event.params.contractAddress;
+    loan.originator = event.params.originator;
+    loan.minAmount = event.params.minAmount;
+    loan.maxAmount = event.params.maxAmount;
+    loan.maxInterestRate = event.params.maxInterestRate;
+    loan.state = 0; //'CREATED'
+    loan.borrowerDebt = BigInt.fromI32(0);
+    loan.loanFundsUnlocked = false;
+    loan.operatorFee = BigInt.fromI32(0);
+
+    // loan Funding/Auction fase
+    loan.auctionStartTimestamp = BigInt.fromI32(0);
+    loan.auctionEndTimestamp = BigInt.fromI32(0);
+    loan.auctionLength = BigInt.fromI32(0);
+    loan.termEndTimestamp = BigInt.fromI32(0);
+    loan.termLength = BigInt.fromI32(0);
+    loan.principal = BigInt.fromI32(0);
+    loan.minimumReached = false;
+    loan.auctionFullyFunded = false;
+    loan.auctionEnded = false;
+    loan.auctionFailed = false;
+
+    // borrower withdraw
+    loan.operatorBalance = BigInt.fromI32(0);
+    loan.operatorFeeWithdrawn = false;
+    loan.loanWithdrawn = false;
+    loan.loanRepaid = false;
+    loan.loanWithdrawnAmount = BigInt.fromI32(0);
+
+    // lender withdraw
+    loan.refundsWithdrawnAmount = BigInt.fromI32(0);
+    loan.loanFullyRefunded = false;
+    loan.refundStarted = false;
+
+    // metadata
+    loan.createdBlockNumber = event.block.number;
+    loan.createdTimestamp = event.block.timestamp;
+
     loan.save();
 
     NewLoan.create(event.params.contractAddress);
