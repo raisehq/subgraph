@@ -19,6 +19,7 @@ import {
 } from "../../generated/LoanContractDispatcher/templates/LoanContract/LoanContract";
 import { Loan, User, Funding, Raise } from "../../generated/schema";
 import { log, BigInt } from "@graphprotocol/graph-ts";
+// import { LoanContract as NewLoan } from "../../generated/LoanContractDispatcher/templates";
 
 export function handleLoanCreated(event: LoanCreatedEvent): void {
   let loanAddress = event.params.contractAddr.toHex();
@@ -76,6 +77,17 @@ export function handleLoanCreated(event: LoanCreatedEvent): void {
   loan.createdTimestamp = event.block.timestamp;
 
   loan.save();
+
+  // NewLoan.create(event.params.contractAddr);
+
+  // let userId = event.params.originator.toHex();
+  // let user = User.load(userId);
+
+  // let requests = user.loanRequests;
+  // requests.push(loan.id);
+  // user.loanRequests = requests;
+
+  // user.save();
 }
 
 export function handleMinimumFundingReached(

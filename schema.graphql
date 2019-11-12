@@ -40,7 +40,7 @@ type ReferralTracker @entity {
 type LoanDispatcher @entity {
   id: ID!
   address: Bytes!
-  loans: [Loan!]
+  loans: [Loan!]!
   loansCount: Int!
   minAmount: BigInt!
   maxAmount: BigInt!
