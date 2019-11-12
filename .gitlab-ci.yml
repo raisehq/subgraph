@@ -16,7 +16,7 @@ Prepare:
   script:
     - npm i
   artifacts:
-    paths: 
+    paths:
       - node_modules/
   only:
     - integration
@@ -28,17 +28,17 @@ Codegen-Kovan:
   script:
     - npm run codegen:kovan
   artifacts:
-    paths: 
-      - generated/ 
+    paths:
+      - generated/
   only:
-    - integration  
+    - integration
 Codegen-Goerli:
   stage: code
   script:
     - npm run codegen:goerli
   artifacts:
-    paths: 
-      - generated/ 
+    paths:
+      - generated/
   only:
     - goerli
 Codegen-Mainnet:
@@ -46,8 +46,8 @@ Codegen-Mainnet:
   script:
     - npm run codegen:mainnet
   artifacts:
-    paths: 
-      - generated/ 
+    paths:
+      - generated/
   only:
     - master
 
@@ -56,26 +56,26 @@ Build-Kovan:
   script:
     - npm run build:kovan
   artifacts:
-    paths: 
-      - generated/ 
+    paths:
+      - generated/
   only:
-    - integration  
-Codegen-Goerli:
+    - integration
+Build-Goerli:
   stage: build
   script:
     - npm run build:goerli
   artifacts:
-    paths: 
-      - generated/ 
+    paths:
+      - generated/
   only:
     - goerli
-Codegen-Mainnet:
+Build-Mainnet:
   stage: build
   script:
     - npm run build:mainnet
   artifacts:
-    paths: 
-      - generated/ 
+    paths:
+      - generated/
   only:
     - master
 
