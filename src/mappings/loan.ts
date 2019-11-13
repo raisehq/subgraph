@@ -17,6 +17,7 @@ import {
   FullyFundsUnlockedWithdrawn as FullyFundsUnlockedWithdrawnEvent,
   LoanFundsUnlocked as LoanFundsUnlockedEvent
 } from "../../generated/LoanContractDispatcher/templates/LoanContract/LoanContract";
+import { LoanCreated as LoanCreatedWithRangeEvent } from "../../generated/LoanContractDispatcherWithRange/templates/LoanContractWithRange/LoanContractWithRange";
 import { Loan, User, Funding, Raise } from "../../generated/schema";
 import { log, BigInt } from "@graphprotocol/graph-ts";
 // import { LoanContract as NewLoan } from "../../generated/LoanContractDispatcher/templates";
@@ -47,6 +48,79 @@ export function handleLoanCreated(event: LoanCreatedEvent): void {
   loan.borrowerDebt = BigInt.fromI32(0);
   loan.loanFundsUnlocked = false;
   loan.operatorFee = operatorFee;
+  loan.minInterestRate = BigInt.fromI32(0);
+
+  // loan Funding/Auction fase
+  loan.auctionStartTimestamp = auctionStartTimestamp;
+  loan.auctionEndTimestamp = auctionEndTimestamp;
+  loan.auctionLength = auctionLength;
+  loan.termEndTimestamp = termEndTimestamp;
+  loan.termLength = termLength;
+  loan.principal = BigInt.fromI32(0);
+  loan.minimumReached = false;
+  loan.auctionFullyFunded = false;
+  loan.auctionEnded = false;
+  loan.auctionFailed = false;
+
+  // borrower withdraw
+  loan.operatorBalance = BigInt.fromI32(0);
+  loan.operatorFeeWithdrawn = false;
+  loan.loanWithdrawn = false;
+  loan.loanRepaid = false;
+  loan.loanWithdrawnAmount = BigInt.fromI32(0);
+
+  // lender withdraw
+  loan.refundsWithdrawnAmount = BigInt.fromI32(0);
+  loan.loanFullyRefunded = false;
+  loan.refundStarted = false;
+
+  // metadata
+  loan.createdBlockNumber = event.block.number;
+  loan.createdTimestamp = event.block.timestamp;
+
+  loan.save();
+
+  // NewLoan.create(event.params.contractAddr);
+
+  // let userId = event.params.originator.toHex();
+  // let user = User.load(userId);
+
+  // let requests = user.loanRequests;
+  // requests.push(loan.id);
+  // user.loanRequests = requests;
+
+  // user.save();
+}
+
+export function handleLoanWithRangeCreated(
+  event: LoanCreatedWithRangeEvent
+): void {
+  let loanAddress = event.params.contractAddr.toHex();
+
+  // create loan
+  let loan = new Loan(loanAddress);
+  let loanContract = LoanContract.bind(event.params.contractAddr);
+
+  let auctionStartTimestamp = loanContract.auctionStartTimestamp();
+  let auctionEndTimestamp = loanContract.auctionEndTimestamp();
+  let auctionLength = loanContract.auctionLength();
+  let termEndTimestamp = loanContract.termEndTimestamp();
+  let termLength = loanContract.termLength();
+  let operatorFee = loanContract.operatorFee();
+
+  // loan status
+  loan.investors = [];
+  loan.investorCount = 0;
+  loan.address = event.params.contractAddr;
+  loan.originator = event.params.originator;
+  loan.minAmount = event.params.minAmount;
+  loan.maxAmount = event.params.maxAmount;
+  loan.maxInterestRate = event.params.maxInterestRate;
+  loan.state = 0; //'CREATED'
+  loan.borrowerDebt = BigInt.fromI32(0);
+  loan.loanFundsUnlocked = false;
+  loan.operatorFee = operatorFee;
+  loan.minInterestRate = event.params.minInterestRate;
 
   // loan Funding/Auction fase
   loan.auctionStartTimestamp = auctionStartTimestamp;

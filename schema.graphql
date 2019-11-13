@@ -62,6 +62,7 @@ type Loan @entity {
   originator: Bytes! # address
   minAmount: BigInt! # uint256
   maxAmount: BigInt! # uint256
+  minInterestRate: BigInt! # uint256
   maxInterestRate: BigInt! # uint256
   state: Int! #enum
   borrowerDebt: BigInt!
