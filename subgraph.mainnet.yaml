@@ -157,7 +157,7 @@ dataSources:
               handler: handleLoanFundsUnlocked
             - event: OperatorWithdrawn(uint256,address)
               handler: handleOperatorWithdrawn
-  kind: ethereum/contract
+  - kind: ethereum/contract
     name: LoanContractDispatcherWithRange
     network: kovan
     source:
@@ -176,7 +176,7 @@ dataSources:
           file: ./abis/LoanContractDispatcherWithRange.json
       eventHandlers:
         - event: LoanContractCreated(address,address,indexed address,uint256,uint256,uint256,uint256,uint256,indexed address,uint256,uint256)
-          handler: handleLoanContractCreated 
+          handler: handleLoanContractCreated
         - event: MinAmountUpdated(uint256,address)
           handler: handleMinAmountUpdated
         - event: MaxAmountUpdated(uint256,address)
@@ -239,4 +239,3 @@ dataSources:
               handler: handleLoanFundsUnlocked
             - event: OperatorWithdrawn(uint256,address)
               handler: handleOperatorWithdrawn
-
