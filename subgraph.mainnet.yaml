@@ -176,7 +176,7 @@ dataSources:
           file: ./abis/LoanContractDispatcherWithRange.json
       eventHandlers:
         - event: LoanContractCreated(address,address,indexed address,uint256,uint256,uint256,uint256,uint256,indexed address,uint256,uint256)
-          handler: handleLoanContractCreated
+          handler: handleLoanContractWithRangeCreated
         - event: MinAmountUpdated(uint256,address)
           handler: handleMinAmountUpdated
         - event: MaxAmountUpdated(uint256,address)
@@ -187,7 +187,7 @@ dataSources:
           handler: handleMaxInterestRateUpdated
         - event: OperatorFeeUpdated(uint256,address,address)
           handler: handleOperatorFeeUpdated
-      file: ./src/mappings/loandispatcher.ts
+      file: ./src/mappings/loandispatcherwithrange.ts
     templates:
       - kind: ethereum/contract
         name: LoanContractWithRange
@@ -198,7 +198,7 @@ dataSources:
           kind: ethereum/events
           apiVersion: 0.0.3
           language: wasm/assemblyscript
-          file: ./src/mappings/loan.ts
+          file: ./src/mappings/loanwithrange.ts
           entities:
             - Loan
             - User

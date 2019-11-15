@@ -1,6 +1,6 @@
 import {
-  LoanContract,
-  LoanCreated as LoanCreatedEvent,
+  LoanCreated as LoanCreatedWithRangeEvent,
+  LoanContractWithRange as LoanContract,
   MinimumFundingReached as MinimumFundingReachedEvent,
   FullyFunded as FullyFundedEvent,
   Funded as FundedEvent,
@@ -16,12 +16,14 @@ import {
   FundsUnlockedWithdrawn as FundsUnlockedWithdrawnEvent,
   FullyFundsUnlockedWithdrawn as FullyFundsUnlockedWithdrawnEvent,
   LoanFundsUnlocked as LoanFundsUnlockedEvent
-} from "../../generated/LoanContractDispatcher/templates/LoanContract/LoanContract";
+} from "../../generated/LoanContractDispatcherWithRange/templates/LoanContractWithRange/LoanContractWithRange";
 import { Loan, User, Funding, Raise } from "../../generated/schema";
 import { log, BigInt } from "@graphprotocol/graph-ts";
 // import { LoanContract as NewLoan } from "../../generated/LoanContractDispatcher/templates";
 
-export function handleLoanCreated(event: LoanCreatedEvent): void {
+export function handleLoanWithRangeCreated(
+  event: LoanCreatedWithRangeEvent
+): void {
   let loanAddress = event.params.contractAddr.toHex();
 
   // create loan
@@ -47,7 +49,7 @@ export function handleLoanCreated(event: LoanCreatedEvent): void {
   loan.borrowerDebt = BigInt.fromI32(0);
   loan.loanFundsUnlocked = false;
   loan.operatorFee = operatorFee;
-  loan.minInterestRate = BigInt.fromI32(0);
+  loan.minInterestRate = event.params.minInterestRate;
 
   // loan Funding/Auction fase
   loan.auctionStartTimestamp = auctionStartTimestamp;
