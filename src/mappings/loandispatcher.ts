@@ -23,7 +23,7 @@ export function handleLoanContractCreated(
     loanDispatcher.loans = [];
     loanDispatcher.loansCount = 0;
   }
-
+  log.log(1, "1");
   let loanContractDispatcher = LoanContractDispatcher.bind(dispatcherAddress);
   let minAuctionLength = loanContractDispatcher.minAuctionLength();
   let minTermLength = loanContractDispatcher.minTermLength();
@@ -36,6 +36,7 @@ export function handleLoanContractCreated(
   loanDispatcher.maxInterestRate = event.params.maxInterestRate;
   loanDispatcher.operatorFee = event.params.operatorFee;
 
+  log.log(1, "2");
   let loanAddress = event.params.contractAddress.toHex();
 
   let loans = loanDispatcher.loans;
@@ -46,6 +47,7 @@ export function handleLoanContractCreated(
     loanDispatcher.loansCount = loanDispatcher.loansCount + 1;
     loanDispatcher.save();
 
+    log.log(1, "3");
     // create loan
     let loan = new Loan(loanAddress);
 
@@ -64,6 +66,8 @@ export function handleLoanContractCreated(
     loan.operatorFee = BigInt.fromI32(0);
     loan.minInterestRate = BigInt.fromI32(0);
 
+    log.log(1, "4");
+
     // loan Funding/Auction fase
     loan.auctionStartTimestamp = BigInt.fromI32(0);
     loan.auctionEndTimestamp = BigInt.fromI32(0);
@@ -76,6 +80,8 @@ export function handleLoanContractCreated(
     loan.auctionEnded = false;
     loan.auctionFailed = false;
 
+    log.log(1, "5");
+
     // borrower withdraw
     loan.operatorBalance = BigInt.fromI32(0);
     loan.operatorFeeWithdrawn = false;
@@ -83,28 +89,41 @@ export function handleLoanContractCreated(
     loan.loanRepaid = false;
     loan.loanWithdrawnAmount = BigInt.fromI32(0);
 
+    log.log(1, "6");
+
     // lender withdraw
     loan.refundsWithdrawnAmount = BigInt.fromI32(0);
     loan.loanFullyRefunded = false;
     loan.refundStarted = false;
 
+    log.log(1, "7");
+
     // metadata
     loan.createdBlockNumber = event.block.number;
     loan.createdTimestamp = event.block.timestamp;
 
+    log.log(1, "8");
     loan.save();
 
+    log.log(1, "9");
     NewLoan.create(event.params.contractAddress);
+    log.log(1, "10");
 
     // create user
     let userId = event.params.originator.toHex();
+    log.log(1, "11");
     let user = User.load(userId);
+    log.log(1, "12");
 
     let requests = user.loanRequests;
+    log.log(1, "user id" + user.id.toString());
     requests.push(loan.id);
+
+    log.log(1, "13");
     user.loanRequests = requests;
 
     user.save();
+    log.log(1, "14");
   } else {
     loanDispatcher.save();
   }
