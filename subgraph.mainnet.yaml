@@ -159,9 +159,9 @@ dataSources:
               handler: handleOperatorWithdrawn
   - kind: ethereum/contract
     name: LoanContractDispatcherWithRange
-    network: kovan
+    network: mainnet
     source:
-      address: "0xa4D50BF89A80a6f471906989e0C5d4b62027995A"
+      address: "0x1caea0585fce9bf518df0b8d71a36656f554b68c"
       abi: LoanContractDispatcherWithRange
     mapping:
       kind: ethereum/events
