@@ -1,18 +1,18 @@
 import {
-  LoanContractCreated as LoanContractCreatedEvent,
   MinAmountUpdated as MinAmountUpdatedEvent,
   MaxAmountUpdated as MaxAmountUpdatedEvent,
   MinInterestRateUpdated as MinInterestRateUpdatedEvent,
   MaxInterestRateUpdated as MaxInterestRateUpdatedEvent,
   OperatorFeeUpdated as OperatorFeeUpdatedEvent
-} from "../../generated/LoanContractDispatcher/LoanContractDispatcher";
+} from "../../generated/LoanContractDispatcherWithRange/LoanContractDispatcherWithRange";
+import { LoanContractCreated as LoanContractWithRangeCreatedEvent } from "../../generated/LoanContractDispatcherWithRange/LoanContractDispatcherWithRange";
 import { LoanDispatcher, Loan, User } from "../../generated/schema";
-import { LoanContract as NewLoan } from "../../generated/LoanContractDispatcher/templates";
-import { LoanContractDispatcher } from "../../generated/LoanContractDispatcher/LoanContractDispatcher";
+import { LoanContractWithRange as NewLoan } from "../../generated/LoanContractDispatcherWithRange/templates";
+import { LoanContractDispatcherWithRange as LoanContractDispatcher } from "../../generated/LoanContractDispatcherWithRange/LoanContractDispatcherWithRange";
 import { BigInt, log } from "@graphprotocol/graph-ts";
 
-export function handleLoanContractCreated(
-  event: LoanContractCreatedEvent
+export function handleLoanContractWithRangeCreated(
+  event: LoanContractWithRangeCreatedEvent
 ): void {
   let dispatcherAddress = event.params.loanDispatcher;
   let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
@@ -23,6 +23,7 @@ export function handleLoanContractCreated(
     loanDispatcher.loans = [];
     loanDispatcher.loansCount = 0;
   }
+
   let loanContractDispatcher = LoanContractDispatcher.bind(dispatcherAddress);
   let minAuctionLength = loanContractDispatcher.minAuctionLength();
   let minTermLength = loanContractDispatcher.minTermLength();
@@ -61,7 +62,7 @@ export function handleLoanContractCreated(
     loan.borrowerDebt = BigInt.fromI32(0);
     loan.loanFundsUnlocked = false;
     loan.operatorFee = BigInt.fromI32(0);
-    loan.minInterestRate = BigInt.fromI32(0);
+    loan.minInterestRate = event.params.minInterestRate;
 
     // loan Funding/Auction fase
     loan.auctionStartTimestamp = BigInt.fromI32(0);
@@ -101,7 +102,6 @@ export function handleLoanContractCreated(
 
     let requests = user.loanRequests;
     requests.push(loan.id);
-
     user.loanRequests = requests;
 
     user.save();
