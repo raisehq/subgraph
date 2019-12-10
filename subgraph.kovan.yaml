@@ -27,7 +27,7 @@ dataSources:
     name: DepositRegistry
     network: kovan
     source:
-      address: "0xcbF9D80BcBFcA6bf3418AcCff6730384387b6f52"
+      address: "0x27C5e8Beec7da088618851C308BCbd4e7ad46a65"
       abi: DepositRegistry
     mapping:
       kind: ethereum/events
@@ -50,7 +50,7 @@ dataSources:
     name: ReferralTracker
     network: kovan
     source:
-      address: "0x60b835d080EA7D1872390632A03532f6bAe859DF"
+      address: "0xE50ECba2FaA475B58221E5e77113C49b0810A610"
       abi: ReferralTracker
     mapping:
       kind: ethereum/events
@@ -79,7 +79,7 @@ dataSources:
     name: LoanContractDispatcher
     network: kovan
     source:
-      address: "0x1e7aCb32a32EA61bb21418486428202d4DdBc906"
+      address: "0xE50ECba2FaA475B58221E5e77113C49b0810A610"
       abi: LoanContractDispatcher
     mapping:
       kind: ethereum/events
