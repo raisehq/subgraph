@@ -191,7 +191,7 @@ dataSources:
     templates:
       - kind: ethereum/contract
         name: LoanContractWithRange
-        network: kovan
+        network: mainnet
         source:
           abi: LoanContractWithRange
         mapping:
