@@ -46,35 +46,35 @@ dataSources:
         - event: AddressUnlockedForWithdrawal(address,indexed address)
           handler: handleAddressUnlockedForWithdrawal
       file: ./src/mappings/depositregistry.ts
-#  - kind: ethereum/contract
-#    name: ReferralTracker
-#    network: kovan
-#    source:
-#      address: "0xE50ECba2FaA475B58221E5e77113C49b0810A610"
-#      abi: ReferralTracker
-#    mapping:
-#      kind: ethereum/events
-#      apiVersion: 0.0.3
-#      language: wasm/assemblyscript
-#      entities:
-#        - User
-#      abis:
-#        - name: ReferralTracker
-#          file: ./abis/ReferralTracker.json
-#      eventHandlers:
-#        - event: ReferralRegistered(address,indexed address,indexed address)
-#          handler: handleReferralRegistered
-#        - event: ReferralBonusWithdrawn(address,indexed address,uint256,uint256)
-#          handler: handleReferralBonusWithdrawn
-#        - event: FundsAdded(address,address,uint256)
-#          handler: handleFundsAdded
-#        - event: FundsRemoved(address,address,uint256)
-#          handler: handleFundsRemoved
-#        - event: Paused(address)
-#          handler: handlePaused
-#        - event: Unpaused(address)
-#          handler: handleUnpaused
-#      file: ./src/mappings/referraltracker.ts
+  #  - kind: ethereum/contract
+  #    name: ReferralTracker
+  #    network: kovan
+  #    source:
+  #      address: "0xE50ECba2FaA475B58221E5e77113C49b0810A610"
+  #      abi: ReferralTracker
+  #    mapping:
+  #      kind: ethereum/events
+  #      apiVersion: 0.0.3
+  #      language: wasm/assemblyscript
+  #      entities:
+  #        - User
+  #      abis:
+  #        - name: ReferralTracker
+  #          file: ./abis/ReferralTracker.json
+  #      eventHandlers:
+  #        - event: ReferralRegistered(address,indexed address,indexed address)
+  #          handler: handleReferralRegistered
+  #        - event: ReferralBonusWithdrawn(address,indexed address,uint256,uint256)
+  #          handler: handleReferralBonusWithdrawn
+  #        - event: FundsAdded(address,address,uint256)
+  #          handler: handleFundsAdded
+  #        - event: FundsRemoved(address,address,uint256)
+  #          handler: handleFundsRemoved
+  #        - event: Paused(address)
+  #          handler: handlePaused
+  #        - event: Unpaused(address)
+  #          handler: handleUnpaused
+  #      file: ./src/mappings/referraltracker.ts
   - kind: ethereum/contract
     name: LoanContractDispatcher
     network: kovan
@@ -162,6 +162,88 @@ dataSources:
     network: kovan
     source:
       address: "0x8C6b1E266d38505dd2A89161aBaA960B9C7Ed62e"
+      abi: LoanContractDispatcherWithRange
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      entities:
+        - LoanDispatcher
+        - Loan
+        - User
+      abis:
+        - name: LoanContractDispatcherWithRange
+          file: ./abis/LoanContractDispatcherWithRange.json
+      eventHandlers:
+        - event: LoanContractCreated(address,address,indexed address,uint256,uint256,uint256,uint256,uint256,indexed address,uint256,uint256)
+          handler: handleLoanContractWithRangeCreated
+        - event: MinAmountUpdated(uint256,address)
+          handler: handleMinAmountUpdated
+        - event: MaxAmountUpdated(uint256,address)
+          handler: handleMaxAmountUpdated
+        - event: MinInterestRateUpdated(uint256,address)
+          handler: handleMinInterestRateUpdated
+        - event: MaxInterestRateUpdated(uint256,address)
+          handler: handleMaxInterestRateUpdated
+        - event: OperatorFeeUpdated(uint256,address,address)
+          handler: handleOperatorFeeUpdated
+      file: ./src/mappings/loandispatcherwithrange.ts
+    templates:
+      - kind: ethereum/contract
+        name: LoanContractWithRange
+        network: kovan
+        source:
+          abi: LoanContractWithRange
+        mapping:
+          kind: ethereum/events
+          apiVersion: 0.0.3
+          language: wasm/assemblyscript
+          file: ./src/mappings/loanwithrange.ts
+          entities:
+            - Loan
+            - User
+            - Funding
+          abis:
+            - name: LoanContractWithRange
+              file: ./abis/LoanContractWithRange.json
+          eventHandlers:
+            - event: LoanCreated(indexed address,indexed address,uint256,uint256,uint256,uint256,uint256,uint256,indexed address,uint256)
+              handler: handleLoanWithRangeCreated
+            - event: MinimumFundingReached(address,uint256,uint256)
+              handler: handleMinimumFundingReached
+            - event: FullyFunded(address,uint256,uint256,uint256,uint256)
+              handler: handleFullyFunded
+            - event: Funded(address,indexed address,uint256,uint256,uint256)
+              handler: handleFunded
+            - event: LoanRepaid(address,indexed uint256)
+              handler: handleLoanRepaid
+            - event: FailedToFund(address,indexed address,uint256)
+              handler: handleFailedToFund
+            - event: RepaymentWithdrawn(address,indexed address,uint256)
+              handler: handleRepaymentWithdrawn
+            - event: RefundWithdrawn(address,indexed address,uint256)
+              handler: handleRefundWithdrawn
+            - event: FullyRefunded(address)
+              handler: handleFullyRefunded
+            - event: LoanFundsWithdrawn(address,indexed address,uint256)
+              handler: handleLoanFundsWithdrawn
+            - event: LoanDefaulted(address)
+              handler: handleLoanDefaulted
+            - event: AuctionSuccessful(address,uint256,uint256,uint256,uint256,uint256)
+              handler: handleAuctionSuccessful
+            - event: FundsUnlockedWithdrawn(address,indexed address,uint256)
+              handler: handleFundsUnlockedWithdrawn
+            - event: FullyFundsUnlockedWithdrawn(address)
+              handler: handleFullyFundsUnlockedWithdrawn
+            - event: LoanFundsUnlocked(uint256)
+              handler: handleLoanFundsUnlocked
+            - event: OperatorWithdrawn(uint256,address)
+              handler: handleOperatorWithdrawn
+  - kind: ethereum/contract
+    name: LoanContractDispatcherWithRangeAndPublic
+    network: kovan
+    source:
+      address: "0xC61FEDA7Fc8693ceb86A3c45E6D7348bE2b8dCB9"
       abi: LoanContractDispatcherWithRange
     mapping:
       kind: ethereum/events
