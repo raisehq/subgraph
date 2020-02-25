@@ -351,7 +351,7 @@ dataSources:
           handler: handleMaxInterestRateUpdated
         - event: OperatorFeeUpdated(uint256,address,address)
           handler: handleOperatorFeeUpdated
-      file: ./src/mappings/loandispatcherwithrange.ts
+      file: ./src/mappings/loandispatcherwithdeposit.ts
     templates:
       - kind: ethereum/contract
         name: LoanContractWithDeposit
@@ -362,7 +362,7 @@ dataSources:
           kind: ethereum/events
           apiVersion: 0.0.3
           language: wasm/assemblyscript
-          file: ./src/mappings/loanwithrange.ts
+          file: ./src/mappings/loanwithdeposit.ts
           entities:
             - Loan
             - User
