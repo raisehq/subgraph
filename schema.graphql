@@ -49,6 +49,7 @@ type LoanDispatcher @entity {
   operatorFee: BigInt!
   minTermLength: BigInt!
   minAuctionLength: BigInt!
+  acceptedTokens: [Bytes!]
 }
 
 type Loan @entity {
@@ -102,6 +103,7 @@ type Loan @entity {
   #metadata
   createdBlockNumber: BigInt!
   createdTimestamp: BigInt!
+  tokenAddress: Bytes #must be able to be empty for compatibility
 }
 
 type Funding @entity {

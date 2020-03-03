@@ -27,7 +27,7 @@ dataSources:
     name: DepositRegistry
     network: kovan
     source:
-      address: "0xcbF9D80BcBFcA6bf3418AcCff6730384387b6f52"
+      address: "0xc3A15Dac90b99095a9cf128caaF2828CE082e134"
       abi: DepositRegistry
     mapping:
       kind: ethereum/events
@@ -208,6 +208,92 @@ dataSources:
               file: ./abis/LoanContractWithRange.json
           eventHandlers:
             - event: LoanCreated(indexed address,indexed address,uint256,uint256,uint256,uint256,uint256,uint256,indexed address,uint256)
+              handler: handleLoanWithRangeCreated
+            - event: MinimumFundingReached(address,uint256,uint256)
+              handler: handleMinimumFundingReached
+            - event: FullyFunded(address,uint256,uint256,uint256,uint256)
+              handler: handleFullyFunded
+            - event: Funded(address,indexed address,uint256,uint256,uint256)
+              handler: handleFunded
+            - event: LoanRepaid(address,indexed uint256)
+              handler: handleLoanRepaid
+            - event: FailedToFund(address,indexed address,uint256)
+              handler: handleFailedToFund
+            - event: RepaymentWithdrawn(address,indexed address,uint256)
+              handler: handleRepaymentWithdrawn
+            - event: RefundWithdrawn(address,indexed address,uint256)
+              handler: handleRefundWithdrawn
+            - event: FullyRefunded(address)
+              handler: handleFullyRefunded
+            - event: LoanFundsWithdrawn(address,indexed address,uint256)
+              handler: handleLoanFundsWithdrawn
+            - event: LoanDefaulted(address)
+              handler: handleLoanDefaulted
+            - event: AuctionSuccessful(address,uint256,uint256,uint256,uint256,uint256)
+              handler: handleAuctionSuccessful
+            - event: FundsUnlockedWithdrawn(address,indexed address,uint256)
+              handler: handleFundsUnlockedWithdrawn
+            - event: FullyFundsUnlockedWithdrawn(address)
+              handler: handleFullyFundsUnlockedWithdrawn
+            - event: LoanFundsUnlocked(uint256)
+              handler: handleLoanFundsUnlocked
+            - event: OperatorWithdrawn(uint256,address)
+              handler: handleOperatorWithdrawn
+  - kind: ethereum/contract
+    name: LoanContractDispatcherV6
+    network: kovan
+    source:
+      address: "0xb23Be7d1EfeAb16b80b481633749D55763B9d2b8"
+      abi: LoanContractDispatcherV6
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      entities:
+        - LoanDispatcher
+        - Loan
+        - User
+      abis:
+        - name: LoanContractDispatcherV6
+          file: ./abis/LoanContractDispatcherV6.json
+      eventHandlers:
+        - event: LoanContractCreated(address,address,indexed address,uint256,uint256,uint256,uint256,uint256,indexed address,uint256,uint256,indexed address)
+          handler: handleLoanContractWithRangeCreated
+        - event: MinAmountUpdated(uint256,address)
+          handler: handleMinAmountUpdated
+        - event: MaxAmountUpdated(uint256,address)
+          handler: handleMaxAmountUpdated
+        - event: MinInterestRateUpdated(uint256,address)
+          handler: handleMinInterestRateUpdated
+        - event: MaxInterestRateUpdated(uint256,address)
+          handler: handleMaxInterestRateUpdated
+        - event: OperatorFeeUpdated(uint256,address,address)
+          handler: handleOperatorFeeUpdated
+        - event: AddTokenToAcceptedList(address)
+          handler: handleAddTokenToAcceptedList
+        - event: RemoveTokenFromAcceptedList(address)
+          handler: handleRemoveTokenFromAcceptedList
+      file: ./src/mappings/loandispatcherV6.ts
+    templates:
+      - kind: ethereum/contract
+        name: LoanContractV6
+        network: kovan
+        source:
+          abi: LoanContractV6
+        mapping:
+          kind: ethereum/events
+          apiVersion: 0.0.3
+          language: wasm/assemblyscript
+          file: ./src/mappings/loanV6.ts
+          entities:
+            - Loan
+            - User
+            - Funding
+          abis:
+            - name: LoanContractV6
+              file: ./abis/LoanContractV6.json
+          eventHandlers:
+            - event: LoanCreated(indexed address,indexed address,uint256,uint256,uint256,uint256,uint256,uint256,indexed address,uint256,address)
               handler: handleLoanWithRangeCreated
             - event: MinimumFundingReached(address,uint256,uint256)
               handler: handleMinimumFundingReached
