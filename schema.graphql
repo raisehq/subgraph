@@ -50,6 +50,10 @@ type LoanDispatcher @entity {
   minTermLength: BigInt!
   minAuctionLength: BigInt!
   acceptedTokens: [Bytes!]
+
+  auth: Bytes
+  DAIProxyAddress: Bytes
+  swapFactory: Bytes
 }
 
 type Loan @entity {

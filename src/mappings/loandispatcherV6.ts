@@ -4,14 +4,36 @@ import {
   MinInterestRateUpdated as MinInterestRateUpdatedEvent,
   MaxInterestRateUpdated as MaxInterestRateUpdatedEvent,
   OperatorFeeUpdated as OperatorFeeUpdatedEvent,
-	AddTokenToAcceptedList as AddTokenToAcceptedListEvent,
-	RemoveTokenFromAcceptedList as RemoveTokenFromAcceptedListEvent
+  AddTokenToAcceptedList as AddTokenToAcceptedListEvent,
+  RemoveTokenFromAcceptedList as RemoveTokenFromAcceptedListEvent,
+  MinAuctionLengthUpdated as MinAuctionLengthUpdatedEvent,
+  MinTermLengthUpdated as MinTermLengthUpdatedEvent,
+  LoanDispatcherCreated as LoanDispatcherCreatedEvent,
+  AuthAddressUpdated as AuthAddressUpdatedEvent,
+  DaiProxyAddressUpdated as DaiProxyAddressUpdatedEvent,
+  SwapFactoryAddressUpdated as SwapFactoryAddressUpdatedEvent,
+  LoanContractCreated as LoanContractWithRangeCreatedEvent,
+  LoanContractDispatcherWithRange as LoanContractDispatcher
 } from "../../generated/LoanContractDispatcherWithRange/LoanContractDispatcherWithRange";
-import { LoanContractCreated as LoanContractWithRangeCreatedEvent } from "../../generated/LoanContractDispatcherWithRange/LoanContractDispatcherWithRange";
 import { LoanDispatcher, Loan, User } from "../../generated/schema";
 import { LoanContractWithRange as NewLoan } from "../../generated/LoanContractDispatcherWithRange/templates";
-import { LoanContractDispatcherWithRange as LoanContractDispatcher } from "../../generated/LoanContractDispatcherWithRange/LoanContractDispatcherWithRange";
 import { BigInt, log } from "@graphprotocol/graph-ts";
+
+export function handleLoanDispatcherCreated(
+  event: LoanDispatcherCreatedEvent
+): void {
+  let dispatcherAddress = event.params.loanDispatcher;
+  let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
+  if (loanDispatcher == null) {
+    loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
+    loanDispatcher.address = dispatcherAddress;
+    loanDispatcher.loans = [];
+    loanDispatcher.loansCount = 0;
+    loanDispatcher.acceptedTokens = [];
+  }
+
+  loanDispatcher.save();
+}
 
 export function handleLoanContractWithRangeCreated(
   event: LoanContractWithRangeCreatedEvent
@@ -24,7 +46,7 @@ export function handleLoanContractWithRangeCreated(
     loanDispatcher.address = dispatcherAddress;
     loanDispatcher.loans = [];
     loanDispatcher.loansCount = 0;
-		loanDispatcher.acceptedTokens = [];
+    loanDispatcher.acceptedTokens = [];
   }
 
   let loanContractDispatcher = LoanContractDispatcher.bind(dispatcherAddress);
@@ -122,7 +144,7 @@ export function handleMinAmountUpdated(event: MinAmountUpdatedEvent): void {
     loanDispatcher.address = dispatcherAddress;
     loanDispatcher.loans = [];
     loanDispatcher.loansCount = 0;
-		loanDispatcher.acceptedTokens = [];
+    loanDispatcher.acceptedTokens = [];
   }
   loanDispatcher.minAmount = event.params.minAmount;
   loanDispatcher.save();
@@ -136,7 +158,7 @@ export function handleMaxAmountUpdated(event: MaxAmountUpdatedEvent): void {
     loanDispatcher.address = dispatcherAddress;
     loanDispatcher.loans = [];
     loanDispatcher.loansCount = 0;
-		loanDispatcher.acceptedTokens = [];
+    loanDispatcher.acceptedTokens = [];
   }
   loanDispatcher.maxAmount = event.params.maxAmount;
   loanDispatcher.save();
@@ -152,7 +174,7 @@ export function handleMinInterestRateUpdated(
     loanDispatcher.address = dispatcherAddress;
     loanDispatcher.loans = [];
     loanDispatcher.loansCount = 0;
-		loanDispatcher.acceptedTokens = [];
+    loanDispatcher.acceptedTokens = [];
   }
   loanDispatcher.minInterestRate = event.params.minInterestRate;
   loanDispatcher.save();
@@ -168,7 +190,7 @@ export function handleMaxInterestRateUpdated(
     loanDispatcher.address = dispatcherAddress;
     loanDispatcher.loans = [];
     loanDispatcher.loansCount = 0;
-		loanDispatcher.acceptedTokens = [];
+    loanDispatcher.acceptedTokens = [];
   }
   loanDispatcher.maxInterestRate = event.params.maxInterestRate;
   loanDispatcher.save();
@@ -182,46 +204,94 @@ export function handleOperatorFeeUpdated(event: OperatorFeeUpdatedEvent): void {
     loanDispatcher.address = dispatcherAddress;
     loanDispatcher.loans = [];
     loanDispatcher.loansCount = 0;
-		loanDispatcher.acceptedTokens = [];
+    loanDispatcher.acceptedTokens = [];
   }
   loanDispatcher.operatorFee = event.params.operatorFee;
   loanDispatcher.save();
 }
 
-export function handleAddTokenToAcceptedList(event: AddTokenToAcceptedListEvent): void {
-	let dispatcherAddress = event.params.loanDispatcher;
+export function handleAddTokenToAcceptedList(
+  event: AddTokenToAcceptedListEvent
+): void {
+  let dispatcherAddress = event.params.loanDispatcher;
   let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
   if (loanDispatcher == null) {
     loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
     loanDispatcher.address = dispatcherAddress;
     loanDispatcher.loans = [];
     loanDispatcher.loansCount = 0;
-		loanDispatcher.acceptedTokens = [];
+    loanDispatcher.acceptedTokens = [];
   }
 
-	let acceptedTokens = loanDispatcher.acceptedTokens;
-	acceptedTokens.push(event.params.tokenAddress);
+  let acceptedTokens = loanDispatcher.acceptedTokens;
+  acceptedTokens.push(event.params.tokenAddress);
 
-	loanDispatcher.acceptedTokens = acceptedTokens;
+  loanDispatcher.acceptedTokens = acceptedTokens;
 
   loanDispatcher.save();
 }
 
-export function handleRemoveTokenFromAcceptedList(event: RemoveTokenFromAcceptedListEvent): void {
-	let dispatcherAddress = event.params.loanDispatcher;
+export function handleRemoveTokenFromAcceptedList(
+  event: RemoveTokenFromAcceptedListEvent
+): void {
+  let dispatcherAddress = event.params.loanDispatcher;
   let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
   if (loanDispatcher == null) {
     loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
     loanDispatcher.address = dispatcherAddress;
     loanDispatcher.loans = [];
     loanDispatcher.loansCount = 0;
-		loanDispatcher.acceptedTokens = [];
+    loanDispatcher.acceptedTokens = [];
   }
-	
-	let acceptedTokens = loanDispatcher.acceptedTokens;
-	let newAcceptedTokens = acceptedTokens.splice( acceptedTokens.indexOf(event.params.tokenAddress), 1 );
 
-	loanDispatcher.acceptedTokens = newAcceptedTokens;
+  let acceptedTokens = loanDispatcher.acceptedTokens;
+  let newAcceptedTokens = acceptedTokens.splice(
+    acceptedTokens.indexOf(event.params.tokenAddress),
+    1
+  );
+
+  loanDispatcher.acceptedTokens = newAcceptedTokens;
 
   loanDispatcher.save();
 }
+
+export function handleMinAuctionLengthUpdated(
+  event: MinAuctionLengthUpdatedEvent
+): void {
+  let dispatcherAddress = event.params.loanDispatcher;
+  let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
+  if (loanDispatcher == null) {
+    loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
+    loanDispatcher.address = dispatcherAddress;
+    loanDispatcher.loans = [];
+    loanDispatcher.loansCount = 0;
+    loanDispatcher.acceptedTokens = [];
+  }
+
+  loanDispatcher.save();
+}
+export function handleMinTermLengthUpdated(
+  event: MinTermLengthUpdatedEvent
+): void {
+  let dispatcherAddress = event.params.loanDispatcher;
+  let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
+  if (loanDispatcher == null) {
+    loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
+    loanDispatcher.address = dispatcherAddress;
+    loanDispatcher.loans = [];
+    loanDispatcher.loansCount = 0;
+    loanDispatcher.acceptedTokens = [];
+  }
+
+  loanDispatcher.save();
+}
+
+export function handleAuthAddressUpdated(
+  event: AuthAddressUpdatedEvent
+): void {}
+export function handleDaiProxyAddressUpdated(
+  event: DaiProxyAddressUpdatedEvent
+): void {}
+export function handleSwapFactoryAddressUpdated(
+  event: SwapFactoryAddressUpdatedEvent
+): void {}

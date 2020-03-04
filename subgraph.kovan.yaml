@@ -273,6 +273,18 @@ dataSources:
           handler: handleAddTokenToAcceptedList
         - event: RemoveTokenFromAcceptedList(address)
           handler: handleRemoveTokenFromAcceptedList
+        - event: MinTermLengthUpdated(uint256,address)
+          handler: handleMinTermLengthUpdated
+        - event: MinAuctionLengthUpdated(uint256,address)
+          handler: handleMinAuctionLengthUpdated
+        - event: LoanDispatcherCreated(address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,uint256)
+          handler: handleLoanDispatcherCreated
+        - event: AuthAddressUpdated(uint256,address)
+          handler: handleAuthAddressUpdated
+        - event: DaiProxyAddressUpdated(uint256,address)
+          handler: handleDaiProxyAddressUpdated
+        - event: SwapFactoryAddressUpdated(uint256,address)
+          handler: handleSwapFactoryAddressUpdated
       file: ./src/mappings/loandispatcherV6.ts
     templates:
       - kind: ethereum/contract
