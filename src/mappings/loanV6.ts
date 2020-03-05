@@ -78,7 +78,7 @@ export function handleLoanWithRangeCreated(
   // metadata
   loan.createdBlockNumber = event.block.number;
   loan.createdTimestamp = event.block.timestamp;
-  loan.tokenAddress = event.block.tokenAddress;
+  loan.tokenAddress = event.params.tokenAddress;
 
   loan.save();
 

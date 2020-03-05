@@ -23,14 +23,22 @@ export function handleLoanDispatcherCreated(
   event: LoanDispatcherCreatedEvent
 ): void {
   let dispatcherAddress = event.params.loanDispatcher;
-  let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
-  if (loanDispatcher == null) {
-    loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
-    loanDispatcher.address = dispatcherAddress;
-    loanDispatcher.loans = [];
-    loanDispatcher.loansCount = 0;
-    loanDispatcher.acceptedTokens = [];
-  }
+  let loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
+  loanDispatcher.address = dispatcherAddress;
+  loanDispatcher.loans = [];
+  loanDispatcher.loansCount = 0;
+  loanDispatcher.acceptedTokens = [];
+
+  loanDispatcher.auth = event.params.auth;
+  loanDispatcher.DAIProxyAddress = event.params.DAIProxyAddress;
+  loanDispatcher.swapFactory = event.params.swapFactory;
+  loanDispatcher.minAuctionLength = event.params.minAuctionLength;
+  loanDispatcher.minTermLength = event.params.minTermLength;
+  loanDispatcher.operatorFee = event.params.operatorFee;
+  loanDispatcher.minInterestRate = event.params.minInterestRate;
+  loanDispatcher.maxInterestRate = event.params.maxInterestRate;
+  loanDispatcher.maxAmount = event.params.maxAmount;
+  loanDispatcher.minAmount = event.params.minAmount;
 
   loanDispatcher.save();
 }
@@ -40,26 +48,6 @@ export function handleLoanContractWithRangeCreated(
 ): void {
   let dispatcherAddress = event.params.loanDispatcher;
   let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
-
-  if (loanDispatcher == null) {
-    loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
-    loanDispatcher.address = dispatcherAddress;
-    loanDispatcher.loans = [];
-    loanDispatcher.loansCount = 0;
-    loanDispatcher.acceptedTokens = [];
-  }
-
-  let loanContractDispatcher = LoanContractDispatcher.bind(dispatcherAddress);
-  let minAuctionLength = loanContractDispatcher.minAuctionLength();
-  let minTermLength = loanContractDispatcher.minTermLength();
-
-  loanDispatcher.minAuctionLength = minAuctionLength;
-  loanDispatcher.minTermLength = minTermLength;
-  loanDispatcher.minAmount = event.params.minAmount;
-  loanDispatcher.maxAmount = event.params.maxAmount;
-  loanDispatcher.minInterestRate = BigInt.fromI32(0);
-  loanDispatcher.maxInterestRate = event.params.maxInterestRate;
-  loanDispatcher.operatorFee = event.params.operatorFee;
 
   let loanAddress = event.params.contractAddress.toHex();
 
@@ -116,7 +104,7 @@ export function handleLoanContractWithRangeCreated(
     // metadata
     loan.createdBlockNumber = event.block.number;
     loan.createdTimestamp = event.block.timestamp;
-    loan.tokenAddress = event.block.tokenAddress;
+    loan.tokenAddress = event.params.tokenAddress;
 
     loan.save();
 
@@ -139,13 +127,7 @@ export function handleLoanContractWithRangeCreated(
 export function handleMinAmountUpdated(event: MinAmountUpdatedEvent): void {
   let dispatcherAddress = event.params.loanDispatcher;
   let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
-  if (loanDispatcher == null) {
-    loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
-    loanDispatcher.address = dispatcherAddress;
-    loanDispatcher.loans = [];
-    loanDispatcher.loansCount = 0;
-    loanDispatcher.acceptedTokens = [];
-  }
+
   loanDispatcher.minAmount = event.params.minAmount;
   loanDispatcher.save();
 }
@@ -153,13 +135,7 @@ export function handleMinAmountUpdated(event: MinAmountUpdatedEvent): void {
 export function handleMaxAmountUpdated(event: MaxAmountUpdatedEvent): void {
   let dispatcherAddress = event.params.loanDispatcher;
   let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
-  if (loanDispatcher == null) {
-    loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
-    loanDispatcher.address = dispatcherAddress;
-    loanDispatcher.loans = [];
-    loanDispatcher.loansCount = 0;
-    loanDispatcher.acceptedTokens = [];
-  }
+
   loanDispatcher.maxAmount = event.params.maxAmount;
   loanDispatcher.save();
 }
@@ -169,13 +145,7 @@ export function handleMinInterestRateUpdated(
 ): void {
   let dispatcherAddress = event.params.loanDispatcher;
   let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
-  if (loanDispatcher == null) {
-    loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
-    loanDispatcher.address = dispatcherAddress;
-    loanDispatcher.loans = [];
-    loanDispatcher.loansCount = 0;
-    loanDispatcher.acceptedTokens = [];
-  }
+
   loanDispatcher.minInterestRate = event.params.minInterestRate;
   loanDispatcher.save();
 }
@@ -185,13 +155,7 @@ export function handleMaxInterestRateUpdated(
 ): void {
   let dispatcherAddress = event.params.loanDispatcher;
   let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
-  if (loanDispatcher == null) {
-    loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
-    loanDispatcher.address = dispatcherAddress;
-    loanDispatcher.loans = [];
-    loanDispatcher.loansCount = 0;
-    loanDispatcher.acceptedTokens = [];
-  }
+
   loanDispatcher.maxInterestRate = event.params.maxInterestRate;
   loanDispatcher.save();
 }
@@ -199,13 +163,7 @@ export function handleMaxInterestRateUpdated(
 export function handleOperatorFeeUpdated(event: OperatorFeeUpdatedEvent): void {
   let dispatcherAddress = event.params.loanDispatcher;
   let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
-  if (loanDispatcher == null) {
-    loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
-    loanDispatcher.address = dispatcherAddress;
-    loanDispatcher.loans = [];
-    loanDispatcher.loansCount = 0;
-    loanDispatcher.acceptedTokens = [];
-  }
+
   loanDispatcher.operatorFee = event.params.operatorFee;
   loanDispatcher.save();
 }
@@ -215,13 +173,6 @@ export function handleAddTokenToAcceptedList(
 ): void {
   let dispatcherAddress = event.params.loanDispatcher;
   let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
-  if (loanDispatcher == null) {
-    loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
-    loanDispatcher.address = dispatcherAddress;
-    loanDispatcher.loans = [];
-    loanDispatcher.loansCount = 0;
-    loanDispatcher.acceptedTokens = [];
-  }
 
   let acceptedTokens = loanDispatcher.acceptedTokens;
   acceptedTokens.push(event.params.tokenAddress);
@@ -236,13 +187,6 @@ export function handleRemoveTokenFromAcceptedList(
 ): void {
   let dispatcherAddress = event.params.loanDispatcher;
   let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
-  if (loanDispatcher == null) {
-    loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
-    loanDispatcher.address = dispatcherAddress;
-    loanDispatcher.loans = [];
-    loanDispatcher.loansCount = 0;
-    loanDispatcher.acceptedTokens = [];
-  }
 
   let acceptedTokens = loanDispatcher.acceptedTokens;
   let newAcceptedTokens = acceptedTokens.splice(
@@ -260,13 +204,8 @@ export function handleMinAuctionLengthUpdated(
 ): void {
   let dispatcherAddress = event.params.loanDispatcher;
   let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
-  if (loanDispatcher == null) {
-    loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
-    loanDispatcher.address = dispatcherAddress;
-    loanDispatcher.loans = [];
-    loanDispatcher.loansCount = 0;
-    loanDispatcher.acceptedTokens = [];
-  }
+
+  loanDispatcher.minAuctionLength = event.params.minAuctionLength;
 
   loanDispatcher.save();
 }
@@ -275,23 +214,39 @@ export function handleMinTermLengthUpdated(
 ): void {
   let dispatcherAddress = event.params.loanDispatcher;
   let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
-  if (loanDispatcher == null) {
-    loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
-    loanDispatcher.address = dispatcherAddress;
-    loanDispatcher.loans = [];
-    loanDispatcher.loansCount = 0;
-    loanDispatcher.acceptedTokens = [];
-  }
+
+  loanDispatcher.minTermLength = event.params.minTermLength;
 
   loanDispatcher.save();
 }
 
-export function handleAuthAddressUpdated(
-  event: AuthAddressUpdatedEvent
-): void {}
+export function handleAuthAddressUpdated(event: AuthAddressUpdatedEvent): void {
+  let dispatcherAddress = event.params.loanDispatcher;
+  let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
+
+  loanDispatcher.auth = event.params.newAuthAddress;
+
+  loanDispatcher.save();
+}
+
 export function handleDaiProxyAddressUpdated(
   event: DaiProxyAddressUpdatedEvent
-): void {}
+): void {
+  let dispatcherAddress = event.params.loanDispatcher;
+  let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
+
+  loanDispatcher.DAIProxyAddress = event.params.newDaiProxyAddress;
+
+  loanDispatcher.save();
+}
+
 export function handleSwapFactoryAddressUpdated(
   event: SwapFactoryAddressUpdatedEvent
-): void {}
+): void {
+  let dispatcherAddress = event.params.loanDispatcher;
+  let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
+
+  loanDispatcher.swapFactory = event.params.newSwapFactory;
+
+  loanDispatcher.save();
+}

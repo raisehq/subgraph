@@ -243,7 +243,7 @@ dataSources:
     name: LoanContractDispatcherV6
     network: kovan
     source:
-      address: "0xb23Be7d1EfeAb16b80b481633749D55763B9d2b8"
+      address: "0x540Bb1b89585ef88eaa6410C7D20BB1CfEd20774"
       abi: LoanContractDispatcherV6
     mapping:
       kind: ethereum/events
@@ -279,11 +279,11 @@ dataSources:
           handler: handleMinAuctionLengthUpdated
         - event: LoanDispatcherCreated(address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,uint256)
           handler: handleLoanDispatcherCreated
-        - event: AuthAddressUpdated(uint256,address)
+        - event: AuthAddressUpdated(uint256,address,address)
           handler: handleAuthAddressUpdated
-        - event: DaiProxyAddressUpdated(uint256,address)
+        - event: DaiProxyAddressUpdated(uint256,address,address)
           handler: handleDaiProxyAddressUpdated
-        - event: SwapFactoryAddressUpdated(uint256,address)
+        - event: SwapFactoryAddressUpdated(uint256,address,address)
           handler: handleSwapFactoryAddressUpdated
       file: ./src/mappings/loandispatcherV6.ts
     templates:
