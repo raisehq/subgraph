@@ -1,6 +1,6 @@
 import {
   LoanCreated as LoanCreatedWithRangeEvent,
-  LoanContractWithRange as LoanContract,
+  LoanContractMultiCoin as LoanContract,
   MinimumFundingReached as MinimumFundingReachedEvent,
   FullyFunded as FullyFundedEvent,
   Funded as FundedEvent,
@@ -16,7 +16,7 @@ import {
   FundsUnlockedWithdrawn as FundsUnlockedWithdrawnEvent,
   FullyFundsUnlockedWithdrawn as FullyFundsUnlockedWithdrawnEvent,
   LoanFundsUnlocked as LoanFundsUnlockedEvent
-} from "../../generated/LoanContractDispatcherWithRange/templates/LoanContractWithRange/LoanContractWithRange";
+} from "../../generated/LoanContractDispatcherMultiCoin/templates/LoanContractMultiCoin/LoanContractMultiCoin";
 import { Loan, User, Funding, Raise } from "../../generated/schema";
 import { log, BigInt } from "@graphprotocol/graph-ts";
 // import { LoanContract as NewLoan } from "../../generated/LoanContractDispatcher/templates";

@@ -15,17 +15,11 @@
         "internalType": "address",
         "name": "_swapFactory",
         "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_swapFactory",
-        "type": "address"
       }
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "constructor",
-    "signature": "constructor"
+    "type": "constructor"
   },
   {
     "anonymous": false,
@@ -44,8 +38,7 @@
       }
     ],
     "name": "AddTokenToAcceptedList",
-    "type": "event",
-    "signature": "0x0bba56658c697487984786611ec3428c04833ef4a41642d913c92bc2038167a2"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -64,8 +57,7 @@
       }
     ],
     "name": "AdministratorUpdated",
-    "type": "event",
-    "signature": "0x222c8e95a03c7aa95fc5d110485e0d38e767f07ab1ec878a6eac644ef1d83122"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -75,17 +67,10 @@
         "internalType": "address",
         "name": "newAdminAddress",
         "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "administrator",
-        "type": "address"
       }
     ],
     "name": "AdministratorUpdated",
-    "type": "event",
-    "signature": "0x8a99bb12510d87c60fe05e5000ed6cd7dd6e1ccc3c11ab703562b101807f3d7c"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -110,8 +95,7 @@
       }
     ],
     "name": "AuthAddressUpdated",
-    "type": "event",
-    "signature": "0xb033385e419e57330f7bd19224cfc71e19f80cf05dada8d0b452d123a299399b"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -127,71 +111,10 @@
         "internalType": "address",
         "name": "administrator",
         "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "originator",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "minAmount",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "maxAmount",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "minInterestRate",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "maxInterestRate",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "termEndTimestamp",
-        "type": "uint256"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "administrator",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "operatorFee",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "auctionLength",
-        "type": "uint256"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "tokenAddress",
-        "type": "address"
       }
     ],
     "name": "AuthAddressUpdated",
-    "type": "event",
-    "signature": "0xc0bb63ce3c5b13e4918a521d34215bc08febb956464efb22eb2ef6d13374bde7"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -213,59 +136,10 @@
         "internalType": "address",
         "name": "loanDispatcher",
         "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "swapFactory",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "minAmount",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "maxAmount",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "maxInterestRate",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "minInterestRate",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "operatorFee",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "minAuctionLength",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "minTermLength",
-        "type": "uint256"
       }
     ],
     "name": "DaiProxyAddressUpdated",
-    "type": "event",
-    "signature": "0x6b1ff65344d9a70352df4b5811fb0fbe2cd3d0b1117f86e8f2163702d0afcf98"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -284,8 +158,7 @@
       }
     ],
     "name": "DaiProxyAddressUpdated",
-    "type": "event",
-    "signature": "0x8bb5c4da6a28c0a775ad478dc8e43822c3ba46081e01f058e121e645711e4cf0"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -364,8 +237,7 @@
       }
     ],
     "name": "LoanContractCreated",
-    "type": "event",
-    "signature": "0xd4175c679540281be61497070adb26b568231e7287c1056dcb0c12975ec9ee95"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -438,8 +310,7 @@
       }
     ],
     "name": "LoanDispatcherCreated",
-    "type": "event",
-    "signature": "0x896ac340d75f3e747e49f2a25ec6c8643d813ff2aa070858a6c5c225ed580c3c"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -455,17 +326,10 @@
         "internalType": "address",
         "name": "loanDispatcher",
         "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "administrator",
-        "type": "address"
       }
     ],
     "name": "MaxAmountUpdated",
-    "type": "event",
-    "signature": "0x91beaf63a7a8596b4bdb5f8ac94494639fe81c50a892206952bc74972e0c3375"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -484,8 +348,7 @@
       }
     ],
     "name": "MaxInterestRateUpdated",
-    "type": "event",
-    "signature": "0x231c0f19fcc27c4a82dcc4ddf6f5c7a9e543a9857ca7286bbfe9b306fa83ad27"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -504,11 +367,10 @@
       }
     ],
     "name": "MinAmountUpdated",
-    "type": "event",
-    "signature": "0x6a73ad5fc763a8c0bcc28b00ed3e08dff5a3f8a63eea93d9eaae237124259894"
+    "type": "event"
   },
   {
-    "constant": true,
+    "anonymous": false,
     "inputs": [
       {
         "indexed": false,
@@ -521,30 +383,13 @@
         "internalType": "address",
         "name": "loanDispatcher",
         "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "administrator",
-        "type": "address"
       }
     ],
     "name": "MinAuctionLengthUpdated",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "event",
-    "signature": "0x010096bbaf113129b4a3015dbfdc9ced2322adf990879dffa644631cfb552171",
-    "anonymous": false
+    "type": "event"
   },
   {
-    "constant": true,
+    "anonymous": false,
     "inputs": [
       {
         "indexed": false,
@@ -560,27 +405,16 @@
       }
     ],
     "name": "MinInterestRateUpdated",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "event",
-    "signature": "0xd2ee5beab74926025e55d9ca98e85bef0ef7c2b31a8d198a555c512973e9f8f6",
-    "anonymous": false
+    "type": "event"
   },
   {
-    "constant": true,
+    "anonymous": false,
     "inputs": [
       {
+        "indexed": false,
         "internalType": "uint256",
         "name": "minTermLength",
-        "type": "uint256",
-        "indexed": false
+        "type": "uint256"
       },
       {
         "indexed": false,
@@ -590,21 +424,10 @@
       }
     ],
     "name": "MinTermLengthUpdated",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "event",
-    "signature": "0xd47108fb96bee99a5a464364493d5e545a5516ed2174ec57488fcb8ab7e61b18",
-    "anonymous": false
+    "type": "event"
   },
   {
-    "constant": true,
+    "anonymous": false,
     "inputs": [
       {
         "indexed": false,
@@ -626,27 +449,16 @@
       }
     ],
     "name": "OperatorFeeUpdated",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "event",
-    "signature": "0x7dd5f7f2a6271519e65bd190731bf6e0e2907a49634f7def0efa0bfeb2b126be",
-    "anonymous": false
+    "type": "event"
   },
   {
-    "constant": true,
+    "anonymous": false,
     "inputs": [
       {
+        "indexed": true,
         "internalType": "address",
         "name": "previousOwner",
-        "type": "address",
-        "indexed": true
+        "type": "address"
       },
       {
         "indexed": true,
@@ -656,27 +468,16 @@
       }
     ],
     "name": "OwnershipTransferred",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "event",
-    "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
-    "anonymous": false
+    "type": "event"
   },
   {
-    "constant": true,
+    "anonymous": false,
     "inputs": [
       {
+        "indexed": false,
         "internalType": "address",
         "name": "tokenAddress",
-        "type": "address",
-        "indexed": false
+        "type": "address"
       },
       {
         "indexed": false,
@@ -686,21 +487,10 @@
       }
     ],
     "name": "RemoveTokenFromAcceptedList",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "event",
-    "signature": "0xe517e13517804b00ee511d3764d01e69e45da87ca2c6d5a04c15d5f3242f5464",
-    "anonymous": false
+    "type": "event"
   },
   {
-    "constant": true,
+    "anonymous": false,
     "inputs": [
       {
         "indexed": false,
@@ -722,18 +512,7 @@
       }
     ],
     "name": "SwapFactoryAddressUpdated",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "event",
-    "signature": "0x02dba8c865cdc78401d3f0a7839e3ba6dedd9675d63dcb3c5a5add4343bac942",
-    "anonymous": false
+    "type": "event"
   },
   {
     "constant": true,
@@ -748,8 +527,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0xe2510b08"
+    "type": "function"
   },
   {
     "constant": true,
@@ -770,8 +548,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x82dc4a05"
+    "type": "function"
   },
   {
     "constant": true,
@@ -786,8 +563,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0xf53d0a8e"
+    "type": "function"
   },
   {
     "constant": true,
@@ -802,8 +578,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0xde9375f2"
+    "type": "function"
   },
   {
     "constant": true,
@@ -824,8 +599,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0xe728b86c"
+    "type": "function"
   },
   {
     "constant": true,
@@ -840,8 +614,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x8f32d59b"
+    "type": "function"
   },
   {
     "constant": true,
@@ -856,8 +629,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x5f48f393"
+    "type": "function"
   },
   {
     "constant": true,
@@ -872,8 +644,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0xa9583d5f"
+    "type": "function"
   },
   {
     "constant": true,
@@ -888,18 +659,11 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x9b2cb5d8"
+    "type": "function"
   },
   {
     "constant": true,
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
-    ],
+    "inputs": [],
     "name": "minAuctionLength",
     "outputs": [
       {
@@ -910,18 +674,11 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0xa0b335e3"
+    "type": "function"
   },
   {
     "constant": true,
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
-    ],
+    "inputs": [],
     "name": "minInterestRate",
     "outputs": [
       {
@@ -932,18 +689,11 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0xeb994db1"
+    "type": "function"
   },
   {
     "constant": true,
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "tokenAddress",
-        "type": "address"
-      }
-    ],
+    "inputs": [],
     "name": "minTermLength",
     "outputs": [
       {
@@ -954,18 +704,11 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x0d6dd8a8"
+    "type": "function"
   },
   {
     "constant": true,
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "tokenAddress",
-        "type": "address"
-      }
-    ],
+    "inputs": [],
     "name": "operatorFee",
     "outputs": [
       {
@@ -976,18 +719,11 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x89afc0f1"
+    "type": "function"
   },
   {
     "constant": true,
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
-    ],
+    "inputs": [],
     "name": "owner",
     "outputs": [
       {
@@ -998,40 +734,20 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x8da5cb5b"
+    "type": "function"
   },
   {
     "constant": false,
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "tokenAddress",
-        "type": "address"
-      }
-    ],
+    "inputs": [],
     "name": "renounceOwnership",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x715018a6"
+    "type": "function"
   },
   {
     "constant": true,
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "tokenAddress",
-        "type": "address"
-      }
-    ],
+    "inputs": [],
     "name": "swapFactory",
     "outputs": [
       {
@@ -1042,8 +758,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x7944f944"
+    "type": "function"
   },
   {
     "constant": false,
@@ -1058,8 +773,7 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xf2fde38b"
+    "type": "function"
   },
   {
     "constant": true,
@@ -1080,8 +794,7 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x0560bd96"
+    "type": "function"
   },
   {
     "constant": false,
@@ -1096,8 +809,7 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x4c5e67fa"
+    "type": "function"
   },
   {
     "constant": false,
@@ -1112,8 +824,7 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xdae5f516"
+    "type": "function"
   },
   {
     "constant": false,
@@ -1128,8 +839,7 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x10265693"
+    "type": "function"
   },
   {
     "constant": false,
@@ -1144,8 +854,7 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xa3927a04"
+    "type": "function"
   },
   {
     "constant": false,
@@ -1154,45 +863,13 @@
         "internalType": "address",
         "name": "_swapFactory",
         "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "loanMaxAmount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "loanMinInterestRate",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "loanMaxInterestRate",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "termLength",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "auctionLength",
-        "type": "uint256"
       }
     ],
     "name": "setSwapFactory",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xc34e596f"
+    "type": "function"
   },
   {
     "constant": false,
@@ -1204,17 +881,10 @@
       }
     ],
     "name": "setAdministrator",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xdf8089ef"
+    "type": "function"
   },
   {
     "constant": false,
@@ -1229,8 +899,7 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x1d095805"
+    "type": "function"
   },
   {
     "constant": false,
@@ -1239,50 +908,13 @@
         "internalType": "uint256",
         "name": "requestedMinAmount",
         "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "loanMaxAmount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "loanMinInterestRate",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "loanMaxInterestRate",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "termLength",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "auctionLength",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "tokenAddress",
-        "type": "address"
       }
     ],
     "name": "setMinAmount",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x897b0637"
+    "type": "function"
   },
   {
     "constant": false,
@@ -1294,17 +926,10 @@
       }
     ],
     "name": "setMaxAmount",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x4fe47f70"
+    "type": "function"
   },
   {
     "constant": false,
@@ -1319,8 +944,7 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xc286eebe"
+    "type": "function"
   },
   {
     "constant": false,
@@ -1329,50 +953,13 @@
         "internalType": "uint256",
         "name": "requestedMaxInterestRate",
         "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "loanMaxAmount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "loanMinInterestRate",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "loanMaxInterestRate",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "termLength",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "auctionLength",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "tokenAddress",
-        "type": "address"
       }
     ],
     "name": "setMaxInterestRate",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xc2599054"
+    "type": "function"
   },
   {
     "constant": false,
@@ -1384,17 +971,10 @@
       }
     ],
     "name": "setMinTermLength",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xa2097307"
+    "type": "function"
   },
   {
     "constant": false,
@@ -1409,8 +989,7 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x6fc83db3"
+    "type": "function"
   },
   {
     "constant": false,
@@ -1461,8 +1040,7 @@
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x54f59877"
+    "type": "function"
   },
   {
     "constant": true,
@@ -1483,7 +1061,6 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x2e1d0e0f"
+    "type": "function"
   }
 ]

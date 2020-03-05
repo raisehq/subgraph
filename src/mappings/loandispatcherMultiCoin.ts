@@ -12,11 +12,10 @@ import {
   AuthAddressUpdated as AuthAddressUpdatedEvent,
   DaiProxyAddressUpdated as DaiProxyAddressUpdatedEvent,
   SwapFactoryAddressUpdated as SwapFactoryAddressUpdatedEvent,
-  LoanContractCreated as LoanContractWithRangeCreatedEvent,
-  LoanContractDispatcherWithRange as LoanContractDispatcher
-} from "../../generated/LoanContractDispatcherWithRange/LoanContractDispatcherWithRange";
+  LoanContractCreated as LoanContractCreatedEvent
+} from "../../generated/LoanContractDispatcherMultiCoin/LoanContractDispatcherMultiCoin";
 import { LoanDispatcher, Loan, User } from "../../generated/schema";
-import { LoanContractWithRange as NewLoan } from "../../generated/LoanContractDispatcherWithRange/templates";
+import { LoanContractMultiCoin as NewLoan } from "../../generated/LoanContractDispatcherMultiCoin/templates";
 import { BigInt, log } from "@graphprotocol/graph-ts";
 
 export function handleLoanDispatcherCreated(
@@ -44,7 +43,7 @@ export function handleLoanDispatcherCreated(
 }
 
 export function handleLoanContractWithRangeCreated(
-  event: LoanContractWithRangeCreatedEvent
+  event: LoanContractCreatedEvent
 ): void {
   let dispatcherAddress = event.params.loanDispatcher;
   let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
