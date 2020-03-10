@@ -27,7 +27,7 @@ dataSources:
     name: DepositRegistry
     network: kovan
     source:
-      address: "0x9bd50BB2cad5c9DBbeBF16A299e53C121DD71083"
+      address: "0x7b4b1E477699f03D484A4b261fE4e09fc539F64c"
       abi: DepositRegistry
     mapping:
       kind: ethereum/events
@@ -243,7 +243,7 @@ dataSources:
     name: LoanContractDispatcherMultiCoin
     network: kovan
     source:
-      address: "0x4EB1698239B57Fa5aa6970d4AaA5eBCf9f14Ae8a"
+      address: "0x8A24C367b65bF50dbB8d0a6CBD297BB84Fc4B581"
       abi: LoanContractDispatcherMultiCoin
     mapping:
       kind: ethereum/events
