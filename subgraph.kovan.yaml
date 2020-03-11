@@ -27,7 +27,7 @@ dataSources:
     name: DepositRegistry
     network: kovan
     source:
-      address: "0x7b4b1E477699f03D484A4b261fE4e09fc539F64c"
+      address: "0x880206D45d28Cb31aFAB9C21F672dF6Be7A83001"
       abi: DepositRegistry
     mapping:
       kind: ethereum/events
