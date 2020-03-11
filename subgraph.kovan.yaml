@@ -46,6 +46,29 @@ dataSources:
         - event: AddressUnlockedForWithdrawal(address,indexed address)
           handler: handleAddressUnlockedForWithdrawal
       file: ./src/mappings/depositregistry.ts
+  - kind: ethereum/contract
+    name: DepositRegistry
+    network: kovan
+    source:
+      address: "0x27C5e8Beec7da088618851C308BCbd4e7ad46a65"
+      abi: DepositRegistry
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      entities:
+        - User
+      abis:
+        - name: DepositRegistry
+          file: ./abis/DepositRegistry.json
+      eventHandlers:
+        - event: UserDepositCompleted(address,indexed address)
+          handler: handleUserDepositCompleted
+        - event: UserWithdrawnCompleted(address,indexed address)
+          handler: handleUserWithdrawnCompleted
+        - event: AddressUnlockedForWithdrawal(address,indexed address)
+          handler: handleAddressUnlockedForWithdrawal
+      file: ./src/mappings/depositregistry.ts
   # - kind: ethereum/contract
   #   name: ReferralTracker
   #   network: kovan
