@@ -27,7 +27,7 @@ dataSources:
     name: DepositRegistry
     network: mainnet
     source:
-      address: "0x7f8b86b112cf0389b1ba125c4011d096b86fbaab"
+      address: "0xcc8e0450321B88c8d11303339a8fCb269e80E69F"
       abi: DepositRegistry
     mapping:
       kind: ethereum/events
@@ -262,6 +262,89 @@ dataSources:
               handler: handleLoanFundsUnlocked
             - event: OperatorWithdrawn(uint256,address)
               handler: handleOperatorWithdrawn
+  - kind: ethereum/contract
+    name: LoanContractDispatcherV3
+    network: mainnet
+    source:
+      address: "0x7327E44e045A7B1B17Fc429aA441b65a8f31b543"
+      abi: LoanContractDispatcherWithRange
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      entities:
+        - LoanDispatcher
+        - Loan
+        - User
+      abis:
+        - name: LoanContractDispatcherWithRange
+          file: ./abis/LoanContractDispatcherWithRange.json
+      eventHandlers:
+        - event: LoanContractCreated(address,address,indexed address,uint256,uint256,uint256,uint256,uint256,indexed address,uint256,uint256)
+          handler: handleLoanContractWithRangeCreated
+        - event: MinAmountUpdated(uint256,address)
+          handler: handleMinAmountUpdated
+        - event: MaxAmountUpdated(uint256,address)
+          handler: handleMaxAmountUpdated
+        - event: MinInterestRateUpdated(uint256,address)
+          handler: handleMinInterestRateUpdated
+        - event: MaxInterestRateUpdated(uint256,address)
+          handler: handleMaxInterestRateUpdated
+        - event: OperatorFeeUpdated(uint256,address,address)
+          handler: handleOperatorFeeUpdated
+      file: ./src/mappings/loandispatcherwithrange.ts
+    templates:
+      - kind: ethereum/contract
+        name: LoanContractWithRange
+        network: mainnet
+        source:
+          abi: LoanContractWithRange
+        mapping:
+          kind: ethereum/events
+          apiVersion: 0.0.3
+          language: wasm/assemblyscript
+          file: ./src/mappings/loanwithrange.ts
+          entities:
+            - Loan
+            - User
+            - Funding
+          abis:
+            - name: LoanContractWithRange
+              file: ./abis/LoanContractWithRange.json
+          eventHandlers:
+            - event: LoanCreated(indexed address,indexed address,uint256,uint256,uint256,uint256,uint256,uint256,indexed address,uint256)
+              handler: handleLoanWithRangeCreated
+            - event: MinimumFundingReached(address,uint256,uint256)
+              handler: handleMinimumFundingReached
+            - event: FullyFunded(address,uint256,uint256,uint256,uint256)
+              handler: handleFullyFunded
+            - event: Funded(address,indexed address,uint256,uint256,uint256)
+              handler: handleFunded
+            - event: LoanRepaid(address,indexed uint256)
+              handler: handleLoanRepaid
+            - event: FailedToFund(address,indexed address,uint256)
+              handler: handleFailedToFund
+            - event: RepaymentWithdrawn(address,indexed address,uint256)
+              handler: handleRepaymentWithdrawn
+            - event: RefundWithdrawn(address,indexed address,uint256)
+              handler: handleRefundWithdrawn
+            - event: FullyRefunded(address)
+              handler: handleFullyRefunded
+            - event: LoanFundsWithdrawn(address,indexed address,uint256)
+              handler: handleLoanFundsWithdrawn
+            - event: LoanDefaulted(address)
+              handler: handleLoanDefaulted
+            - event: AuctionSuccessful(address,uint256,uint256,uint256,uint256,uint256)
+              handler: handleAuctionSuccessful
+            - event: FundsUnlockedWithdrawn(address,indexed address,uint256)
+              handler: handleFundsUnlockedWithdrawn
+            - event: FullyFundsUnlockedWithdrawn(address)
+              handler: handleFullyFundsUnlockedWithdrawn
+            - event: LoanFundsUnlocked(uint256)
+              handler: handleLoanFundsUnlocked
+            - event: OperatorWithdrawn(uint256,address)
+              handler: handleOperatorWithdrawn
+
   - kind: ethereum/contract
     name: LoanContractDispatcherMultiCoin
     network: mainnet

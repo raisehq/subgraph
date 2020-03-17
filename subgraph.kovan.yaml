@@ -102,7 +102,7 @@ dataSources:
     name: LoanContractDispatcher
     network: kovan
     source:
-      address: "0x1e7aCb32a32EA61bb21418486428202d4DdBc906"
+      address: "0xE50ECba2FaA475B58221E5e77113C49b0810A610"
       abi: LoanContractDispatcher
     mapping:
       kind: ethereum/events
