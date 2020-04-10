@@ -12,7 +12,7 @@ import {
   AuthAddressUpdated as AuthAddressUpdatedEvent,
   DaiProxyAddressUpdated as DaiProxyAddressUpdatedEvent,
   SwapFactoryAddressUpdated as SwapFactoryAddressUpdatedEvent,
-  LoanContractCreated as LoanContractCreatedEvent
+  LoanContractCreated as LoanContractCreatedEvent,
 } from "../../generated/LoanContractDispatcherMultiCoin/LoanContractDispatcherMultiCoin";
 import { LoanDispatcher, Loan, User } from "../../generated/schema";
 import { LoanContractMultiCoin as NewLoan } from "../../generated/LoanContractDispatcherMultiCoin/templates";
@@ -47,11 +47,11 @@ export function handleLoanContractWithRangeCreated(
 ): void {
   let dispatcherAddress = event.params.loanDispatcher;
   let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
-
   let loanAddress = event.params.contractAddress.toHex();
 
   let loans = loanDispatcher.loans;
   let loanIndex = loans.indexOf(loanAddress);
+
   if (loanIndex == -1) {
     loans.push(loanAddress);
     loanDispatcher.loans = loans;
@@ -112,6 +112,21 @@ export function handleLoanContractWithRangeCreated(
     // create user
     let userId = event.params.originator.toHex();
     let user = User.load(userId);
+    if (user == null) {
+      user = new User(userId);
+      user.address = event.params.originator;
+      user.referrals = [];
+      user.kyced = false;
+      user.totalBountyWithdrawn = BigInt.fromI32(0);
+      user.totalBountyToWithdraw = BigInt.fromI32(0);
+      user.totalReferralsCount = 0;
+      user.withdrawalUnlocked = false;
+      user.loanFundings = [];
+      user.loanRequests = [];
+      user.createdBlockNumber = event.block.number;
+      user.createdTimestamp = event.block.timestamp;
+      user.deposited = false;
+    }
 
     let requests = user.loanRequests;
     requests.push(loan.id);
