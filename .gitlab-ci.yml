@@ -13,6 +13,8 @@ cache:
 
 Prepare:
   stage: prepare
+  before_script:
+    - apt-get update && apt install libsecret-1-dev -y
   script:
     - npm i
   artifacts:
