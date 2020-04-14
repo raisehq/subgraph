@@ -15,8 +15,8 @@ import {
   AuctionSuccessful as AuctionSuccessfulEvent,
   FundsUnlockedWithdrawn as FundsUnlockedWithdrawnEvent,
   FullyFundsUnlockedWithdrawn as FullyFundsUnlockedWithdrawnEvent,
-  LoanFundsUnlocked as LoanFundsUnlockedEvent
-} from "../../generated/LoanContractDispatcherMultiCoin/templates/LoanContractMultiCoin/LoanContractMultiCoin";
+  LoanFundsUnlocked as LoanFundsUnlockedEvent,
+} from "../../generated/templates/LoanContractMultiCoin/LoanContractMultiCoin";
 import { Loan, User, Funding, Raise } from "../../generated/schema";
 import { log, BigInt } from "@graphprotocol/graph-ts";
 // import { LoanContract as NewLoan } from "../../generated/LoanContractDispatcher/templates";

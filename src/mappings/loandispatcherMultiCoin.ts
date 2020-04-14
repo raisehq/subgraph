@@ -1,4 +1,4 @@
-import {
+/*import {
   MinAmountUpdated as MinAmountUpdatedEvent,
   MaxAmountUpdated as MaxAmountUpdatedEvent,
   MinInterestRateUpdated as MinInterestRateUpdatedEvent,
@@ -12,10 +12,10 @@ import {
   AuthAddressUpdated as AuthAddressUpdatedEvent,
   DaiProxyAddressUpdated as DaiProxyAddressUpdatedEvent,
   SwapFactoryAddressUpdated as SwapFactoryAddressUpdatedEvent,
-  LoanContractCreated as LoanContractCreatedEvent
+  LoanContractCreated as LoanContractCreatedEvent,
 } from "../../generated/LoanContractDispatcherMultiCoin/LoanContractDispatcherMultiCoin";
 import { LoanDispatcher, Loan, User } from "../../generated/schema";
-import { LoanContractMultiCoin as NewLoan } from "../../generated/LoanContractDispatcherMultiCoin/templates";
+import { LoanContractMultiCoin as NewLoan } from "../../generated/templates";
 import { BigInt, log } from "@graphprotocol/graph-ts";
 
 export function handleLoanDispatcherCreated(
@@ -261,3 +261,4 @@ export function handleSwapFactoryAddressUpdated(
 
   loanDispatcher.save();
 }
+*/
