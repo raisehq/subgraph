@@ -12,7 +12,7 @@ import {
   AuthAddressUpdated as AuthAddressUpdatedEvent,
   DaiProxyAddressUpdated as DaiProxyAddressUpdatedEvent,
   SwapFactoryAddressUpdated as SwapFactoryAddressUpdatedEvent,
-  LoanContractCreated as LoanContractCreatedEvent,
+  LoanContractCreated as LoanContractCreatedEvent
 } from "../../generated/LoanContractDispatcherMultiCoin/LoanContractDispatcherMultiCoin";
 import { LoanDispatcher, Loan, User } from "../../generated/schema";
 import { LoanContractMultiCoin as NewLoan } from "../../generated/LoanContractDispatcherMultiCoin/templates";
@@ -203,12 +203,9 @@ export function handleRemoveTokenFromAcceptedList(
   let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
 
   let acceptedTokens = loanDispatcher.acceptedTokens;
-  let newAcceptedTokens = acceptedTokens.splice(
-    acceptedTokens.indexOf(event.params.tokenAddress),
-    1
-  );
+  acceptedTokens.splice(acceptedTokens.indexOf(event.params.tokenAddress), 1);
 
-  loanDispatcher.acceptedTokens = newAcceptedTokens;
+  loanDispatcher.acceptedTokens = acceptedTokens;
 
   loanDispatcher.save();
 }
