@@ -1,4 +1,4 @@
-/*import {
+import {
   MinAmountUpdated as MinAmountUpdatedEvent,
   MaxAmountUpdated as MaxAmountUpdatedEvent,
   MinInterestRateUpdated as MinInterestRateUpdatedEvent,
@@ -42,7 +42,7 @@ export function handleLoanDispatcherCreated(
   loanDispatcher.save();
 }
 
-export function handleLoanContractWithRangeCreated(
+export function handleLoanContractCreated(
   event: LoanContractCreatedEvent
 ): void {
   let dispatcherAddress = event.params.loanDispatcher;
@@ -261,4 +261,3 @@ export function handleSwapFactoryAddressUpdated(
 
   loanDispatcher.save();
 }
-*/

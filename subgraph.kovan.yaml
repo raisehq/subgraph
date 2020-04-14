@@ -91,8 +91,10 @@ dataSources:
         - name: LoanContractDispatcherMultiCoin
           file: ./abis/LoanContractDispatcherMultiCoin.json
       eventHandlers:
+        - event: LoanDispatcherCreated(address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,uint256)
+          handler: handleLoanDispatcherCreated
         - event: LoanContractCreated(address,address,indexed address,uint256,uint256,uint256,uint256,uint256,indexed address,uint256,uint256,indexed address)
-          handler: handleLoanContractWithRangeCreated
+          handler: handleLoanContractCreated
         - event: MinAmountUpdated(uint256,address)
           handler: handleMinAmountUpdated
         - event: MaxAmountUpdated(uint256,address)
@@ -111,8 +113,6 @@ dataSources:
           handler: handleMinTermLengthUpdated
         - event: MinAuctionLengthUpdated(uint256,address)
           handler: handleMinAuctionLengthUpdated
-        - event: LoanDispatcherCreated(address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,uint256)
-          handler: handleLoanDispatcherCreated
         - event: AuthAddressUpdated(address,address,address)
           handler: handleAuthAddressUpdated
         - event: DaiProxyAddressUpdated(address,address,address)
