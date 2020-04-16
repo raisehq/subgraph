@@ -76,7 +76,7 @@ dataSources:
     name: LoanContractDispatcherMultiCoin
     network: kovan
     source:
-      address: "0x31Fc142f0879998f6DcC7f75E767624EA932c23A"
+      address: "0x2F2f5cbbA47F12fAEbe1BfAf1f8560AB213707A6"
       abi: LoanContractDispatcherMultiCoin
       startBlock: 15180230
     mapping:
