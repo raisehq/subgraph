@@ -28,7 +28,7 @@ dataSources:
     name: DepositRegistry
     network: kovan
     source:
-      address: "0x13efA860631791872b478a66EF10CFcA09d23e2c"
+      address: "0x880206D45d28Cb31aFAB9C21F672dF6Be7A83001"
       abi: DepositRegistry
       startBlock: 15180230
     mapping:
@@ -76,7 +76,7 @@ dataSources:
     name: LoanContractDispatcherMultiCoin
     network: kovan
     source:
-      address: "0x2F2f5cbbA47F12fAEbe1BfAf1f8560AB213707A6"
+      address: "0x4cfDd81C635d98D63100574934C5e009CAe4F9B2"
       abi: LoanContractDispatcherMultiCoin
       startBlock: 15180230
     mapping:
