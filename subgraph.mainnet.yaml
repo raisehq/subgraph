@@ -1,4 +1,4 @@
-specVersion: 0.0.1
+specVersion: 0.0.2
 schema:
   file: ./schema.graphql
 dataSources:
@@ -8,6 +8,7 @@ dataSources:
     source:
       address: "0x18adbd9651643a91a520cee597ef361ae18ac329"
       abi: KYCRegistry
+      startBlock: 8290066
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
@@ -24,11 +25,12 @@ dataSources:
           handler: handleAddedToKYC
       file: ./src/mappings/kycregistry.ts
   - kind: ethereum/contract
-    name: DepositRegistry
+    name: DepositRegistryOld
     network: mainnet
     source:
       address: "0xcc8e0450321B88c8d11303339a8fCb269e80E69F"
       abi: DepositRegistry
+      startBlock: 8290066
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
@@ -52,6 +54,7 @@ dataSources:
     source:
       address: "0xc234efe85f6f31c47485659e8deb21b0885118c5"
       abi: DepositRegistry
+      startBlock: 8290066
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
@@ -71,286 +74,23 @@ dataSources:
       file: ./src/mappings/depositregistry.ts
   # - kind: ethereum/contract
   #   name: ReferralTracker
-  #   network: mainnet
-  #   source:
   #     address: "0xc2e89d82258811832a392ca1ef66b9f0c0ccd55e"
-  #     abi: ReferralTracker
-  #   mapping:
-  #     kind: ethereum/events
-  #     apiVersion: 0.0.3
-  #     language: wasm/assemblyscript
-  #     entities:
-  #       - User
-  #     abis:
-  #       - name: ReferralTracker
-  #         file: ./abis/ReferralTracker.json
-  #     eventHandlers:
-  #       - event: ReferralRegistered(address,indexed address,indexed address)
-  #         handler: handleReferralRegistered
-  #       - event: ReferralBonusWithdrawn(address,indexed address,uint256,uint256)
-  #         handler: handleReferralBonusWithdrawn
-  #       - event: FundsAdded(address,address,uint256)
-  #         handler: handleFundsAdded
-  #       - event: FundsRemoved(address,address,uint256)
-  #         handler: handleFundsRemoved
-  #       - event: Paused(address)
-  #         handler: handlePaused
-  #       - event: Unpaused(address)
-  #         handler: handleUnpaused
-  #     file: ./src/mappings/referraltracker.ts
-  - kind: ethereum/contract
-    name: LoanContractDispatcher
-    network: mainnet
-    source:
-      address: "0xa4D50BF89A80a6f471906989e0C5d4b62027995A"
-      abi: LoanContractDispatcher
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.3
-      language: wasm/assemblyscript
-      entities:
-        - LoanDispatcher
-        - Loan
-        - User
-      abis:
-        - name: LoanContractDispatcher
-          file: ./abis/LoanContractDispatcher.json
-      eventHandlers:
-        - event: LoanContractCreated(address,address,indexed address,uint256,uint256,uint256,uint256,indexed address,uint256,uint256)
-          handler: handleLoanContractCreated
-        - event: MinAmountUpdated(uint256,address)
-          handler: handleMinAmountUpdated
-        - event: MaxAmountUpdated(uint256,address)
-          handler: handleMaxAmountUpdated
-        - event: MinInterestRateUpdated(uint256,address)
-          handler: handleMinInterestRateUpdated
-        - event: MaxInterestRateUpdated(uint256,address)
-          handler: handleMaxInterestRateUpdated
-        - event: OperatorFeeUpdated(uint256,address,address)
-          handler: handleOperatorFeeUpdated
-      file: ./src/mappings/loandispatcher.ts
-    templates:
-      - kind: ethereum/contract
-        name: LoanContract
-        network: mainnet
-        source:
-          abi: LoanContract
-        mapping:
-          kind: ethereum/events
-          apiVersion: 0.0.3
-          language: wasm/assemblyscript
-          file: ./src/mappings/loan.ts
-          entities:
-            - Loan
-            - User
-            - Funding
-          abis:
-            - name: LoanContract
-              file: ./abis/LoanContract.json
-          eventHandlers:
-            - event: LoanCreated(indexed address,indexed address,uint256,uint256,uint256,uint256,uint256,indexed address,uint256)
-              handler: handleLoanCreated
-            - event: MinimumFundingReached(address,uint256,uint256)
-              handler: handleMinimumFundingReached
-            - event: FullyFunded(address,uint256,uint256,uint256,uint256)
-              handler: handleFullyFunded
-            - event: Funded(address,indexed address,uint256,uint256,uint256)
-              handler: handleFunded
-            - event: LoanRepaid(address,indexed uint256)
-              handler: handleLoanRepaid
-            - event: FailedToFund(address,indexed address,uint256)
-              handler: handleFailedToFund
-            - event: RepaymentWithdrawn(address,indexed address,uint256)
-              handler: handleRepaymentWithdrawn
-            - event: RefundWithdrawn(address,indexed address,uint256)
-              handler: handleRefundWithdrawn
-            - event: FullyRefunded(address)
-              handler: handleFullyRefunded
-            - event: LoanFundsWithdrawn(address,indexed address,uint256)
-              handler: handleLoanFundsWithdrawn
-            - event: LoanDefaulted(address)
-              handler: handleLoanDefaulted
-            - event: AuctionSuccessful(address,uint256,uint256,uint256,uint256,uint256)
-              handler: handleAuctionSuccessful
-            - event: FundsUnlockedWithdrawn(address,indexed address,uint256)
-              handler: handleFundsUnlockedWithdrawn
-            - event: FullyFundsUnlockedWithdrawn(address)
-              handler: handleFullyFundsUnlockedWithdrawn
-            - event: LoanFundsUnlocked(uint256)
-              handler: handleLoanFundsUnlocked
-            - event: OperatorWithdrawn(uint256,address)
-              handler: handleOperatorWithdrawn
-  - kind: ethereum/contract
-    name: LoanContractDispatcherWithRange
-    network: mainnet
-    source:
-      address: "0x1caea0585fce9bf518df0b8d71a36656f554b68c"
-      abi: LoanContractDispatcherWithRange
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.3
-      language: wasm/assemblyscript
-      entities:
-        - LoanDispatcher
-        - Loan
-        - User
-      abis:
-        - name: LoanContractDispatcherWithRange
-          file: ./abis/LoanContractDispatcherWithRange.json
-      eventHandlers:
-        - event: LoanContractCreated(address,address,indexed address,uint256,uint256,uint256,uint256,uint256,indexed address,uint256,uint256)
-          handler: handleLoanContractWithRangeCreated
-        - event: MinAmountUpdated(uint256,address)
-          handler: handleMinAmountUpdated
-        - event: MaxAmountUpdated(uint256,address)
-          handler: handleMaxAmountUpdated
-        - event: MinInterestRateUpdated(uint256,address)
-          handler: handleMinInterestRateUpdated
-        - event: MaxInterestRateUpdated(uint256,address)
-          handler: handleMaxInterestRateUpdated
-        - event: OperatorFeeUpdated(uint256,address,address)
-          handler: handleOperatorFeeUpdated
-      file: ./src/mappings/loandispatcherwithrange.ts
-    templates:
-      - kind: ethereum/contract
-        name: LoanContractWithRange
-        network: mainnet
-        source:
-          abi: LoanContractWithRange
-        mapping:
-          kind: ethereum/events
-          apiVersion: 0.0.3
-          language: wasm/assemblyscript
-          file: ./src/mappings/loanwithrange.ts
-          entities:
-            - Loan
-            - User
-            - Funding
-          abis:
-            - name: LoanContractWithRange
-              file: ./abis/LoanContractWithRange.json
-          eventHandlers:
-            - event: LoanCreated(indexed address,indexed address,uint256,uint256,uint256,uint256,uint256,uint256,indexed address,uint256)
-              handler: handleLoanWithRangeCreated
-            - event: MinimumFundingReached(address,uint256,uint256)
-              handler: handleMinimumFundingReached
-            - event: FullyFunded(address,uint256,uint256,uint256,uint256)
-              handler: handleFullyFunded
-            - event: Funded(address,indexed address,uint256,uint256,uint256)
-              handler: handleFunded
-            - event: LoanRepaid(address,indexed uint256)
-              handler: handleLoanRepaid
-            - event: FailedToFund(address,indexed address,uint256)
-              handler: handleFailedToFund
-            - event: RepaymentWithdrawn(address,indexed address,uint256)
-              handler: handleRepaymentWithdrawn
-            - event: RefundWithdrawn(address,indexed address,uint256)
-              handler: handleRefundWithdrawn
-            - event: FullyRefunded(address)
-              handler: handleFullyRefunded
-            - event: LoanFundsWithdrawn(address,indexed address,uint256)
-              handler: handleLoanFundsWithdrawn
-            - event: LoanDefaulted(address)
-              handler: handleLoanDefaulted
-            - event: AuctionSuccessful(address,uint256,uint256,uint256,uint256,uint256)
-              handler: handleAuctionSuccessful
-            - event: FundsUnlockedWithdrawn(address,indexed address,uint256)
-              handler: handleFundsUnlockedWithdrawn
-            - event: FullyFundsUnlockedWithdrawn(address)
-              handler: handleFullyFundsUnlockedWithdrawn
-            - event: LoanFundsUnlocked(uint256)
-              handler: handleLoanFundsUnlocked
-            - event: OperatorWithdrawn(uint256,address)
-              handler: handleOperatorWithdrawn
-  - kind: ethereum/contract
-    name: LoanContractDispatcherV3
-    network: mainnet
-    source:
-      address: "0x7327E44e045A7B1B17Fc429aA441b65a8f31b543"
-      abi: LoanContractDispatcherWithRange
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.3
-      language: wasm/assemblyscript
-      entities:
-        - LoanDispatcher
-        - Loan
-        - User
-      abis:
-        - name: LoanContractDispatcherWithRange
-          file: ./abis/LoanContractDispatcherWithRange.json
-      eventHandlers:
-        - event: LoanContractCreated(address,address,indexed address,uint256,uint256,uint256,uint256,uint256,indexed address,uint256,uint256)
-          handler: handleLoanContractWithRangeCreated
-        - event: MinAmountUpdated(uint256,address)
-          handler: handleMinAmountUpdated
-        - event: MaxAmountUpdated(uint256,address)
-          handler: handleMaxAmountUpdated
-        - event: MinInterestRateUpdated(uint256,address)
-          handler: handleMinInterestRateUpdated
-        - event: MaxInterestRateUpdated(uint256,address)
-          handler: handleMaxInterestRateUpdated
-        - event: OperatorFeeUpdated(uint256,address,address)
-          handler: handleOperatorFeeUpdated
-      file: ./src/mappings/loandispatcherwithrange.ts
-    templates:
-      - kind: ethereum/contract
-        name: LoanContractWithRange
-        network: mainnet
-        source:
-          abi: LoanContractWithRange
-        mapping:
-          kind: ethereum/events
-          apiVersion: 0.0.3
-          language: wasm/assemblyscript
-          file: ./src/mappings/loanwithrange.ts
-          entities:
-            - Loan
-            - User
-            - Funding
-          abis:
-            - name: LoanContractWithRange
-              file: ./abis/LoanContractWithRange.json
-          eventHandlers:
-            - event: LoanCreated(indexed address,indexed address,uint256,uint256,uint256,uint256,uint256,uint256,indexed address,uint256)
-              handler: handleLoanWithRangeCreated
-            - event: MinimumFundingReached(address,uint256,uint256)
-              handler: handleMinimumFundingReached
-            - event: FullyFunded(address,uint256,uint256,uint256,uint256)
-              handler: handleFullyFunded
-            - event: Funded(address,indexed address,uint256,uint256,uint256)
-              handler: handleFunded
-            - event: LoanRepaid(address,indexed uint256)
-              handler: handleLoanRepaid
-            - event: FailedToFund(address,indexed address,uint256)
-              handler: handleFailedToFund
-            - event: RepaymentWithdrawn(address,indexed address,uint256)
-              handler: handleRepaymentWithdrawn
-            - event: RefundWithdrawn(address,indexed address,uint256)
-              handler: handleRefundWithdrawn
-            - event: FullyRefunded(address)
-              handler: handleFullyRefunded
-            - event: LoanFundsWithdrawn(address,indexed address,uint256)
-              handler: handleLoanFundsWithdrawn
-            - event: LoanDefaulted(address)
-              handler: handleLoanDefaulted
-            - event: AuctionSuccessful(address,uint256,uint256,uint256,uint256,uint256)
-              handler: handleAuctionSuccessful
-            - event: FundsUnlockedWithdrawn(address,indexed address,uint256)
-              handler: handleFundsUnlockedWithdrawn
-            - event: FullyFundsUnlockedWithdrawn(address)
-              handler: handleFullyFundsUnlockedWithdrawn
-            - event: LoanFundsUnlocked(uint256)
-              handler: handleLoanFundsUnlocked
-            - event: OperatorWithdrawn(uint256,address)
-              handler: handleOperatorWithdrawn
-
+  # - kind: ethereum/contract
+  #   name: LoanContractDispatcher
+  #     address: "0xa4D50BF89A80a6f471906989e0C5d4b62027995A"
+  # - kind: ethereum/contract
+  #   name: LoanContractDispatcherWithRange
+  #     address: "0x1caea0585fce9bf518df0b8d71a36656f554b68c"
+  # - kind: ethereum/contract
+  # name: LoanContractDispatcherV3
+  #   address: "0x7327E44e045A7B1B17Fc429aA441b65a8f31b543"
   - kind: ethereum/contract
     name: LoanContractDispatcherMultiCoin
     network: mainnet
     source:
       address: "0x0a49f544a98B775c2EF10a65d71d083706Afa58F"
       abi: LoanContractDispatcherMultiCoin
+      startBlock: 8290066
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
@@ -364,7 +104,7 @@ dataSources:
           file: ./abis/LoanContractDispatcherMultiCoin.json
       eventHandlers:
         - event: LoanContractCreated(address,address,indexed address,uint256,uint256,uint256,uint256,uint256,indexed address,uint256,uint256,indexed address)
-          handler: handleLoanContractWithRangeCreated
+          handler: handleLoanContractCreated
         - event: MinAmountUpdated(uint256,address)
           handler: handleMinAmountUpdated
         - event: MaxAmountUpdated(uint256,address)
@@ -392,54 +132,54 @@ dataSources:
         - event: SwapFactoryAddressUpdated(address,address,address)
           handler: handleSwapFactoryAddressUpdated
       file: ./src/mappings/loandispatcherMultiCoin.ts
-    templates:
-      - kind: ethereum/contract
-        name: LoanContractMultiCoin
-        network: mainnet
-        source:
-          abi: LoanContractMultiCoin
-        mapping:
-          kind: ethereum/events
-          apiVersion: 0.0.3
-          language: wasm/assemblyscript
-          file: ./src/mappings/loanMultiCoin.ts
-          entities:
-            - Loan
-            - User
-            - Funding
-          abis:
-            - name: LoanContractMultiCoin
-              file: ./abis/LoanContractMultiCoin.json
-          eventHandlers:
-            - event: LoanCreated(indexed address,indexed address,uint256,uint256,uint256,uint256,uint256,uint256,indexed address,uint256,address)
-              handler: handleLoanWithRangeCreated
-            - event: MinimumFundingReached(address,uint256,uint256)
-              handler: handleMinimumFundingReached
-            - event: FullyFunded(address,uint256,uint256,uint256,uint256)
-              handler: handleFullyFunded
-            - event: Funded(address,indexed address,uint256,uint256,uint256)
-              handler: handleFunded
-            - event: LoanRepaid(address,indexed uint256)
-              handler: handleLoanRepaid
-            - event: FailedToFund(address,indexed address,uint256)
-              handler: handleFailedToFund
-            - event: RepaymentWithdrawn(address,indexed address,uint256)
-              handler: handleRepaymentWithdrawn
-            - event: RefundWithdrawn(address,indexed address,uint256)
-              handler: handleRefundWithdrawn
-            - event: FullyRefunded(address)
-              handler: handleFullyRefunded
-            - event: LoanFundsWithdrawn(address,indexed address,uint256)
-              handler: handleLoanFundsWithdrawn
-            - event: LoanDefaulted(address)
-              handler: handleLoanDefaulted
-            - event: AuctionSuccessful(address,uint256,uint256,uint256,uint256,uint256)
-              handler: handleAuctionSuccessful
-            - event: FundsUnlockedWithdrawn(address,indexed address,uint256)
-              handler: handleFundsUnlockedWithdrawn
-            - event: FullyFundsUnlockedWithdrawn(address)
-              handler: handleFullyFundsUnlockedWithdrawn
-            - event: LoanFundsUnlocked(uint256)
-              handler: handleLoanFundsUnlocked
-            - event: OperatorWithdrawn(uint256,address)
-              handler: handleOperatorWithdrawn
+templates:
+  - kind: ethereum/contract
+    name: LoanContractMultiCoin
+    network: mainnet
+    source:
+      abi: LoanContractMultiCoin
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      file: ./src/mappings/loanMultiCoin.ts
+      entities:
+        - Loan
+        - User
+        - Funding
+      abis:
+        - name: LoanContractMultiCoin
+          file: ./abis/LoanContractMultiCoin.json
+      eventHandlers:
+        - event: LoanCreated(indexed address,indexed address,uint256,uint256,uint256,uint256,uint256,uint256,indexed address,uint256,address)
+          handler: handleLoanWithRangeCreated
+        - event: MinimumFundingReached(address,uint256,uint256)
+          handler: handleMinimumFundingReached
+        - event: FullyFunded(address,uint256,uint256,uint256,uint256)
+          handler: handleFullyFunded
+        - event: Funded(address,indexed address,uint256,uint256,uint256)
+          handler: handleFunded
+        - event: LoanRepaid(address,indexed uint256)
+          handler: handleLoanRepaid
+        - event: FailedToFund(address,indexed address,uint256)
+          handler: handleFailedToFund
+        - event: RepaymentWithdrawn(address,indexed address,uint256)
+          handler: handleRepaymentWithdrawn
+        - event: RefundWithdrawn(address,indexed address,uint256)
+          handler: handleRefundWithdrawn
+        - event: FullyRefunded(address)
+          handler: handleFullyRefunded
+        - event: LoanFundsWithdrawn(address,indexed address,uint256)
+          handler: handleLoanFundsWithdrawn
+        - event: LoanDefaulted(address)
+          handler: handleLoanDefaulted
+        - event: AuctionSuccessful(address,uint256,uint256,uint256,uint256,uint256)
+          handler: handleAuctionSuccessful
+        - event: FundsUnlockedWithdrawn(address,indexed address,uint256)
+          handler: handleFundsUnlockedWithdrawn
+        - event: FullyFundsUnlockedWithdrawn(address)
+          handler: handleFullyFundsUnlockedWithdrawn
+        - event: LoanFundsUnlocked(uint256)
+          handler: handleLoanFundsUnlocked
+        - event: OperatorWithdrawn(uint256,address)
+          handler: handleOperatorWithdrawn
