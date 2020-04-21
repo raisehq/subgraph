@@ -11,7 +11,7 @@ dataSources:
       startBlock: 15180230
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.3
+      apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
         - User
@@ -33,7 +33,7 @@ dataSources:
       startBlock: 15180230
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.3
+      apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
         - User
@@ -57,7 +57,7 @@ dataSources:
       startBlock: 15180230
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.3
+      apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
         - User
@@ -81,7 +81,7 @@ dataSources:
       startBlock: 15180230
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.3
+      apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
         - LoanDispatcher
@@ -128,7 +128,7 @@ templates:
       abi: LoanContractMultiCoin
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.3
+      apiVersion: 0.0.4
       language: wasm/assemblyscript
       file: ./src/mappings/loanMultiCoin.ts
       entities:
