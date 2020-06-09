@@ -1,15 +1,395 @@
 [
   {
-    "constant": true,
     "inputs": [
       {
-        "name": "",
+        "internalType": "address",
+        "name": "authAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "registryAddress_",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "tokenAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "referralBonus",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor",
+    "signature": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "referralAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "newRegistryAddress",
         "type": "address"
       }
     ],
-    "name": "unclaimedReferrals",
+    "name": "AddRegistryAddress",
+    "type": "event",
+    "signature": "0x0e7cd5e0337e4656f4c7cdd27eb591558eb006ecc9a0beff379b05b7eef0de65"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "referralAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "authAddress",
+        "type": "address"
+      }
+    ],
+    "name": "AuthAddressUpdated",
+    "type": "event",
+    "signature": "0xc0bb63ce3c5b13e4918a521d34215bc08febb956464efb22eb2ef6d13374bde7"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "referralAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "fundsDepositor",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "FundsAdded",
+    "type": "event",
+    "signature": "0x55f368ec5df1aca853572d5a6cbda215a84cf17a93c765932dcfb1c237df2eca"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "referralAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "fundsWithdrawer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "FundsRemoved",
+    "type": "event",
+    "signature": "0x350626298131664fb816cc2e5a9a0aaf4f8fc4eef365fdf21f56df4cb073adb1"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event",
+    "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Paused",
+    "type": "event",
+    "signature": "0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "PauserAdded",
+    "type": "event",
+    "signature": "0x6719d08c1888103bea251a4ed56406bd0c3e69723c8a1686e017e7bbe159b6f8"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "PauserRemoved",
+    "type": "event",
+    "signature": "0xcd265ebaf09df2871cc7bd4133404a235ba12eff2041bb89d9c714a2621c7c7e"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "referralAddress",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "referrer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "currentTrackerBalance",
+        "type": "uint256"
+      }
+    ],
+    "name": "ReferralBonusWithdrawn",
+    "type": "event",
+    "signature": "0x93ca332bcf8e1c4953953b77c512d1ecce1d7e6e5cb0145c084addbfcee10ec5"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "referralAddress",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "referrer",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "referralAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "ReferralRegistered",
+    "type": "event",
+    "signature": "0xbc5b53a8cf94dc109056619f3f012c07f71f8d20059165ebce4cb7218cf308a0"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "referralAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "auth",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "registryAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "tokenAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "referralBonus",
+        "type": "uint256"
+      }
+    ],
+    "name": "ReferralTrackerCreated",
+    "type": "event",
+    "signature": "0x4e453a080f571ca3dcaa4dca4ac395c4d4c3c7e99a84502662e59d6558a3ddf1"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "referralAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "addressToRemove",
+        "type": "address"
+      }
+    ],
+    "name": "RemoveRegistryAddress",
+    "type": "event",
+    "signature": "0x1d9fb49d08d4a9e1f62550dc437c3a3703cf070a0b6bf19c1af9b036aaeefcd5"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Unpaused",
+    "type": "event",
+    "signature": "0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "referralAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "admin",
+        "type": "address"
+      }
+    ],
+    "name": "UpdateAdministrator",
+    "type": "event",
+    "signature": "0x8927f180ba3d09110724ee2e94e48ac714aad6bbc73ed1b808ebee39040451ee"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "referralAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "bonus",
+        "type": "uint256"
+      }
+    ],
+    "name": "UpdateReferralBonus",
+    "type": "event",
+    "signature": "0x497b76d5b691984291692bb8d26f29e935647805ff888644e023433af1d2f06c"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "referralAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "newToken",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "bonus",
+        "type": "uint256"
+      }
+    ],
+    "name": "UpdateToken",
+    "type": "event",
+    "signature": "0x1be377e648295bd6492fb7073119250b236975f53f411a6d393c1f7911554b8e"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "REFERRAL_BONUS",
     "outputs": [
       {
+        "internalType": "uint256",
         "name": "",
         "type": "uint256"
       }
@@ -17,22 +397,61 @@
     "payable": false,
     "stateMutability": "view",
     "type": "function",
-    "signature": "0x2bacb19b"
+    "signature": "0xe1913c81"
   },
   {
     "constant": false,
-    "inputs": [],
-    "name": "unpause",
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "addPauser",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function",
-    "signature": "0x3f4ba83a"
+    "signature": "0x82dc1ec4"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "admin",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xf851a440"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "isOwner",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x8f32d59b"
   },
   {
     "constant": true,
     "inputs": [
       {
+        "internalType": "address",
         "name": "account",
         "type": "address"
       }
@@ -40,6 +459,7 @@
     "name": "isPauser",
     "outputs": [
       {
+        "internalType": "bool",
         "name": "",
         "type": "bool"
       }
@@ -52,52 +472,18 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "paused",
+    "name": "owner",
     "outputs": [
       {
+        "internalType": "address",
         "name": "",
-        "type": "bool"
+        "type": "address"
       }
     ],
     "payable": false,
     "stateMutability": "view",
     "type": "function",
-    "signature": "0x5c975abb"
-  },
-  {
-    "constant": false,
-    "inputs": [],
-    "name": "renouncePauser",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x6ef8d66d"
-  },
-  {
-    "constant": false,
-    "inputs": [],
-    "name": "renounceOwnership",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x715018a6"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "account",
-        "type": "address"
-      }
-    ],
-    "name": "addPauser",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x82dc1ec4"
+    "signature": "0x8da5cb5b"
   },
   {
     "constant": false,
@@ -112,24 +498,10 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "owner",
+    "name": "paused",
     "outputs": [
       {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0x8da5cb5b"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "isOwner",
-    "outputs": [
-      {
+        "internalType": "bool",
         "name": "",
         "type": "bool"
       }
@@ -137,29 +509,79 @@
     "payable": false,
     "stateMutability": "view",
     "type": "function",
-    "signature": "0x8f32d59b"
+    "signature": "0x5c975abb"
   },
   {
     "constant": true,
-    "inputs": [],
-    "name": "REFERRAL_BONUS",
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "referredAddresses",
     "outputs": [
       {
+        "internalType": "bool",
         "name": "",
-        "type": "uint256"
+        "type": "bool"
       }
     ],
     "payable": false,
     "stateMutability": "view",
     "type": "function",
-    "signature": "0xe1913c81"
+    "signature": "0xaa9fc0c4"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "registryAddresses",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x6a3d40b9"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x715018a6"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "renouncePauser",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x6ef8d66d"
   },
   {
     "constant": true,
     "inputs": [],
-    "name": "registryAddress",
+    "name": "token",
     "outputs": [
       {
+        "internalType": "contract ERC20",
         "name": "",
         "type": "address"
       }
@@ -167,12 +589,13 @@
     "payable": false,
     "stateMutability": "view",
     "type": "function",
-    "signature": "0xed9aab51"
+    "signature": "0xfc0c546a"
   },
   {
     "constant": false,
     "inputs": [
       {
+        "internalType": "address",
         "name": "newOwner",
         "type": "address"
       }
@@ -186,206 +609,105 @@
   },
   {
     "constant": true,
-    "inputs": [],
-    "name": "admin",
-    "outputs": [
+    "inputs": [
       {
+        "internalType": "address",
         "name": "",
         "type": "address"
+      }
+    ],
+    "name": "unclaimedAmount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "payable": false,
     "stateMutability": "view",
     "type": "function",
-    "signature": "0xf851a440"
+    "signature": "0xa8ad9a32"
   },
   {
-    "inputs": [
-      {
-        "name": "registryAddress_",
-        "type": "address"
-      },
-      {
-        "name": "tokenAdress",
-        "type": "address"
-      }
-    ],
+    "constant": false,
+    "inputs": [],
+    "name": "unpause",
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "constructor",
-    "signature": "constructor"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "referralAddress",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "name": "referrer",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "name": "user",
-        "type": "address"
-      }
-    ],
-    "name": "ReferralRegistered",
-    "type": "event",
-    "signature": "0x6d29dc2ed73b9596639a345d424489f3b786ad391cedf2efa50cef71f8da294c"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "referralAddress",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "name": "referrer",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "amount",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "currentTrackerBalance",
-        "type": "uint256"
-      }
-    ],
-    "name": "ReferralBonusWithdrawn",
-    "type": "event",
-    "signature": "0x93ca332bcf8e1c4953953b77c512d1ecce1d7e6e5cb0145c084addbfcee10ec5"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "referralAddress",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "fundsDepositor",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "FundsAdded",
-    "type": "event",
-    "signature": "0x55f368ec5df1aca853572d5a6cbda215a84cf17a93c765932dcfb1c237df2eca"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "referralAddress",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "fundsWithdrawer",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "FundsRemoved",
-    "type": "event",
-    "signature": "0x350626298131664fb816cc2e5a9a0aaf4f8fc4eef365fdf21f56df4cb073adb1"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "account",
-        "type": "address"
-      }
-    ],
-    "name": "Paused",
-    "type": "event",
-    "signature": "0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "account",
-        "type": "address"
-      }
-    ],
-    "name": "Unpaused",
-    "type": "event",
-    "signature": "0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "account",
-        "type": "address"
-      }
-    ],
-    "name": "PauserAdded",
-    "type": "event",
-    "signature": "0x6719d08c1888103bea251a4ed56406bd0c3e69723c8a1686e017e7bbe159b6f8"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "account",
-        "type": "address"
-      }
-    ],
-    "name": "PauserRemoved",
-    "type": "event",
-    "signature": "0xcd265ebaf09df2871cc7bd4133404a235ba12eff2041bb89d9c714a2621c7c7e"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "previousOwner",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "name": "newOwner",
-        "type": "address"
-      }
-    ],
-    "name": "OwnershipTransferred",
-    "type": "event",
-    "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+    "type": "function",
+    "signature": "0x3f4ba83a"
   },
   {
     "constant": false,
     "inputs": [
       {
+        "internalType": "address",
+        "name": "authAddress",
+        "type": "address"
+      }
+    ],
+    "name": "setAuthAddress",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x10265693"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newRegistryAddress",
+        "type": "address"
+      }
+    ],
+    "name": "addRegistryAddress",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x30804194"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "registryAddressToRemove",
+        "type": "address"
+      }
+    ],
+    "name": "removeRegistryAddress",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xa434db20"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "newBonus",
+        "type": "uint256"
+      }
+    ],
+    "name": "setReferralBonus",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x9a037aa0"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "internalType": "address",
         "name": "_admin",
         "type": "address"
       }
@@ -401,6 +723,28 @@
     "constant": false,
     "inputs": [
       {
+        "internalType": "address",
+        "name": "_token",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_bonus",
+        "type": "uint256"
+      }
+    ],
+    "name": "setToken",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x78bf2b53"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "internalType": "uint256",
         "name": "amount",
         "type": "uint256"
       }
@@ -416,6 +760,7 @@
     "constant": false,
     "inputs": [
       {
+        "internalType": "address",
         "name": "to",
         "type": "address"
       }
@@ -431,16 +776,24 @@
     "constant": false,
     "inputs": [
       {
+        "internalType": "address",
         "name": "referrer",
         "type": "address"
       },
       {
+        "internalType": "address",
         "name": "user",
         "type": "address"
       }
     ],
     "name": "registerReferral",
-    "outputs": [],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function",
@@ -450,6 +803,7 @@
     "constant": false,
     "inputs": [
       {
+        "internalType": "address",
         "name": "to",
         "type": "address"
       }
@@ -467,6 +821,7 @@
     "name": "getTrackerBalance",
     "outputs": [
       {
+        "internalType": "uint256",
         "name": "",
         "type": "uint256"
       }
@@ -475,5 +830,71 @@
     "stateMutability": "view",
     "type": "function",
     "signature": "0x149af869"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getUnclaimedAmount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xb8152395"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "isAddressInRegistry",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xbf3d31de"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "isAddressReferred",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xf5829876"
   }
 ]
