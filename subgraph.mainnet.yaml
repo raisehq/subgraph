@@ -72,6 +72,46 @@ dataSources:
         - event: AddressUnlockedForWithdrawal(address,indexed address)
           handler: handleAddressUnlockedForWithdrawal
       file: ./src/mappings/depositregistry.ts
+  - kind: ethereum/contract
+    name: ReferralTracker
+    network: kovan
+    source:
+      address: "0xF8494Dc5e47254FA1edD738c94721571748697C5"
+      abi: ReferralTracker
+      startBlock: 10237415
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - User
+        - Referral
+        - ReferralTracker
+      abis:
+        - name: ReferralTracker
+          file: ./abis/ReferralTracker.json
+      eventHandlers:
+        - event: ReferralRegistered(address,indexed address,indexed address,uint256)
+          handler: handleReferralRegistered
+        - event: ReferralBonusWithdrawn(address,indexed address,uint256,uint256)
+          handler: handleReferralBonusWithdrawn
+        - event: FundsAdded(address,address,uint256)
+          handler: handleFundsAdded
+        - event: FundsRemoved(address,address,uint256)
+          handler: handleFundsRemoved
+        - event: UpdateToken(address,address,uint256)
+          handler: handleUpdateToken
+        - event: AddRegistryAddress(address,address)
+          handler: handleAddRegistryAddress
+        - event: RemoveRegistryAddress(address,address)
+          handler: handleRemoveRegistryAddress
+        - event: UpdateReferralBonus(address,uint256)
+          handler: handleUpdateReferralBonus
+        - event: ReferralTrackerCreated(address,address,address,address,uint256)
+          handler: handleReferralTrackerCreated
+        - event: AuthAddressUpdated(address,address)
+          handler: handleAuthAddressUpdated
+      file: ./src/mappings/referraltracker.ts
   # - kind: ethereum/contract
   #   name: ReferralTracker
   #     address: "0xc2e89d82258811832a392ca1ef66b9f0c0ccd55e"
