@@ -74,7 +74,7 @@ dataSources:
       file: ./src/mappings/depositregistry.ts
   - kind: ethereum/contract
     name: ReferralTracker
-    network: kovan
+    network: mainnet
     source:
       address: "0xF8494Dc5e47254FA1edD738c94721571748697C5"
       abi: ReferralTracker
