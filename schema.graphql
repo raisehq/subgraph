@@ -29,6 +29,7 @@ type Referral @entity {
 
 type ReferralTracker @entity {
   id: ID!
+  address: Bytes!
   referrals: [Referral!]
   referralsCount: Int!
   referralsPendingToWithdraw: Int!
@@ -39,6 +40,8 @@ type ReferralTracker @entity {
   registryAddresses: [Bytes!]!
   referredAddresses: [Bytes!]
   authAddress: Bytes!
+  bonus: BigInt!
+  bonusTokenAddress: Bytes!
 }
 
 type LoanDispatcher @entity {

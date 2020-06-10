@@ -10,7 +10,6 @@ import {
   AddRegistryAddress as AddRegistryAddressEvent,
   RemoveRegistryAddress as RemoveRegistryAddressEvent,
   UpdateReferralBonus as UpdateReferralBonusEvent,
-  UpdateAdministrator as UpdateAdministratorEvent,
   ReferralTrackerCreated as ReferralTrackerCreatedEvent,
   AuthAddressUpdated as AuthAddressUpdatedEvent,
 } from "../../generated/ReferralTracker/ReferralTracker";
@@ -41,9 +40,9 @@ export function handleReferralTrackerCreated(
     tracker.bonus = event.params.referralBonus;
     tracker.bonusTokenAddress = event.params.tokenAddress;
 
-    tracker.registryAddress = tracker.registryAddress.push(
-      event.params.registryAddress
-    );
+    let registryAddresses = tracker.registryAddresses;
+    registryAddresses.push(event.params.registryAddress);
+    tracker.registryAddresses = registryAddresses;
   }
   tracker.save();
 }
@@ -60,14 +59,15 @@ export function handleReferralRegistered(event: ReferralRegisteredEvent): void {
   let referralContract = ReferralTrackerContract.bind(
     event.params.referralAddress
   );
-  let referralBonus = referralContract.REFERRAL_BONUS();
-  let unclaimedReferrals = referralContract.unclaimedReferrals(
+
+  let unclaimedAmount = referralContract.getUnclaimedAmount(
     event.params.referrer
   );
   let currentBalance = referralContract.getTrackerBalance();
 
   referral.referred = event.params.user.toHex();
   referral.referrer = user.id;
+  referral.bonus = event.params.referralAmount;
 
   referral.save();
 
@@ -79,7 +79,7 @@ export function handleReferralRegistered(event: ReferralRegisteredEvent): void {
     referrals.push(referralId);
     user.referrals = referrals;
 
-    user.totalBountyToWithdraw = unclaimedReferrals.times(referralBonus);
+    user.totalBountyToWithdraw = unclaimedAmount;
     user.totalReferralsCount = user.totalReferralsCount + 1;
 
     user.save();
@@ -88,16 +88,7 @@ export function handleReferralRegistered(event: ReferralRegisteredEvent): void {
   // init tracker
   let trackerAddress = event.address;
   let tracker = ReferralTracker.load(trackerAddress.toHex());
-  // if (tracker == null) {
-  //   tracker = new ReferralTracker(trackerAddress.toHex());
-  //   tracker.referrals = [];
-  //   tracker.referralsCount = 0;
-  //   tracker.totalFundsWithdrawn = BigInt.fromI32(0);
-  //   tracker.referralsPendingToWithdraw = 0;
-  //   tracker.referralsWithdrawn = 0;
-  //   tracker.currentFunds = BigInt.fromI32(0);
-  //   tracker.paused = false;
-  // }
+
   // Add referral to user
   referrals = tracker.referrals;
   referralIndex = referrals.indexOf(referralId);
@@ -128,16 +119,6 @@ export function handleReferralBonusWithdrawn(
 
   let trackerAddress = event.params.referralAddress;
   let tracker = ReferralTracker.load(trackerAddress.toHex());
-  if (tracker == null) {
-    tracker = new ReferralTracker(trackerAddress.toHex());
-    tracker.referrals = [];
-    tracker.referralsCount = 0;
-    tracker.totalFundsWithdrawn = BigInt.fromI32(0);
-    tracker.referralsPendingToWithdraw = 0;
-    tracker.referralsWithdrawn = 0;
-    tracker.currentFunds = BigInt.fromI32(0);
-    tracker.paused = false;
-  }
 
   let currentBalance = event.params.currentTrackerBalance;
   tracker.referralsPendingToWithdraw = tracker.referralsPendingToWithdraw - 1;
@@ -158,17 +139,6 @@ export function handleFundsAdded(event: FundsAddedEvent): void {
 
   let referralContract = ReferralTrackerContract.bind(trackerAddress);
   let currentBalance = referralContract.getTrackerBalance();
-
-  if (tracker == null) {
-    tracker = new ReferralTracker(trackerAddress.toHex());
-    tracker.referrals = [];
-    tracker.referralsCount = 0;
-    tracker.totalFundsWithdrawn = BigInt.fromI32(0);
-    tracker.referralsPendingToWithdraw = 0;
-    tracker.referralsWithdrawn = 0;
-    tracker.currentFunds = BigInt.fromI32(0);
-    tracker.paused = false;
-  }
 
   tracker.currentFunds = currentBalance;
 
@@ -198,4 +168,66 @@ export function handleUnpaused(event: UnpausedEvent): void {
   let tracker = new ReferralTracker(trackerAddress.toHex());
   tracker.paused = false;
   tracker.save();
+}
+
+export function handleAuthAddressUpdated(event: AuthAddressUpdatedEvent): void {
+  let trackerAddress = event.params.referralAddress;
+  let tracker = new ReferralTracker(trackerAddress.toHex());
+
+  tracker.authAddress = event.params.authAddress;
+
+  tracker.save();
+}
+
+export function handleUpdateReferralBonus(
+  event: UpdateReferralBonusEvent
+): void {
+  let trackerAddress = event.params.referralAddress;
+  let tracker = new ReferralTracker(trackerAddress.toHex());
+
+  tracker.bonus = event.params.bonus;
+
+  tracker.save();
+}
+
+export function handleUpdateToken(event: UpdateTokenEvent): void {
+  let trackerAddress = event.params.referralAddress;
+  let tracker = new ReferralTracker(trackerAddress.toHex());
+
+  tracker.bonus = event.params.bonus;
+  tracker.bonusTokenAddress = event.params.newToken;
+
+  tracker.save();
+}
+
+export function handleRemoveRegistryAddress(
+  event: RemoveRegistryAddressEvent
+): void {
+  let trackerAddress = event.params.referralAddress;
+  let tracker = new ReferralTracker(trackerAddress.toHex());
+
+  let registryAddresses = tracker.registryAddresses;
+  let registryIndex = registryAddresses.indexOf(event.params.addressToRemove);
+  if (registryIndex > -1) {
+    registryAddresses.splice(registryIndex, 1);
+    tracker.registryAddresses = registryAddresses;
+
+    tracker.save();
+  }
+}
+
+export function handleAddRegistryAddress(event: AddRegistryAddressEvent): void {
+  let trackerAddress = event.params.referralAddress;
+  let tracker = new ReferralTracker(trackerAddress.toHex());
+
+  let registryAddresses = tracker.registryAddresses;
+  let registryIndex = registryAddresses.indexOf(
+    event.params.newRegistryAddress
+  );
+  if (registryIndex == -1) {
+    registryAddresses.push(event.params.newRegistryAddress);
+    tracker.registryAddresses = registryAddresses;
+
+    tracker.save();
+  }
 }
