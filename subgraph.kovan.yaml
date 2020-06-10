@@ -83,8 +83,6 @@ dataSources:
           handler: handleRemoveRegistryAddress
         - event: UpdateReferralBonus(address,uint256)
           handler: handleUpdateReferralBonus
-        - event: UpdateAdministrator(address,address)
-          handler: handleUpdateAdministrator
         - event: ReferralTrackerCreated(address,address,address,address,uint256)
           handler: handleReferralTrackerCreated
         - event: AuthAddressUpdated(address,address)
