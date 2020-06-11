@@ -88,7 +88,7 @@ dataSources:
     name: LoanContractDispatcherMultiCoin
     network: mainnet
     source:
-      address: "0x0a49f544a98B775c2EF10a65d71d083706Afa58F"
+      address: "0xDA6aFc535eAf38c3d8488e7b2d68508C05b18228"
       abi: LoanContractDispatcherMultiCoin
       startBlock: 8290066
     mapping:
