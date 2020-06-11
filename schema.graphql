@@ -37,7 +37,7 @@ type ReferralTracker @entity {
   currentFunds: BigInt!
   totalFundsWithdrawn: BigInt!
   paused: Boolean!
-  registryAddresses: [Bytes!]!
+  registryAddresses: [Bytes!]
   referredAddresses: [Bytes!]
   authAddress: Bytes!
   bonus: BigInt!

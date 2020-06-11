@@ -203,31 +203,27 @@ export function handleUpdateToken(event: UpdateTokenEvent): void {
 export function handleRemoveRegistryAddress(
   event: RemoveRegistryAddressEvent
 ): void {
-  let trackerAddress = event.params.referralAddress;
-  let tracker = new ReferralTracker(trackerAddress.toHex());
-
-  let registryAddresses = tracker.registryAddresses;
-  let registryIndex = registryAddresses.indexOf(event.params.addressToRemove);
-  if (registryIndex > -1) {
-    registryAddresses.splice(registryIndex, 1);
-    tracker.registryAddresses = registryAddresses;
-
-    tracker.save();
-  }
+  // let trackerAddress = event.params.referralAddress;
+  // let tracker = new ReferralTracker(trackerAddress.toHex());
+  // let registryAddresses = tracker.registryAddresses;
+  // let registryIndex = registryAddresses.indexOf(event.params.addressToRemove);
+  // if (registryIndex > -1) {
+  //   registryAddresses.splice(registryIndex, 1);
+  //   tracker.registryAddresses = registryAddresses;
+  //   tracker.save();
+  // }
 }
 
 export function handleAddRegistryAddress(event: AddRegistryAddressEvent): void {
-  let trackerAddress = event.params.referralAddress;
-  let tracker = new ReferralTracker(trackerAddress.toHex());
-
-  let registryAddresses = tracker.registryAddresses;
-  let registryIndex = registryAddresses.indexOf(
-    event.params.newRegistryAddress
-  );
-  if (registryIndex == -1) {
-    registryAddresses.push(event.params.newRegistryAddress);
-    tracker.registryAddresses = registryAddresses;
-
-    tracker.save();
-  }
+  // let trackerAddress = event.params.referralAddress;
+  // let tracker = new ReferralTracker(trackerAddress.toHex());
+  // let registryAddresses = tracker.registryAddresses;
+  // let registryIndex = registryAddresses.indexOf(
+  //   event.params.newRegistryAddress
+  // );
+  // if (registryIndex == -1) {
+  //   registryAddresses.push(event.params.newRegistryAddress);
+  //   tracker.registryAddresses = registryAddresses;
+  //   tracker.save();
+  // }
 }
