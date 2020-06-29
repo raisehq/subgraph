@@ -1,6 +1,6 @@
 import {
   RemovedFromKYC as RemovedFromKYCEvent,
-  AddedToKYC as AddedToKYCEvent
+  AddedToKYC as AddedToKYCEvent,
 } from "../../generated/KYCRegistry/KYCRegistry";
 import { User } from "../../generated/schema";
 import { log, BigInt } from "@graphprotocol/graph-ts";
@@ -30,6 +30,7 @@ export function handleAddedToKYC(event: AddedToKYCEvent): void {
     user.createdBlockNumber = event.block.number;
     user.createdTimestamp = event.block.timestamp;
     user.withdrawalUnlocked = false;
+    user.investmentsCount = 0;
   }
 
   user.addKycBlockNumber = event.block.number;

@@ -6,10 +6,12 @@ type User @entity {
   loanFundings: [Funding!]!
   loanRequests: [Loan!]!
   referrals: [Referral!]
+  referredBy: User
   totalBountyWithdrawn: BigInt!
   totalBountyToWithdraw: BigInt!
   totalReferralsCount: Int!
   withdrawalUnlocked: Boolean!
+  investmentsCount: Int!
 
   # metadata
   depositBlockNumber: BigInt
@@ -118,10 +120,12 @@ type Loan @entity {
 
 type Funding @entity {
   id: ID!
+  user: User!
   loan: Loan!
   amount: BigInt!
   withdrawn: Boolean!
   amountWithdrawn: BigInt!
+  investmentsCount: Int!
 
   # metadata
   createdBlockNumber: BigInt!

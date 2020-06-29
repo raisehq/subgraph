@@ -50,6 +50,22 @@ export function handleReferralTrackerCreated(
 export function handleReferralRegistered(event: ReferralRegisteredEvent): void {
   let userAddress = event.params.referrer;
   let user = User.load(userAddress.toHex());
+  if (user == null) {
+    user = new User(userAddress.toHex());
+    user.address = userAddress;
+    user.referrals = [];
+    user.deposited = false;
+    user.kyced = false;
+    user.totalBountyWithdrawn = BigInt.fromI32(0);
+    user.totalBountyToWithdraw = BigInt.fromI32(0);
+    user.totalReferralsCount = 0;
+    user.loanFundings = [];
+    user.loanRequests = [];
+    user.createdBlockNumber = event.block.number;
+    user.createdTimestamp = event.block.timestamp;
+    user.withdrawalUnlocked = false;
+    user.investmentsCount = 0;
+  }
 
   // Generate referral
   let referralId =
@@ -84,6 +100,27 @@ export function handleReferralRegistered(event: ReferralRegisteredEvent): void {
 
     user.save();
   }
+
+  //update referred user
+  let referredUser = User.load(event.params.user.toHex());
+  if (referredUser == null) {
+    referredUser = new User(event.params.user.toHex());
+    referredUser.address = event.params.user;
+    referredUser.referrals = [];
+    referredUser.deposited = false;
+    referredUser.totalBountyWithdrawn = BigInt.fromI32(0);
+    referredUser.totalBountyToWithdraw = BigInt.fromI32(0);
+    referredUser.totalReferralsCount = 0;
+    referredUser.loanFundings = [];
+    referredUser.loanRequests = [];
+    referredUser.createdBlockNumber = event.block.number;
+    referredUser.createdTimestamp = event.block.timestamp;
+    referredUser.withdrawalUnlocked = false;
+    referredUser.investmentsCount = 0;
+    referredUser.kyced = false;
+  }
+  referredUser.referredBy = user.id;
+  referredUser.save();
 
   // init tracker
   let trackerAddress = event.address;

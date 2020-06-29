@@ -173,20 +173,24 @@ export function handleFunded(event: FundedEvent): void {
     funding.loan = loanAddressHex;
     funding.amount = BigInt.fromI32(0);
     funding.withdrawn = false;
+    funding.investmentsCount = 0;
     funding.amountWithdrawn = BigInt.fromI32(0);
     funding.createdBlockNumber = event.block.number;
     funding.createdTimestamp = event.block.timestamp;
+    funding.user = user.id;
   }
 
   funding.updatedBlockNumber = event.block.number;
   funding.updatedTimestamp = event.block.timestamp;
   funding.amount = funding.amount.plus(event.params.amount);
+  funding.investmentsCount = funding.investmentsCount + 1;
   funding.save();
 
   funding.save();
   let fundings = user.loanFundings;
   fundings.push(funding.id);
   user.loanFundings = fundings;
+  user.investmentsCount = user.investmentsCount + 1;
 
   user.save();
 }
@@ -212,25 +216,25 @@ export function handleFailedToFund(event: FailedToFundEvent): void {
   loan.save();
 
   // creating funding transaction
-  let userAddress = event.params.lender;
-  let user = User.load(userAddress.toHex());
+  // let userAddress = event.params.lender;
+  // let user = User.load(userAddress.toHex());
 
-  let fundingId = userAddress.toHex() + "-" + loanAddressHex;
-  let funding = Funding.load(fundingId);
-  if (funding == null) {
-    funding = new Funding(fundingId);
-    funding.loan = loanAddressHex;
-    funding.amount = BigInt.fromI32(0);
-    funding.withdrawn = false;
-    funding.amountWithdrawn = BigInt.fromI32(0);
-  }
-  funding.save();
+  // let fundingId = userAddress.toHex() + "-" + loanAddressHex;
+  // let funding = Funding.load(fundingId);
+  // if (funding == null) {
+  //   funding = new Funding(fundingId);
+  //   funding.loan = loanAddressHex;
+  //   funding.amount = BigInt.fromI32(0);
+  //   funding.withdrawn = false;
+  //   funding.amountWithdrawn = BigInt.fromI32(0);
+  // }
+  // funding.save();
 
-  let fundings = user.loanFundings;
-  fundings.push(funding.id);
-  user.loanFundings = fundings;
+  // let fundings = user.loanFundings;
+  // fundings.push(funding.id);
+  // user.loanFundings = fundings;
 
-  user.save();
+  // user.save();
 }
 
 export function handleAuctionSuccessful(event: AuctionSuccessfulEvent): void {

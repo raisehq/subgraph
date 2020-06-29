@@ -1,7 +1,7 @@
 import {
   UserDepositCompleted as UserDepositCompletedEvent,
   UserWithdrawnCompleted as UserWithdrawnCompletedEvent,
-  AddressUnlockedForWithdrawal as AddressUnlockedForWithdrawalEvent
+  AddressUnlockedForWithdrawal as AddressUnlockedForWithdrawalEvent,
 } from "../../generated/DepositRegistry/DepositRegistry";
 import { User } from "../../generated/schema";
 import { log, BigInt } from "@graphprotocol/graph-ts";
@@ -24,6 +24,7 @@ export function handleUserDepositCompleted(
     user.loanRequests = [];
     user.createdBlockNumber = event.block.number;
     user.createdTimestamp = event.block.timestamp;
+    user.investmentsCount = 0;
   }
 
   user.depositBlockNumber = event.block.number;

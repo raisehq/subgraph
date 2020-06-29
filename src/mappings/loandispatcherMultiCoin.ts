@@ -126,6 +126,7 @@ export function handleLoanContractCreated(
       user.createdBlockNumber = event.block.number;
       user.createdTimestamp = event.block.timestamp;
       user.deposited = false;
+      user.investmentsCount = 0;
     }
 
     let requests = user.loanRequests;
