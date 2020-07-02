@@ -64,6 +64,24 @@ type LoanDispatcher @entity {
   swapFactory: Bytes
 }
 
+type LoanInstalmentsDispatcher @entity {
+  id: ID!
+  address: Bytes!
+  loans: [Loan!]!
+  loansCount: Int!
+  minAmount: BigInt!
+  maxAmount: BigInt!
+  minInterestRate: BigInt!
+  maxInterestRate: BigInt!
+  operatorFee: BigInt!
+  minTermLength: BigInt!
+  minAuctionLength: BigInt!
+  acceptedTokens: [Bytes!]
+  auth: Bytes
+  DAIProxyAddress: Bytes
+  swapFactory: Bytes
+}
+
 type Loan @entity {
   id: ID!
 
@@ -118,6 +136,60 @@ type Loan @entity {
   tokenAddress: Bytes #must be able to be empty for compatibility
 }
 
+type LoanInstalments @entity {
+  id: ID!
+
+  # loan status
+  investors: [User!]!
+  investorCount: Int!
+  address: Bytes! # address
+  dispatcherId: String!
+  originator: Bytes! # address
+  minAmount: BigInt! # uint256
+  maxAmount: BigInt! # uint256
+  minInterestRate: BigInt! # uint256
+  maxInterestRate: BigInt! # uint256
+  state: Int! #enum
+  borrowerDebt: BigInt!
+  loanFundsUnlocked: Boolean!
+  operatorFee: BigInt!
+  instalments: BigInt!
+
+  #Funding/Auction fase
+  auctionStartTimestamp: BigInt! # uint256
+  auctionEndTimestamp: BigInt! # uint256
+  auctionLength: BigInt!
+  termEndTimestamp: BigInt
+  termLength: BigInt!
+  lastFundedTimestamp: BigInt
+  auctionLastFundedTimestamp: BigInt #block where loan is fully funded
+  principal: BigInt!
+  minimumReached: Boolean!
+  auctionFullyFunded: Boolean!
+  auctionEnded: Boolean!
+  auctionFailed: Boolean!
+  interestRate: BigInt
+  netBalance: BigInt
+
+  #borrower withdraw
+  operatorBalance: BigInt!
+  operatorFeeWithdrawn: Boolean!
+  operatorFeeAmount: BigInt
+  loanWithdrawn: Boolean!
+  loanRepaid: Boolean!
+  loanRepaidTimestamp: BigInt
+  loanWithdrawnAmount: BigInt!
+
+  #Lender Withdraw fase
+  refundsWithdrawnAmount: BigInt!
+  loanFullyRefunded: Boolean!
+  refundStarted: Boolean!
+
+  #metadata
+  createdBlockNumber: BigInt!
+  createdTimestamp: BigInt!
+  tokenAddress: Bytes #must be able to be empty for compatibility
+}
 type Funding @entity {
   id: ID!
   user: User!
