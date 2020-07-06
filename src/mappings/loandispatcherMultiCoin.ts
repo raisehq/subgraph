@@ -68,6 +68,7 @@ export function handleLoanContractCreated(
     // loan status
     loan.investors = [];
     loan.investorCount = 0;
+    loan.type = "Bullet";
     loan.dispatcherId = loanDispatcher.id;
     loan.address = event.params.contractAddress;
     loan.originator = event.params.originator;
