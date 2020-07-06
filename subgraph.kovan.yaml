@@ -159,12 +159,14 @@ dataSources:
           handler: handleDaiProxyAddressUpdated
         - event: SwapFactoryAddressUpdated(address,address,address)
           handler: handleSwapFactoryAddressUpdated
+        - event: LoanTemplateUpdated(address)
+          handler: handleTemplateUpdated
       file: ./src/mappings/loandispatcherInstalments.ts
   - kind: ethereum/contract
     name: LoanContractDispatcherMultiCoin
     network: kovan
     source:
-      address: "0x4cfDd81C635d98D63100574934C5e009CAe4F9B2"
+      address: "0x4e4d6B9BfDEbDD55880e68DC15e420E5B2C8F8fD"
       abi: LoanContractDispatcherMultiCoin
       startBlock: 15180230
     mapping:
@@ -239,7 +241,9 @@ templates:
           handler: handleLoanRepaid
         - event: FailedToFund(address,indexed address,uint256)
           handler: handleFailedToFund
-        - event: RepaymentWithdrawn(address,indexed address,uint256)
+        - event: LoanPayment(indexed address,uint256,uint256,uint256,uint256,uint256)
+          handler: handleLoanPayment
+        - event: RepaymentWithdrawn(address,indexed address,uint256,uint256,uint256,bool)
           handler: handleRepaymentWithdrawn
         - event: RefundWithdrawn(address,indexed address,uint256)
           handler: handleRefundWithdrawn

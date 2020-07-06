@@ -1152,7 +1152,7 @@
         "id": 3786,
         "nodeType": "ImportDirective",
         "scope": 4546,
-        "sourceUnit": 29112,
+        "sourceUnit": 29172,
         "src": "25:63:7",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1163,7 +1163,7 @@
         "id": 3787,
         "nodeType": "ImportDirective",
         "scope": 4546,
-        "sourceUnit": 17987,
+        "sourceUnit": 18047,
         "src": "89:53:7",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1174,7 +1174,7 @@
         "id": 3788,
         "nodeType": "ImportDirective",
         "scope": 4546,
-        "sourceUnit": 17744,
+        "sourceUnit": 17804,
         "src": "143:43:7",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1185,7 +1185,7 @@
         "id": 3789,
         "nodeType": "ImportDirective",
         "scope": 4546,
-        "sourceUnit": 17217,
+        "sourceUnit": 17277,
         "src": "187:41:7",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1210,10 +1210,10 @@
               "id": 3791,
               "name": "ILoanInstalmentsDispatcher",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 17986,
+              "referencedDeclaration": 18046,
               "src": "297:26:7",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ILoanInstalmentsDispatcher_$17986",
+                "typeIdentifier": "t_contract$_ILoanInstalmentsDispatcher_$18046",
                 "typeString": "contract ILoanInstalmentsDispatcher"
               }
             },
@@ -1246,10 +1246,10 @@
               "id": 3795,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 29111,
+              "referencedDeclaration": 29171,
               "src": "339:7:7",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$29111",
+                "typeIdentifier": "t_contract$_Ownable_$29171",
                 "typeString": "contract Ownable"
               }
             },
@@ -1260,9 +1260,9 @@
         ],
         "contractDependencies": [
           143,
-          17986,
-          28427,
-          29111
+          18046,
+          28487,
+          29171
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -1270,10 +1270,10 @@
         "id": 4545,
         "linearizedBaseContracts": [
           4545,
-          29111,
-          28427,
+          29171,
+          28487,
           143,
-          17986
+          18046
         ],
         "name": "LoanInstalmentsDispatcher",
         "nodeType": "ContractDefinition",
@@ -1706,7 +1706,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 29669,
+                              "referencedDeclaration": 29729,
                               "src": "929:3:7",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -1763,10 +1763,10 @@
                               "name": "IAuthorization",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 17216,
+                              "referencedDeclaration": 17276,
                               "src": "893:14:7",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_type$_t_contract$_IAuthorization_$17216_$",
+                                "typeIdentifier": "t_type$_t_contract$_IAuthorization_$17276_$",
                                 "typeString": "type(contract IAuthorization)"
                               }
                             },
@@ -1780,7 +1780,7 @@
                             "nodeType": "FunctionCall",
                             "src": "893:20:7",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_IAuthorization_$17216",
+                              "typeIdentifier": "t_contract$_IAuthorization_$17276",
                               "typeString": "contract IAuthorization"
                             }
                           },
@@ -1791,7 +1791,7 @@
                           "lValueRequested": false,
                           "memberName": "isKYCConfirmed",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 17201,
+                          "referencedDeclaration": 17261,
                           "src": "893:35:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_bool_$",
@@ -1846,10 +1846,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "885:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -1923,7 +1923,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29669,
+                            "referencedDeclaration": 29729,
                             "src": "1030:3:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -1999,10 +1999,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "1022:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -4065,7 +4065,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "3396:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -4630,7 +4630,7 @@
             "scope": 4545,
             "src": "3682:160:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17920,
+            "superFunction": 17980,
             "visibility": "external"
           },
           {
@@ -4764,7 +4764,7 @@
             "scope": 4545,
             "src": "3848:128:7",
             "stateMutability": "view",
-            "superFunction": 17890,
+            "superFunction": 17950,
             "visibility": "external"
           },
           {
@@ -4877,7 +4877,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "4160:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -5034,7 +5034,7 @@
             "scope": 4545,
             "src": "3982:191:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17895,
+            "superFunction": 17955,
             "visibility": "external"
           },
           {
@@ -5147,7 +5147,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "4368:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -5304,7 +5304,7 @@
             "scope": 4545,
             "src": "4179:202:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17900,
+            "superFunction": 17960,
             "visibility": "external"
           },
           {
@@ -5398,7 +5398,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "4549:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -5559,7 +5559,7 @@
             "scope": 4545,
             "src": "4387:175:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17905,
+            "superFunction": 17965,
             "visibility": "external"
           },
           {
@@ -5653,7 +5653,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "4761:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -5814,7 +5814,7 @@
             "scope": 4545,
             "src": "4568:206:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17910,
+            "superFunction": 17970,
             "visibility": "external"
           },
           {
@@ -5908,7 +5908,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "4958:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -6150,7 +6150,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "5127:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -6251,7 +6251,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 29044,
+                  "referencedDeclaration": 29104,
                   "src": "5027:9:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -6307,7 +6307,7 @@
             "scope": 4545,
             "src": "4977:163:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17915,
+            "superFunction": 17975,
             "visibility": "external"
           },
           {
@@ -6388,7 +6388,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "5290:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -6438,7 +6438,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 29669,
+                          "referencedDeclaration": 29729,
                           "src": "5297:3:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -6577,7 +6577,7 @@
             "scope": 4545,
             "src": "5146:169:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17925,
+            "superFunction": 17985,
             "visibility": "external"
           },
           {
@@ -6669,10 +6669,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "5400:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -6769,7 +6769,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "5631:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -6925,7 +6925,7 @@
             "scope": 4545,
             "src": "5321:323:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17930,
+            "superFunction": 17990,
             "visibility": "external"
           },
           {
@@ -7017,10 +7017,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "5729:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -7117,7 +7117,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "5961:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -7273,7 +7273,7 @@
             "scope": 4545,
             "src": "5650:324:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17935,
+            "superFunction": 17995,
             "visibility": "external"
           },
           {
@@ -7365,10 +7365,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "6071:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -7465,7 +7465,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "6342:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -7621,7 +7621,7 @@
             "scope": 4545,
             "src": "5980:375:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17940,
+            "superFunction": 18000,
             "visibility": "external"
           },
           {
@@ -7713,10 +7713,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "6452:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -7813,7 +7813,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "6724:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -7969,7 +7969,7 @@
             "scope": 4545,
             "src": "6361:376:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17945,
+            "superFunction": 18005,
             "visibility": "external"
           },
           {
@@ -8050,7 +8050,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "6927:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -8206,7 +8206,7 @@
             "scope": 4545,
             "src": "6743:197:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17950,
+            "superFunction": 18010,
             "visibility": "external"
           },
           {
@@ -8287,7 +8287,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "7148:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -8443,7 +8443,7 @@
             "scope": 4545,
             "src": "6946:215:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17955,
+            "superFunction": 18015,
             "visibility": "external"
           },
           {
@@ -8578,10 +8578,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "7488:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -8817,10 +8817,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "7567:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -9056,10 +9056,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "7772:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -9231,10 +9231,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "7977:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -9406,10 +9406,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "8147:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -9517,10 +9517,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "8317:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -9628,10 +9628,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "8476:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -9739,10 +9739,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "8549:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -9882,10 +9882,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "8631:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -10115,7 +10115,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 29669,
+                              "referencedDeclaration": 29729,
                               "src": "9214:3:7",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -10272,10 +10272,10 @@
                               "name": "ILoanInstalments",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 17743,
+                              "referencedDeclaration": 17803,
                               "src": "8908:16:7",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_type$_t_contract$_ILoanInstalments_$17743_$",
+                                "typeIdentifier": "t_type$_t_contract$_ILoanInstalments_$17803_$",
                                 "typeString": "type(contract ILoanInstalments)"
                               }
                             },
@@ -10289,7 +10289,7 @@
                             "nodeType": "FunctionCall",
                             "src": "8908:30:7",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_ILoanInstalments_$17743",
+                              "typeIdentifier": "t_contract$_ILoanInstalments_$17803",
                               "typeString": "contract ILoanInstalments"
                             }
                           },
@@ -10300,7 +10300,7 @@
                           "lValueRequested": false,
                           "memberName": "init",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 17688,
+                          "referencedDeclaration": 17748,
                           "src": "8908:35:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_address_$_t_address_$_t_address_$_t_address_$_t_address_$returns$_t_bool_$",
@@ -10355,10 +10355,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "8887:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -10486,7 +10486,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 29669,
+                          "referencedDeclaration": 29729,
                           "src": "9495:3:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -10524,7 +10524,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
                         3861,
-                        17773
+                        17833
                       ],
                       "referencedDeclaration": 3861,
                       "src": "9461:19:7",
@@ -10852,7 +10852,7 @@
             "scope": 4545,
             "src": "7167:2376:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17976,
+            "superFunction": 18036,
             "visibility": "external"
           },
           {
@@ -11039,7 +11039,7 @@
             "scope": 4545,
             "src": "9549:131:7",
             "stateMutability": "view",
-            "superFunction": 17985,
+            "superFunction": 18045,
             "visibility": "external"
           },
           {
@@ -11209,7 +11209,7 @@
         "id": 3786,
         "nodeType": "ImportDirective",
         "scope": 4546,
-        "sourceUnit": 29112,
+        "sourceUnit": 29172,
         "src": "25:63:7",
         "symbolAliases": [],
         "unitAlias": ""
@@ -11220,7 +11220,7 @@
         "id": 3787,
         "nodeType": "ImportDirective",
         "scope": 4546,
-        "sourceUnit": 17987,
+        "sourceUnit": 18047,
         "src": "89:53:7",
         "symbolAliases": [],
         "unitAlias": ""
@@ -11231,7 +11231,7 @@
         "id": 3788,
         "nodeType": "ImportDirective",
         "scope": 4546,
-        "sourceUnit": 17744,
+        "sourceUnit": 17804,
         "src": "143:43:7",
         "symbolAliases": [],
         "unitAlias": ""
@@ -11242,7 +11242,7 @@
         "id": 3789,
         "nodeType": "ImportDirective",
         "scope": 4546,
-        "sourceUnit": 17217,
+        "sourceUnit": 17277,
         "src": "187:41:7",
         "symbolAliases": [],
         "unitAlias": ""
@@ -11267,10 +11267,10 @@
               "id": 3791,
               "name": "ILoanInstalmentsDispatcher",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 17986,
+              "referencedDeclaration": 18046,
               "src": "297:26:7",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ILoanInstalmentsDispatcher_$17986",
+                "typeIdentifier": "t_contract$_ILoanInstalmentsDispatcher_$18046",
                 "typeString": "contract ILoanInstalmentsDispatcher"
               }
             },
@@ -11303,10 +11303,10 @@
               "id": 3795,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 29111,
+              "referencedDeclaration": 29171,
               "src": "339:7:7",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$29111",
+                "typeIdentifier": "t_contract$_Ownable_$29171",
                 "typeString": "contract Ownable"
               }
             },
@@ -11317,9 +11317,9 @@
         ],
         "contractDependencies": [
           143,
-          17986,
-          28427,
-          29111
+          18046,
+          28487,
+          29171
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -11327,10 +11327,10 @@
         "id": 4545,
         "linearizedBaseContracts": [
           4545,
-          29111,
-          28427,
+          29171,
+          28487,
           143,
-          17986
+          18046
         ],
         "name": "LoanInstalmentsDispatcher",
         "nodeType": "ContractDefinition",
@@ -11763,7 +11763,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 29669,
+                              "referencedDeclaration": 29729,
                               "src": "929:3:7",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -11820,10 +11820,10 @@
                               "name": "IAuthorization",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 17216,
+                              "referencedDeclaration": 17276,
                               "src": "893:14:7",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_type$_t_contract$_IAuthorization_$17216_$",
+                                "typeIdentifier": "t_type$_t_contract$_IAuthorization_$17276_$",
                                 "typeString": "type(contract IAuthorization)"
                               }
                             },
@@ -11837,7 +11837,7 @@
                             "nodeType": "FunctionCall",
                             "src": "893:20:7",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_IAuthorization_$17216",
+                              "typeIdentifier": "t_contract$_IAuthorization_$17276",
                               "typeString": "contract IAuthorization"
                             }
                           },
@@ -11848,7 +11848,7 @@
                           "lValueRequested": false,
                           "memberName": "isKYCConfirmed",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 17201,
+                          "referencedDeclaration": 17261,
                           "src": "893:35:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_bool_$",
@@ -11903,10 +11903,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "885:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -11980,7 +11980,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29669,
+                            "referencedDeclaration": 29729,
                             "src": "1030:3:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -12056,10 +12056,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "1022:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -14122,7 +14122,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "3396:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -14687,7 +14687,7 @@
             "scope": 4545,
             "src": "3682:160:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17920,
+            "superFunction": 17980,
             "visibility": "external"
           },
           {
@@ -14821,7 +14821,7 @@
             "scope": 4545,
             "src": "3848:128:7",
             "stateMutability": "view",
-            "superFunction": 17890,
+            "superFunction": 17950,
             "visibility": "external"
           },
           {
@@ -14934,7 +14934,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "4160:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -15091,7 +15091,7 @@
             "scope": 4545,
             "src": "3982:191:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17895,
+            "superFunction": 17955,
             "visibility": "external"
           },
           {
@@ -15204,7 +15204,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "4368:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -15361,7 +15361,7 @@
             "scope": 4545,
             "src": "4179:202:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17900,
+            "superFunction": 17960,
             "visibility": "external"
           },
           {
@@ -15455,7 +15455,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "4549:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -15616,7 +15616,7 @@
             "scope": 4545,
             "src": "4387:175:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17905,
+            "superFunction": 17965,
             "visibility": "external"
           },
           {
@@ -15710,7 +15710,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "4761:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -15871,7 +15871,7 @@
             "scope": 4545,
             "src": "4568:206:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17910,
+            "superFunction": 17970,
             "visibility": "external"
           },
           {
@@ -15965,7 +15965,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "4958:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -16207,7 +16207,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "5127:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -16308,7 +16308,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 29044,
+                  "referencedDeclaration": 29104,
                   "src": "5027:9:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -16364,7 +16364,7 @@
             "scope": 4545,
             "src": "4977:163:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17915,
+            "superFunction": 17975,
             "visibility": "external"
           },
           {
@@ -16445,7 +16445,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "5290:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -16495,7 +16495,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 29669,
+                          "referencedDeclaration": 29729,
                           "src": "5297:3:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -16634,7 +16634,7 @@
             "scope": 4545,
             "src": "5146:169:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17925,
+            "superFunction": 17985,
             "visibility": "external"
           },
           {
@@ -16726,10 +16726,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "5400:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -16826,7 +16826,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "5631:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -16982,7 +16982,7 @@
             "scope": 4545,
             "src": "5321:323:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17930,
+            "superFunction": 17990,
             "visibility": "external"
           },
           {
@@ -17074,10 +17074,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "5729:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -17174,7 +17174,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "5961:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -17330,7 +17330,7 @@
             "scope": 4545,
             "src": "5650:324:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17935,
+            "superFunction": 17995,
             "visibility": "external"
           },
           {
@@ -17422,10 +17422,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "6071:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -17522,7 +17522,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "6342:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -17678,7 +17678,7 @@
             "scope": 4545,
             "src": "5980:375:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17940,
+            "superFunction": 18000,
             "visibility": "external"
           },
           {
@@ -17770,10 +17770,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "6452:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -17870,7 +17870,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "6724:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -18026,7 +18026,7 @@
             "scope": 4545,
             "src": "6361:376:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17945,
+            "superFunction": 18005,
             "visibility": "external"
           },
           {
@@ -18107,7 +18107,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "6927:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -18263,7 +18263,7 @@
             "scope": 4545,
             "src": "6743:197:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17950,
+            "superFunction": 18010,
             "visibility": "external"
           },
           {
@@ -18344,7 +18344,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 29739,
+                            "referencedDeclaration": 29783,
                             "src": "7148:4:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LoanInstalmentsDispatcher_$4545",
@@ -18500,7 +18500,7 @@
             "scope": 4545,
             "src": "6946:215:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17955,
+            "superFunction": 18015,
             "visibility": "external"
           },
           {
@@ -18635,10 +18635,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "7488:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -18874,10 +18874,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "7567:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -19113,10 +19113,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "7772:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -19288,10 +19288,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "7977:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -19463,10 +19463,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "8147:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -19574,10 +19574,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "8317:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -19685,10 +19685,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "8476:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -19796,10 +19796,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "8549:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -19939,10 +19939,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "8631:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -20172,7 +20172,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 29669,
+                              "referencedDeclaration": 29729,
                               "src": "9214:3:7",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -20329,10 +20329,10 @@
                               "name": "ILoanInstalments",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 17743,
+                              "referencedDeclaration": 17803,
                               "src": "8908:16:7",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_type$_t_contract$_ILoanInstalments_$17743_$",
+                                "typeIdentifier": "t_type$_t_contract$_ILoanInstalments_$17803_$",
                                 "typeString": "type(contract ILoanInstalments)"
                               }
                             },
@@ -20346,7 +20346,7 @@
                             "nodeType": "FunctionCall",
                             "src": "8908:30:7",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_ILoanInstalments_$17743",
+                              "typeIdentifier": "t_contract$_ILoanInstalments_$17803",
                               "typeString": "contract ILoanInstalments"
                             }
                           },
@@ -20357,7 +20357,7 @@
                           "lValueRequested": false,
                           "memberName": "init",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 17688,
+                          "referencedDeclaration": 17748,
                           "src": "8908:35:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_address_$_t_address_$_t_address_$_t_address_$_t_address_$returns$_t_bool_$",
@@ -20412,10 +20412,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        29672,
-                        29673
+                        29732,
+                        29733
                       ],
-                      "referencedDeclaration": 29673,
+                      "referencedDeclaration": 29733,
                       "src": "8887:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -20543,7 +20543,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 29669,
+                          "referencedDeclaration": 29729,
                           "src": "9495:3:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -20581,7 +20581,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
                         3861,
-                        17773
+                        17833
                       ],
                       "referencedDeclaration": 3861,
                       "src": "9461:19:7",
@@ -20909,7 +20909,7 @@
             "scope": 4545,
             "src": "7167:2376:7",
             "stateMutability": "nonpayable",
-            "superFunction": 17976,
+            "superFunction": 18036,
             "visibility": "external"
           },
           {
@@ -21096,7 +21096,7 @@
             "scope": 4545,
             "src": "9549:131:7",
             "stateMutability": "view",
-            "superFunction": 17985,
+            "superFunction": 18045,
             "visibility": "external"
           },
           {
@@ -21752,7 +21752,7 @@
     }
   },
   "schemaVersion": "3.0.22",
-  "updatedAt": "2020-07-01T12:35:05.842Z",
+  "updatedAt": "2020-07-02T14:50:55.285Z",
   "devdoc": {
     "methods": {
       "isOwner()": {

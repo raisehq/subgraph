@@ -80,6 +80,7 @@ type LoanInstalmentsDispatcher @entity {
   auth: Bytes
   DAIProxyAddress: Bytes
   swapFactory: Bytes
+  loanTemplate: Bytes
 }
 
 type Loan @entity {
@@ -154,6 +155,10 @@ type LoanInstalments @entity {
   loanFundsUnlocked: Boolean!
   operatorFee: BigInt!
   instalments: BigInt!
+  instalmentsPaid: BigInt!
+  penaltiesPaid: BigInt!
+  currentInstalment: BigInt!
+  loanAmountPaid: BigInt!
 
   #Funding/Auction fase
   auctionStartTimestamp: BigInt! # uint256
@@ -198,6 +203,8 @@ type Funding @entity {
   withdrawn: Boolean!
   amountWithdrawn: BigInt!
   investmentsCount: Int!
+  instalmentsWithdrawed: BigInt!
+  penaltiesWithdrawed: BigInt!
 
   # metadata
   createdBlockNumber: BigInt!

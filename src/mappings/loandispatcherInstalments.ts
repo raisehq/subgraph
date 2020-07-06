@@ -13,8 +13,14 @@ import {
   DaiProxyAddressUpdated as DaiProxyAddressUpdatedEvent,
   SwapFactoryAddressUpdated as SwapFactoryAddressUpdatedEvent,
   LoanContractCreated as LoanContractCreatedEvent,
-} from "../../generated/LoanContractDispatcherMultiCoin/LoanContractDispatcherMultiCoin";
-import { LoanDispatcher, Loan, User } from "../../generated/schema";
+  LoanTemplateUpdated as LoanTemplateUpdatedEvent,
+  LoanTemplateUpdated,
+} from "../../generated/LoanInstalmentsDispatcher/LoanInstalmentsDispatcher";
+import {
+  LoanInstalmentsDispatcher as LoanDispatcher,
+  Loan,
+  User,
+} from "../../generated/schema";
 import { LoanContractMultiCoin as NewLoan } from "../../generated/templates";
 import { BigInt, log, Address } from "@graphprotocol/graph-ts";
 
@@ -45,7 +51,7 @@ export function handleLoanDispatcherCreated(
 export function handleLoanContractCreated(
   event: LoanContractCreatedEvent
 ): void {
-  let dispatcherAddress = event.params.loanDispatcher;
+  let dispatcherAddress = event.address;
   let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
   let loanAddress = event.params.contractAddress.toHex();
 
@@ -137,6 +143,14 @@ export function handleLoanContractCreated(
   } else {
     loanDispatcher.save();
   }
+}
+
+export function handleTemplateUpdated(event: LoanTemplateUpdatedEvent): void {
+  let dispatcherAddress = event.address;
+  let loanDispatcher = LoanDispatcher.load(dispatcherAddress.toHex());
+
+  loanDispatcher.loanTemplate = event.params.newTemplateAddress;
+  loanDispatcher.save();
 }
 
 export function handleMinAmountUpdated(event: MinAmountUpdatedEvent): void {

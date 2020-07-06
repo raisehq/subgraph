@@ -1,6 +1,6 @@
 import {
   LoanCreated as LoanCreatedWithRangeEvent,
-  LoanContractMultiCoin as LoanContract,
+  LoanInstalments as LoanContract,
   MinimumFundingReached as MinimumFundingReachedEvent,
   FullyFunded as FullyFundedEvent,
   Funded as FundedEvent,
@@ -16,8 +16,9 @@ import {
   FundsUnlockedWithdrawn as FundsUnlockedWithdrawnEvent,
   FullyFundsUnlockedWithdrawn as FullyFundsUnlockedWithdrawnEvent,
   LoanFundsUnlocked as LoanFundsUnlockedEvent,
-} from "../../generated/templates/LoanContractMultiCoin/LoanContractMultiCoin";
-import { Loan, User, Funding, Raise } from "../../generated/schema";
+  LoanPayment as LoanPaymentEvent,
+} from "../../generated/templates/LoanInstalments/LoanInstalments";
+import { LoanInstalments, User, Funding, Raise } from "../../generated/schema";
 import { log, BigInt } from "@graphprotocol/graph-ts";
 // import { LoanContract as NewLoan } from "../../generated/LoanContractDispatcher/templates";
 
@@ -27,7 +28,7 @@ export function handleLoanWithRangeCreated(
   let loanAddress = event.params.contractAddr.toHex();
 
   // create loan
-  let loan = new Loan(loanAddress);
+  let loan = new LoanInstalments(loanAddress);
   let loanContract = LoanContract.bind(event.params.contractAddr);
 
   let auctionStartTimestamp = loanContract.auctionStartTimestamp();
@@ -50,6 +51,7 @@ export function handleLoanWithRangeCreated(
   loan.loanFundsUnlocked = false;
   loan.operatorFee = operatorFee;
   loan.minInterestRate = event.params.minInterestRate;
+  loan.instalments = event.params.instalments;
 
   // loan Funding/Auction fase
   loan.auctionStartTimestamp = auctionStartTimestamp;
@@ -81,24 +83,13 @@ export function handleLoanWithRangeCreated(
   loan.tokenAddress = event.params.tokenAddress;
 
   loan.save();
-
-  // NewLoan.create(event.params.contractAddr);
-
-  // let userId = event.params.originator.toHex();
-  // let user = User.load(userId);
-
-  // let requests = user.loanRequests;
-  // requests.push(loan.id);
-  // user.loanRequests = requests;
-
-  // user.save();
 }
 
 export function handleMinimumFundingReached(
   event: MinimumFundingReachedEvent
 ): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new Loan(loanAddressHex);
+  let loan = new LoanInstalments(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
   let loanState = loanContract.currentState();
@@ -121,7 +112,7 @@ export function handleMinimumFundingReached(
 
 export function handleFullyFunded(event: FullyFundedEvent): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new Loan(loanAddressHex);
+  let loan = new LoanInstalments(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
   let loanState = loanContract.currentState();
@@ -139,7 +130,7 @@ export function handleFullyFunded(event: FullyFundedEvent): void {
 
 export function handleFunded(event: FundedEvent): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = Loan.load(loanAddressHex);
+  let loan = LoanInstalments.load(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -197,7 +188,7 @@ export function handleFunded(event: FundedEvent): void {
 
 export function handleFailedToFund(event: FailedToFundEvent): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new Loan(loanAddressHex);
+  let loan = new LoanInstalments(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -214,32 +205,11 @@ export function handleFailedToFund(event: FailedToFundEvent): void {
   }
 
   loan.save();
-
-  // creating funding transaction
-  // let userAddress = event.params.lender;
-  // let user = User.load(userAddress.toHex());
-
-  // let fundingId = userAddress.toHex() + "-" + loanAddressHex;
-  // let funding = Funding.load(fundingId);
-  // if (funding == null) {
-  //   funding = new Funding(fundingId);
-  //   funding.loan = loanAddressHex;
-  //   funding.amount = BigInt.fromI32(0);
-  //   funding.withdrawn = false;
-  //   funding.amountWithdrawn = BigInt.fromI32(0);
-  // }
-  // funding.save();
-
-  // let fundings = user.loanFundings;
-  // fundings.push(funding.id);
-  // user.loanFundings = fundings;
-
-  // user.save();
 }
 
 export function handleAuctionSuccessful(event: AuctionSuccessfulEvent): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new Loan(loanAddressHex);
+  let loan = new LoanInstalments(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
   let loanState = loanContract.currentState();
@@ -272,7 +242,7 @@ export function handleAuctionSuccessful(event: AuctionSuccessfulEvent): void {
 
 export function handleLoanRepaid(event: LoanRepaidEvent): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new Loan(loanAddressHex);
+  let loan = new LoanInstalments(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -284,9 +254,25 @@ export function handleLoanRepaid(event: LoanRepaidEvent): void {
   loan.save();
 }
 
+export function handleLoanPayment(event: LoanPaymentEvent): void {
+  let loanAddressHex = event.address.toHex();
+  let loan = new LoanInstalments(loanAddressHex);
+
+  let loanContract = LoanContract.bind(event.address);
+
+  let loanState = loanContract.currentState();
+
+  loan.instalmentsPaid = event.params.instalmentsPaid;
+  loan.penaltiesPaid = event.params.penaltiesPaid;
+  loan.loanAmountPaid = event.params.loanAmountPaid;
+  loan.currentInstalment = event.params.instalments;
+  loan.state = loanState;
+  loan.save();
+}
+
 export function handleRepaymentWithdrawn(event: RepaymentWithdrawnEvent): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new Loan(loanAddressHex);
+  let loan = new LoanInstalments(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -300,15 +286,20 @@ export function handleRepaymentWithdrawn(event: RepaymentWithdrawnEvent): void {
 
   // creating funding transaction
   let userAddress = event.params.to;
-  let funding = new Funding(userAddress.toHex() + "-" + loanAddressHex);
-  funding.withdrawn = true;
-  funding.amountWithdrawn = event.params.amount;
+  let funding = Funding.load(userAddress.toHex() + "-" + loanAddressHex);
+  funding.amountWithdrawn = funding.amountWithdrawn.plus(event.params.amount);
+  funding.instalmentsWithdrawed = event.params.instalmentsWithdrawed;
+  funding.penaltiesWithdrawed = event.params.instalmentsWithdrawed;
+
+  if (loan.instalments.equals(funding.instalmentsWithdrawed)) {
+    funding.withdrawn = true;
+  }
   funding.save();
 }
 
 export function handleRefundWithdrawn(event: RefundWithdrawnEvent): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new Loan(loanAddressHex);
+  let loan = new LoanInstalments(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -322,7 +313,7 @@ export function handleRefundWithdrawn(event: RefundWithdrawnEvent): void {
 
   // creating funding transaction
   let userAddress = event.params.lender;
-  let funding = new Funding(userAddress.toHex() + "-" + loanAddressHex);
+  let funding = Funding.load(userAddress.toHex() + "-" + loanAddressHex);
   funding.withdrawn = true;
   funding.amountWithdrawn = event.params.amount;
   funding.save();
@@ -332,7 +323,7 @@ export function handleFundsUnlockedWithdrawn(
   event: FundsUnlockedWithdrawnEvent
 ): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new Loan(loanAddressHex);
+  let loan = new LoanInstalments(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -346,7 +337,7 @@ export function handleFundsUnlockedWithdrawn(
 
   // creating funding transaction
   let userAddress = event.params.lender;
-  let funding = new Funding(userAddress.toHex() + "-" + loanAddressHex);
+  let funding = Funding.load(userAddress.toHex() + "-" + loanAddressHex);
   funding.withdrawn = true;
   funding.amountWithdrawn = event.params.amount;
   funding.save();
@@ -354,7 +345,7 @@ export function handleFundsUnlockedWithdrawn(
 
 export function handleFullyRefunded(event: FullyRefundedEvent): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new Loan(loanAddressHex);
+  let loan = new LoanInstalments(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -370,7 +361,7 @@ export function handleFullyFundsUnlockedWithdrawn(
   event: FullyFundsUnlockedWithdrawnEvent
 ): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new Loan(loanAddressHex);
+  let loan = new LoanInstalments(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -384,7 +375,7 @@ export function handleFullyFundsUnlockedWithdrawn(
 
 export function handleLoanFundsWithdrawn(event: LoanFundsWithdrawn): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new Loan(loanAddressHex);
+  let loan = new LoanInstalments(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -398,7 +389,7 @@ export function handleLoanFundsWithdrawn(event: LoanFundsWithdrawn): void {
 
 export function handleLoanDefaulted(event: LoanDefaultedEvent): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new Loan(loanAddressHex);
+  let loan = new LoanInstalments(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -418,7 +409,7 @@ export function handleOperatorWithdrawn(event: OperatorWithdrawnEvent): void {
 
 export function handleLoanFundsUnlocked(event: LoanFundsUnlockedEvent): void {
   let loanAddressHex = event.address.toHex();
-  let loan = new Loan(loanAddressHex);
+  let loan = new LoanInstalments(loanAddressHex);
   let loanContract = LoanContract.bind(event.address);
 
   let loanState = loanContract.currentState();
