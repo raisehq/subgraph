@@ -183,6 +183,8 @@ export function handleFunded(event: FundedEvent): void {
     funding.createdBlockNumber = event.block.number;
     funding.createdTimestamp = event.block.timestamp;
     funding.user = user.id;
+    funding.instalmentsWithdrawed = BigInt.fromI32(0);
+    funding.penaltiesWithdrawed = BigInt.fromI32(0);
   }
 
   funding.updatedBlockNumber = event.block.number;

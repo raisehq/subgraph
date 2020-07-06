@@ -171,6 +171,8 @@ export function handleFunded(event: FundedEvent): void {
     funding.withdrawn = false;
     funding.investmentsCount = 0;
     funding.amountWithdrawn = BigInt.fromI32(0);
+    funding.instalmentsWithdrawed = BigInt.fromI32(0);
+    funding.penaltiesWithdrawed = BigInt.fromI32(0);
     funding.createdBlockNumber = event.block.number;
     funding.createdTimestamp = event.block.timestamp;
     funding.user = user.id;

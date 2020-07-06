@@ -30,6 +30,7 @@ export function handleLoanDispatcherCreated(
   loanDispatcher.loans = [];
   loanDispatcher.loansCount = 0;
   loanDispatcher.acceptedTokens = [];
+  loanDispatcher.loanTemplate = event.params.loanTemplate;
 
   loanDispatcher.auth = event.params.auth;
   loanDispatcher.DAIProxyAddress = event.params.DAIProxyAddress;
