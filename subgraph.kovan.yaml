@@ -116,7 +116,7 @@ dataSources:
     name: LoanInstalmentsDispatcher
     network: kovan
     source:
-      address: "0x787B54cdF555d4646701b5e0C4CB105e1Fc593e4"
+      address: "0xB0F9883eE48c86479738B238B73A6d6fF38800F0"
       abi: LoanInstalmentsDispatcher
       startBlock: 15180230
     mapping:
@@ -131,7 +131,7 @@ dataSources:
         - name: LoanInstalmentsDispatcher
           file: ./abis/LoanInstalmentsDispatcher.json
       eventHandlers:
-        - event: LoanDispatcherCreated(address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,uint256)
+        - event: LoanDispatcherCreated(address,address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,uint256)
           handler: handleLoanDispatcherCreated
         - event: LoanContractCreated(address,indexed address)
           handler: handleLoanContractCreated
