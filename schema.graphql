@@ -150,12 +150,6 @@ type Funding @entity {
   updatedTimestamp: BigInt!
 }
 
-type InvestmentTransaction @entity {
-  id: ID!
-  user: User!
-  loan: Loan!
-}
-
 type Raise @entity {
   id: ID!
   feesToWithdraw: BigInt!
