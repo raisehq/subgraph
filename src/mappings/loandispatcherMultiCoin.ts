@@ -16,7 +16,7 @@ import {
 } from "../../generated/LoanContractDispatcherMultiCoin/LoanContractDispatcherMultiCoin";
 import { LoanDispatcher, Loan, User } from "../../generated/schema";
 import { LoanContractMultiCoin as NewLoan } from "../../generated/templates";
-import { BigInt, log, Address } from "@graphprotocol/graph-ts";
+import { BigInt, log } from "@graphprotocol/graph-ts";
 
 export function handleLoanDispatcherCreated(
   event: LoanDispatcherCreatedEvent
