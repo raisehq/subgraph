@@ -16,15 +16,17 @@ import {
 } from "../../generated/LoanContractDispatcherMultiCoin/LoanContractDispatcherMultiCoin";
 import { LoanDispatcher, Loan, User } from "../../generated/schema";
 import { LoanContractMultiCoin as NewLoan } from "../../generated/templates";
-import { BigInt, log, Address } from "@graphprotocol/graph-ts";
+import { BigInt, log } from "@graphprotocol/graph-ts";
 
 export function handleLoanDispatcherCreated(
   event: LoanDispatcherCreatedEvent
 ): void {
+  log.debug("prior new", []);
   let dispatcherAddress = event.params.loanDispatcher;
   let loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
   loanDispatcher.address = dispatcherAddress;
   loanDispatcher.loans = [];
+  log.debug("prior type", []);
   loanDispatcher.type = "Bullet";
   loanDispatcher.loansCount = 0;
   loanDispatcher.acceptedTokens = [];
@@ -40,6 +42,7 @@ export function handleLoanDispatcherCreated(
   loanDispatcher.maxAmount = event.params.maxAmount;
   loanDispatcher.minAmount = event.params.minAmount;
 
+  log.debug("prior save", []);
   loanDispatcher.save();
 }
 
