@@ -28,7 +28,6 @@ export function handleLoanDispatcherCreated(
   loanDispatcher.type = "Bullet";
   loanDispatcher.loansCount = 0;
   loanDispatcher.acceptedTokens = [];
-  loanDispatcher.loanTemplate = new Address(0);
 
   loanDispatcher.auth = event.params.auth;
   loanDispatcher.DAIProxyAddress = event.params.DAIProxyAddress;
