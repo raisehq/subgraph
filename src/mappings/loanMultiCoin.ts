@@ -44,6 +44,11 @@ export function handleLoanWithRangeCreated(
   loan.originator = event.params.originator;
   loan.minAmount = event.params.minAmount;
   loan.maxAmount = event.params.maxAmount;
+  loan.type = "Bullet";
+  loan.instalmentsPaid = BigInt.fromI32(0);
+  loan.penaltiesPaid = BigInt.fromI32(0);
+  loan.currentInstalment = BigInt.fromI32(0);
+  loan.loanAmountPaid = BigInt.fromI32(0);
   loan.maxInterestRate = event.params.maxInterestRate;
   loan.state = 0; //'CREATED'
   loan.borrowerDebt = BigInt.fromI32(0);
@@ -178,6 +183,8 @@ export function handleFunded(event: FundedEvent): void {
     funding.createdBlockNumber = event.block.number;
     funding.createdTimestamp = event.block.timestamp;
     funding.user = user.id;
+    funding.instalmentsWithdrawed = BigInt.fromI32(0);
+    funding.penaltiesWithdrawed = BigInt.fromI32(0);
   }
 
   funding.updatedBlockNumber = event.block.number;
