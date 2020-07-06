@@ -92,6 +92,11 @@ export function handleLoanContractCreated(
     loan.auctionFullyFunded = false;
     loan.auctionEnded = false;
     loan.auctionFailed = false;
+    loan.instalments = BigInt.fromI32(0);
+    loan.instalmentsPaid = BigInt.fromI32(0);
+    loan.penaltiesPaid = BigInt.fromI32(0);
+    loan.currentInstalment = BigInt.fromI32(0);
+    loan.loanAmountPaid = BigInt.fromI32(0);
 
     // borrower withdraw
     loan.operatorBalance = BigInt.fromI32(0);

@@ -80,6 +80,11 @@ export function handleLoanContractCreated(
     loan.loanFundsUnlocked = false;
     loan.operatorFee = BigInt.fromI32(0);
     loan.minInterestRate = BigInt.fromI32(0);
+    loan.instalments = BigInt.fromI32(0);
+    loan.instalmentsPaid = BigInt.fromI32(0);
+    loan.penaltiesPaid = BigInt.fromI32(0);
+    loan.currentInstalment = BigInt.fromI32(0);
+    loan.loanAmountPaid = BigInt.fromI32(0);
 
     // loan Funding/Auction fase
     loan.auctionStartTimestamp = BigInt.fromI32(0);
