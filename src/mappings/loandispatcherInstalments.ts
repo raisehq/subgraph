@@ -16,11 +16,7 @@ import {
   LoanTemplateUpdated as LoanTemplateUpdatedEvent,
   LoanTemplateUpdated,
 } from "../../generated/LoanInstalmentsDispatcher/LoanInstalmentsDispatcher";
-import {
-  LoanInstalmentsDispatcher as LoanDispatcher,
-  Loan,
-  User,
-} from "../../generated/schema";
+import { LoanDispatcher, Loan, User } from "../../generated/schema";
 import { LoanContractMultiCoin as NewLoan } from "../../generated/templates";
 import { BigInt, log, Address } from "@graphprotocol/graph-ts";
 
@@ -29,6 +25,7 @@ export function handleLoanDispatcherCreated(
 ): void {
   let dispatcherAddress = event.params.loanDispatcher;
   let loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
+  loanDispatcher.type = "Instalments";
   loanDispatcher.address = dispatcherAddress;
   loanDispatcher.loans = [];
   loanDispatcher.loansCount = 0;

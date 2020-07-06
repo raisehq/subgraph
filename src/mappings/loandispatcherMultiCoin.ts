@@ -25,6 +25,7 @@ export function handleLoanDispatcherCreated(
   let loanDispatcher = new LoanDispatcher(dispatcherAddress.toHex());
   loanDispatcher.address = dispatcherAddress;
   loanDispatcher.loans = [];
+  loanDispatcher.type = "Bullet";
   loanDispatcher.loansCount = 0;
   loanDispatcher.acceptedTokens = [];
 

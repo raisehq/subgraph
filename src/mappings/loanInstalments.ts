@@ -18,7 +18,7 @@ import {
   LoanFundsUnlocked as LoanFundsUnlockedEvent,
   LoanPayment as LoanPaymentEvent,
 } from "../../generated/templates/LoanInstalments/LoanInstalments";
-import { LoanInstalments, User, Funding, Raise } from "../../generated/schema";
+import { Loan, User, Funding, Raise } from "../../generated/schema";
 import { log, BigInt } from "@graphprotocol/graph-ts";
 // import { LoanContract as NewLoan } from "../../generated/LoanContractDispatcher/templates";
 
@@ -28,7 +28,7 @@ export function handleLoanWithRangeCreated(
   let loanAddress = event.params.contractAddr.toHex();
 
   // create loan
-  let loan = new LoanInstalments(loanAddress);
+  let loan = new Loan(loanAddress);
   let loanContract = LoanContract.bind(event.params.contractAddr);
 
   let auctionStartTimestamp = loanContract.auctionStartTimestamp();
@@ -40,6 +40,7 @@ export function handleLoanWithRangeCreated(
 
   // loan status
   loan.investors = [];
+  loan.type = "Instalments";
   loan.investorCount = 0;
   loan.address = event.params.contractAddr;
   loan.originator = event.params.originator;
@@ -58,6 +59,10 @@ export function handleLoanWithRangeCreated(
   loan.auctionEndTimestamp = auctionEndTimestamp;
   loan.auctionLength = auctionLength;
   loan.termEndTimestamp = termEndTimestamp;
+  loan.instalmentsPaid = BigInt.fromI32(0);
+  loan.penaltiesPaid = BigInt.fromI32(0);
+  loan.currentInstalment = BigInt.fromI32(0);
+  loan.loanAmountPaid = BigInt.fromI32(0);
   loan.termLength = termLength;
   loan.principal = BigInt.fromI32(0);
   loan.minimumReached = false;
@@ -89,7 +94,7 @@ export function handleMinimumFundingReached(
   event: MinimumFundingReachedEvent
 ): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new LoanInstalments(loanAddressHex);
+  let loan = new Loan(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
   let loanState = loanContract.currentState();
@@ -112,7 +117,7 @@ export function handleMinimumFundingReached(
 
 export function handleFullyFunded(event: FullyFundedEvent): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new LoanInstalments(loanAddressHex);
+  let loan = new Loan(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
   let loanState = loanContract.currentState();
@@ -130,7 +135,7 @@ export function handleFullyFunded(event: FullyFundedEvent): void {
 
 export function handleFunded(event: FundedEvent): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = LoanInstalments.load(loanAddressHex);
+  let loan = Loan.load(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -188,7 +193,7 @@ export function handleFunded(event: FundedEvent): void {
 
 export function handleFailedToFund(event: FailedToFundEvent): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new LoanInstalments(loanAddressHex);
+  let loan = new Loan(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -209,7 +214,7 @@ export function handleFailedToFund(event: FailedToFundEvent): void {
 
 export function handleAuctionSuccessful(event: AuctionSuccessfulEvent): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new LoanInstalments(loanAddressHex);
+  let loan = new Loan(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
   let loanState = loanContract.currentState();
@@ -242,7 +247,7 @@ export function handleAuctionSuccessful(event: AuctionSuccessfulEvent): void {
 
 export function handleLoanRepaid(event: LoanRepaidEvent): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new LoanInstalments(loanAddressHex);
+  let loan = new Loan(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -256,7 +261,7 @@ export function handleLoanRepaid(event: LoanRepaidEvent): void {
 
 export function handleLoanPayment(event: LoanPaymentEvent): void {
   let loanAddressHex = event.address.toHex();
-  let loan = new LoanInstalments(loanAddressHex);
+  let loan = new Loan(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.address);
 
@@ -272,7 +277,7 @@ export function handleLoanPayment(event: LoanPaymentEvent): void {
 
 export function handleRepaymentWithdrawn(event: RepaymentWithdrawnEvent): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new LoanInstalments(loanAddressHex);
+  let loan = new Loan(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -299,7 +304,7 @@ export function handleRepaymentWithdrawn(event: RepaymentWithdrawnEvent): void {
 
 export function handleRefundWithdrawn(event: RefundWithdrawnEvent): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new LoanInstalments(loanAddressHex);
+  let loan = new Loan(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -323,7 +328,7 @@ export function handleFundsUnlockedWithdrawn(
   event: FundsUnlockedWithdrawnEvent
 ): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new LoanInstalments(loanAddressHex);
+  let loan = new Loan(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -345,7 +350,7 @@ export function handleFundsUnlockedWithdrawn(
 
 export function handleFullyRefunded(event: FullyRefundedEvent): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new LoanInstalments(loanAddressHex);
+  let loan = new Loan(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -361,7 +366,7 @@ export function handleFullyFundsUnlockedWithdrawn(
   event: FullyFundsUnlockedWithdrawnEvent
 ): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new LoanInstalments(loanAddressHex);
+  let loan = new Loan(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -375,7 +380,7 @@ export function handleFullyFundsUnlockedWithdrawn(
 
 export function handleLoanFundsWithdrawn(event: LoanFundsWithdrawn): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new LoanInstalments(loanAddressHex);
+  let loan = new Loan(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -389,7 +394,7 @@ export function handleLoanFundsWithdrawn(event: LoanFundsWithdrawn): void {
 
 export function handleLoanDefaulted(event: LoanDefaultedEvent): void {
   let loanAddressHex = event.params.loanAddress.toHex();
-  let loan = new LoanInstalments(loanAddressHex);
+  let loan = new Loan(loanAddressHex);
 
   let loanContract = LoanContract.bind(event.params.loanAddress);
 
@@ -409,7 +414,7 @@ export function handleOperatorWithdrawn(event: OperatorWithdrawnEvent): void {
 
 export function handleLoanFundsUnlocked(event: LoanFundsUnlockedEvent): void {
   let loanAddressHex = event.address.toHex();
-  let loan = new LoanInstalments(loanAddressHex);
+  let loan = new Loan(loanAddressHex);
   let loanContract = LoanContract.bind(event.address);
 
   let loanState = loanContract.currentState();
