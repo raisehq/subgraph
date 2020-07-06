@@ -185,6 +185,11 @@ export function handleFunded(event: FundedEvent): void {
     funding.user = user.id;
     funding.instalmentsWithdrawed = BigInt.fromI32(0);
     funding.penaltiesWithdrawed = BigInt.fromI32(0);
+
+    // save new funding to user
+    let fundings = user.loanFundings;
+    fundings.push(funding.id);
+    user.loanFundings = fundings;
   }
 
   funding.updatedBlockNumber = event.block.number;
@@ -193,12 +198,13 @@ export function handleFunded(event: FundedEvent): void {
   funding.investmentsCount = funding.investmentsCount + 1;
   funding.save();
 
-  funding.save();
-  let fundings = user.loanFundings;
-  fundings.push(funding.id);
-  user.loanFundings = fundings;
-  user.investmentsCount = user.investmentsCount + 1;
+  if (user.investmentsCount == 0) {
+    user.firstInvestmentAmount = event.params.amount;
+    user.firstInvestmentTimestamp = event.block.timestamp;
+    user.firstInvestmentBlockNumber = event.block.number;
+  }
 
+  user.investmentsCount = user.investmentsCount + 1;
   user.save();
 }
 

@@ -20,6 +20,11 @@ type User @entity {
   addKycTimestamp: BigInt
   createdBlockNumber: BigInt!
   createdTimestamp: BigInt!
+
+  # first investment
+  firstInvestmentAmount: BigInt
+  firstInvestmentTimestamp: BigInt
+  firstInvestmentBlockNumber: BigInt
 }
 
 type Referral @entity {
@@ -143,6 +148,12 @@ type Funding @entity {
 
   updatedBlockNumber: BigInt!
   updatedTimestamp: BigInt!
+}
+
+type InvestmentTransaction @entity {
+  id: ID!
+  user: User!
+  loan: Loan!
 }
 
 type Raise @entity {
