@@ -107,7 +107,6 @@ export function handleLoanContractCreated(
     // metadata
     loan.createdBlockNumber = event.block.number;
     loan.createdTimestamp = event.block.timestamp;
-    loan.tokenAddress = new Address(0);
 
     loan.save();
 
